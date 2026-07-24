@@ -1,0 +1,2993 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "diagnose.py",
+      "file_type": "code",
+      "source_file": "diagnose.py",
+      "source_location": "L1",
+      "id": "diagnose",
+      "community": 5,
+      "norm_label": "diagnose.py"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "diagnose.py",
+      "source_location": "L17",
+      "id": "diagnose_main",
+      "community": 5,
+      "norm_label": "main()"
+    },
+    {
+      "label": "diagnose.py  \u2014  Full pipeline diagnostic for pdf_to_rag. Shows raw extraction,",
+      "file_type": "rationale",
+      "source_file": "diagnose.py",
+      "source_location": "L1",
+      "id": "diagnose_rationale_1",
+      "community": 5,
+      "norm_label": "diagnose.py  \u2014  full pipeline diagnostic for pdf_to_rag. shows raw extraction,"
+    },
+    {
+      "label": "pdf_to_rag.py",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L1",
+      "id": "pdf_to_rag",
+      "community": 0,
+      "norm_label": "pdf_to_rag.py"
+    },
+    {
+      "label": "extract_text()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L28",
+      "id": "pdf_to_rag_extract_text",
+      "community": 5,
+      "norm_label": "extract_text()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L28",
+      "id": "pdf_to_rag_py_str",
+      "community": 0,
+      "norm_label": "str"
+    },
+    {
+      "label": "_looks_list_bullet()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L81",
+      "id": "pdf_to_rag_looks_list_bullet",
+      "community": 0,
+      "norm_label": "_looks_list_bullet()"
+    },
+    {
+      "label": "bool",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L81",
+      "id": "pdf_to_rag_py_bool",
+      "community": 0,
+      "norm_label": "bool"
+    },
+    {
+      "label": "_split_table_cells()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L86",
+      "id": "pdf_to_rag_split_table_cells",
+      "community": 0,
+      "norm_label": "_split_table_cells()"
+    },
+    {
+      "label": "_looks_table_row()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L93",
+      "id": "pdf_to_rag_looks_table_row",
+      "community": 0,
+      "norm_label": "_looks_table_row()"
+    },
+    {
+      "label": "_looks_image_artifact_line()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L101",
+      "id": "pdf_to_rag_looks_image_artifact_line",
+      "community": 0,
+      "norm_label": "_looks_image_artifact_line()"
+    },
+    {
+      "label": "_normalise_table_block()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L114",
+      "id": "pdf_to_rag_normalise_table_block",
+      "community": 0,
+      "norm_label": "_normalise_table_block()"
+    },
+    {
+      "label": "_rewrite_table_blocks()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L156",
+      "id": "pdf_to_rag_rewrite_table_blocks",
+      "community": 0,
+      "norm_label": "_rewrite_table_blocks()"
+    },
+    {
+      "label": "_join_wrapped_lines()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L193",
+      "id": "pdf_to_rag_join_wrapped_lines",
+      "community": 0,
+      "norm_label": "_join_wrapped_lines()"
+    },
+    {
+      "label": "clean_text()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L231",
+      "id": "pdf_to_rag_clean_text",
+      "community": 0,
+      "norm_label": "clean_text()"
+    },
+    {
+      "label": "_looks_title_case()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L293",
+      "id": "pdf_to_rag_looks_title_case",
+      "community": 0,
+      "norm_label": "_looks_title_case()"
+    },
+    {
+      "label": "_is_heading()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L315",
+      "id": "pdf_to_rag_is_heading",
+      "community": 5,
+      "norm_label": "_is_heading()"
+    },
+    {
+      "label": "detect_sections()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L363",
+      "id": "pdf_to_rag_detect_sections",
+      "community": 5,
+      "norm_label": "detect_sections()"
+    },
+    {
+      "label": "build_json()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L536",
+      "id": "pdf_to_rag_build_json",
+      "community": 2,
+      "norm_label": "build_json()"
+    },
+    {
+      "label": "int",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L536",
+      "id": "pdf_to_rag_py_int",
+      "community": 2,
+      "norm_label": "int"
+    },
+    {
+      "label": "save_json()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L599",
+      "id": "pdf_to_rag_save_json",
+      "community": 0,
+      "norm_label": "save_json()"
+    },
+    {
+      "label": "build_markdown()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L607",
+      "id": "pdf_to_rag_build_markdown",
+      "community": 0,
+      "norm_label": "build_markdown()"
+    },
+    {
+      "label": "save_markdown()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L618",
+      "id": "pdf_to_rag_save_markdown",
+      "community": 0,
+      "norm_label": "save_markdown()"
+    },
+    {
+      "label": "validate()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L630",
+      "id": "pdf_to_rag_validate",
+      "community": 0,
+      "norm_label": "validate()"
+    },
+    {
+      "label": "detect_chapter_number()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L661",
+      "id": "pdf_to_rag_detect_chapter_number",
+      "community": 2,
+      "norm_label": "detect_chapter_number()"
+    },
+    {
+      "label": "process_pdf()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L680",
+      "id": "pdf_to_rag_process_pdf",
+      "community": 2,
+      "norm_label": "process_pdf()"
+    },
+    {
+      "label": "build_parser()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L769",
+      "id": "pdf_to_rag_build_parser",
+      "community": 2,
+      "norm_label": "build_parser()"
+    },
+    {
+      "label": "ArgumentParser",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L769",
+      "id": "argumentparser",
+      "community": 2,
+      "norm_label": "argumentparser"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L812",
+      "id": "pdf_to_rag_main",
+      "community": 2,
+      "norm_label": "main()"
+    },
+    {
+      "label": "pdf_to_rag.py ------------- Converts FAA handbook PDF files into structured JS",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L1",
+      "id": "pdf_to_rag_rationale_1",
+      "community": 0,
+      "norm_label": "pdf_to_rag.py ------------- converts faa handbook pdf files into structured js"
+    },
+    {
+      "label": "Extract raw text from a PDF using pdfminer.six (deterministic, no AI).",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L29",
+      "id": "pdf_to_rag_rationale_29",
+      "community": 5,
+      "norm_label": "extract raw text from a pdf using pdfminer.six (deterministic, no ai)."
+    },
+    {
+      "label": "Clean extracted PDF text:       - Remove standalone page numbers (e.g. \"3-4\", \"",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L232",
+      "id": "pdf_to_rag_rationale_232",
+      "community": 0,
+      "norm_label": "clean extracted pdf text:       - remove standalone page numbers (e.g. \"3-4\", \""
+    },
+    {
+      "label": "Lenient Title Case check.     The first word must be capitalised; every subsequ",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L294",
+      "id": "pdf_to_rag_rationale_294",
+      "community": 0,
+      "norm_label": "lenient title case check.     the first word must be capitalised; every subsequ"
+    },
+    {
+      "label": "Return True when a line qualifies as a section heading.     ALL conditions must",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L316",
+      "id": "pdf_to_rag_rationale_316",
+      "community": 5,
+      "norm_label": "return true when a line qualifies as a section heading.     all conditions must"
+    },
+    {
+      "label": "Split cleaned text into sections using a three-pass heading pipeline.      Pas",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L368",
+      "id": "pdf_to_rag_rationale_368",
+      "community": 5,
+      "norm_label": "split cleaned text into sections using a three-pass heading pipeline.      pas"
+    },
+    {
+      "label": "Assemble the final RAG JSON object.      Schema:     {         \"chapter\": <i",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L537",
+      "id": "pdf_to_rag_rationale_537",
+      "community": 2,
+      "norm_label": "assemble the final rag json object.      schema:     {         \"chapter\": <i"
+    },
+    {
+      "label": "Write the JSON structure to *output_path* with UTF-8 encoding.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L600",
+      "id": "pdf_to_rag_rationale_600",
+      "community": 0,
+      "norm_label": "write the json structure to *output_path* with utf-8 encoding."
+    },
+    {
+      "label": "Render the RAG JSON structure as a Markdown document.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L608",
+      "id": "pdf_to_rag_rationale_608",
+      "community": 0,
+      "norm_label": "render the rag json structure as a markdown document."
+    },
+    {
+      "label": "Write the RAG data as a Markdown document to *output_path*.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L619",
+      "id": "pdf_to_rag_rationale_619",
+      "community": 0,
+      "norm_label": "write the rag data as a markdown document to *output_path*."
+    },
+    {
+      "label": "Validate the built JSON structure.     Returns a (possibly empty) list of warni",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L631",
+      "id": "pdf_to_rag_rationale_631",
+      "community": 0,
+      "norm_label": "validate the built json structure.     returns a (possibly empty) list of warni"
+    },
+    {
+      "label": "Infer the chapter number from the filename.     Supports patterns such as:",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L662",
+      "id": "pdf_to_rag_rationale_662",
+      "community": 2,
+      "norm_label": "infer the chapter number from the filename.     supports patterns such as:"
+    },
+    {
+      "label": "Run the full pipeline for a single PDF:       extract \u2192 clean \u2192 detect sections",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L687",
+      "id": "pdf_to_rag_rationale_687",
+      "community": 2,
+      "norm_label": "run the full pipeline for a single pdf:       extract \u2192 clean \u2192 detect sections"
+    },
+    {
+      "label": "pdf_to_rag_ui.py",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L1",
+      "id": "pdf_to_rag_ui",
+      "community": 2,
+      "norm_label": "pdf_to_rag_ui.py"
+    },
+    {
+      "label": "_enable_high_dpi()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L34",
+      "id": "pdf_to_rag_ui_enable_high_dpi",
+      "community": 2,
+      "norm_label": "_enable_high_dpi()"
+    },
+    {
+      "label": "_hide_console_window()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L51",
+      "id": "pdf_to_rag_ui_hide_console_window",
+      "community": 2,
+      "norm_label": "_hide_console_window()"
+    },
+    {
+      "label": "_clean_dnd_path()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L86",
+      "id": "pdf_to_rag_ui_clean_dnd_path",
+      "community": 4,
+      "norm_label": "_clean_dnd_path()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L86",
+      "id": "pdf_to_rag_ui_py_str",
+      "community": 3,
+      "norm_label": "str"
+    },
+    {
+      "label": "_TextRedirect",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L112",
+      "id": "pdf_to_rag_ui_textredirect",
+      "community": 3,
+      "norm_label": "_textredirect"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L115",
+      "id": "pdf_to_rag_ui_textredirect_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "ScrolledText",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L115",
+      "id": "scrolledtext",
+      "community": 3,
+      "norm_label": "scrolledtext"
+    },
+    {
+      "label": ".write()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L119",
+      "id": "pdf_to_rag_ui_textredirect_write",
+      "community": 3,
+      "norm_label": ".write()"
+    },
+    {
+      "label": "int",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L119",
+      "id": "pdf_to_rag_ui_py_int",
+      "community": 3,
+      "norm_label": "int"
+    },
+    {
+      "label": "._append()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L123",
+      "id": "pdf_to_rag_ui_textredirect_append",
+      "community": 3,
+      "norm_label": "._append()"
+    },
+    {
+      "label": ".flush()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L129",
+      "id": "pdf_to_rag_ui_textredirect_flush",
+      "community": 3,
+      "norm_label": ".flush()"
+    },
+    {
+      "label": "App",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L137",
+      "id": "pdf_to_rag_ui_app",
+      "community": 1,
+      "norm_label": "app"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L140",
+      "id": "pdf_to_rag_ui_app_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._build_scroll_container()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L160",
+      "id": "pdf_to_rag_ui_app_build_scroll_container",
+      "community": 3,
+      "norm_label": "._build_scroll_container()"
+    },
+    {
+      "label": "._on_content_configure()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L188",
+      "id": "pdf_to_rag_ui_app_on_content_configure",
+      "community": 1,
+      "norm_label": "._on_content_configure()"
+    },
+    {
+      "label": "._on_canvas_configure()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L191",
+      "id": "pdf_to_rag_ui_app_on_canvas_configure",
+      "community": 1,
+      "norm_label": "._on_canvas_configure()"
+    },
+    {
+      "label": "._on_mouse_wheel()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L194",
+      "id": "pdf_to_rag_ui_app_on_mouse_wheel",
+      "community": 1,
+      "norm_label": "._on_mouse_wheel()"
+    },
+    {
+      "label": "._on_shift_mouse_wheel()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L201",
+      "id": "pdf_to_rag_ui_app_on_shift_mouse_wheel",
+      "community": 1,
+      "norm_label": "._on_shift_mouse_wheel()"
+    },
+    {
+      "label": "._build_ui()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L208",
+      "id": "pdf_to_rag_ui_app_build_ui",
+      "community": 4,
+      "norm_label": "._build_ui()"
+    },
+    {
+      "label": "._draw_drop_zone()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L430",
+      "id": "pdf_to_rag_ui_app_draw_drop_zone",
+      "community": 4,
+      "norm_label": "._draw_drop_zone()"
+    },
+    {
+      "label": "bool",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L430",
+      "id": "pdf_to_rag_ui_py_bool",
+      "community": 4,
+      "norm_label": "bool"
+    },
+    {
+      "label": "._zone_hover()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L484",
+      "id": "pdf_to_rag_ui_app_zone_hover",
+      "community": 4,
+      "norm_label": "._zone_hover()"
+    },
+    {
+      "label": "._make_button()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "id": "pdf_to_rag_ui_app_make_button",
+      "community": 4,
+      "norm_label": "._make_button()"
+    },
+    {
+      "label": "Widget",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "id": "widget",
+      "community": 4,
+      "norm_label": "widget"
+    },
+    {
+      "label": "Button",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "id": "button",
+      "community": 4,
+      "norm_label": "button"
+    },
+    {
+      "label": "._browse_pdf()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L521",
+      "id": "pdf_to_rag_ui_app_browse_pdf",
+      "community": 4,
+      "norm_label": "._browse_pdf()"
+    },
+    {
+      "label": "._browse_out()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L529",
+      "id": "pdf_to_rag_ui_app_browse_out",
+      "community": 1,
+      "norm_label": "._browse_out()"
+    },
+    {
+      "label": "._on_drop()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L534",
+      "id": "pdf_to_rag_ui_app_on_drop",
+      "community": 4,
+      "norm_label": "._on_drop()"
+    },
+    {
+      "label": "._add_pdfs()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L543",
+      "id": "pdf_to_rag_ui_app_add_pdfs",
+      "community": 4,
+      "norm_label": "._add_pdfs()"
+    },
+    {
+      "label": "._clear_selected_pdfs()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L549",
+      "id": "pdf_to_rag_ui_app_clear_selected_pdfs",
+      "community": 1,
+      "norm_label": "._clear_selected_pdfs()"
+    },
+    {
+      "label": "._clear_all_fields()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L553",
+      "id": "pdf_to_rag_ui_app_clear_all_fields",
+      "community": 1,
+      "norm_label": "._clear_all_fields()"
+    },
+    {
+      "label": "._spin_status()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L563",
+      "id": "pdf_to_rag_ui_app_spin_status",
+      "community": 1,
+      "norm_label": "._spin_status()"
+    },
+    {
+      "label": "._start_status_spinner()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L573",
+      "id": "pdf_to_rag_ui_app_start_status_spinner",
+      "community": 1,
+      "norm_label": "._start_status_spinner()"
+    },
+    {
+      "label": "._stop_status_spinner()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L578",
+      "id": "pdf_to_rag_ui_app_stop_status_spinner",
+      "community": 1,
+      "norm_label": "._stop_status_spinner()"
+    },
+    {
+      "label": "._set_status_ready()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L586",
+      "id": "pdf_to_rag_ui_app_set_status_ready",
+      "community": 1,
+      "norm_label": "._set_status_ready()"
+    },
+    {
+      "label": "._set_status_error()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L591",
+      "id": "pdf_to_rag_ui_app_set_status_error",
+      "community": 1,
+      "norm_label": "._set_status_error()"
+    },
+    {
+      "label": "._start_conversion()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L600",
+      "id": "pdf_to_rag_ui_app_start_conversion",
+      "community": 1,
+      "norm_label": "._start_conversion()"
+    },
+    {
+      "label": "._run_pipeline()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L643",
+      "id": "pdf_to_rag_ui_app_run_pipeline",
+      "community": 2,
+      "norm_label": "._run_pipeline()"
+    },
+    {
+      "label": "._on_done()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L676",
+      "id": "pdf_to_rag_ui_app_on_done",
+      "community": 1,
+      "norm_label": "._on_done()"
+    },
+    {
+      "label": "._open_output_folder()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L708",
+      "id": "pdf_to_rag_ui_app_open_output_folder",
+      "community": 1,
+      "norm_label": "._open_output_folder()"
+    },
+    {
+      "label": "._save_copies()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L716",
+      "id": "pdf_to_rag_ui_app_save_copies",
+      "community": 1,
+      "norm_label": "._save_copies()"
+    },
+    {
+      "label": "._log_ok()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L764",
+      "id": "pdf_to_rag_ui_app_log_ok",
+      "community": 1,
+      "norm_label": "._log_ok()"
+    },
+    {
+      "label": "._log_err()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L770",
+      "id": "pdf_to_rag_ui_app_log_err",
+      "community": 3,
+      "norm_label": "._log_err()"
+    },
+    {
+      "label": "._redirect_output()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L780",
+      "id": "pdf_to_rag_ui_app_redirect_output",
+      "community": 3,
+      "norm_label": "._redirect_output()"
+    },
+    {
+      "label": "._center_window()",
+      "file_type": "code",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L788",
+      "id": "pdf_to_rag_ui_app_center_window",
+      "community": 3,
+      "norm_label": "._center_window()"
+    },
+    {
+      "label": "pdf_to_rag_ui.py ---------------- Simple GUI for the PDF \u2192 RAG pipeline. Drag",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L1",
+      "id": "pdf_to_rag_ui_rationale_1",
+      "community": 2,
+      "norm_label": "pdf_to_rag_ui.py ---------------- simple gui for the pdf \u2192 rag pipeline. drag"
+    },
+    {
+      "label": "Enable crisp rendering on Windows high-DPI displays.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L35",
+      "id": "pdf_to_rag_ui_rationale_35",
+      "community": 2,
+      "norm_label": "enable crisp rendering on windows high-dpi displays."
+    },
+    {
+      "label": "Hide the extra console window on Windows for this GUI app.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L52",
+      "id": "pdf_to_rag_ui_rationale_52",
+      "community": 2,
+      "norm_label": "hide the extra console window on windows for this gui app."
+    },
+    {
+      "label": "Parse the path string returned by tkinterdnd2 (handles spaces & braces).",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L87",
+      "id": "pdf_to_rag_ui_rationale_87",
+      "community": 4,
+      "norm_label": "parse the path string returned by tkinterdnd2 (handles spaces & braces)."
+    },
+    {
+      "label": "Redirect stdout/stderr to a tkinter ScrolledText widget.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L113",
+      "id": "pdf_to_rag_ui_rationale_113",
+      "community": 3,
+      "norm_label": "redirect stdout/stderr to a tkinter scrolledtext widget."
+    },
+    {
+      "label": "PDF \u2192 RAG Converter GUI.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L138",
+      "id": "pdf_to_rag_ui_rationale_138",
+      "community": 1,
+      "norm_label": "pdf \u2192 rag converter gui."
+    },
+    {
+      "label": "Create a scrollable host for the full UI (both axes).",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L161",
+      "id": "pdf_to_rag_ui_rationale_161",
+      "community": 3,
+      "norm_label": "create a scrollable host for the full ui (both axes)."
+    },
+    {
+      "label": "Clear all user-input fields and reset output actions state.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L554",
+      "id": "pdf_to_rag_ui_rationale_554",
+      "community": 1,
+      "norm_label": "clear all user-input fields and reset output actions state."
+    },
+    {
+      "label": "Animate a simple ASCII spinner while conversion is running.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L564",
+      "id": "pdf_to_rag_ui_rationale_564",
+      "community": 1,
+      "norm_label": "animate a simple ascii spinner while conversion is running."
+    },
+    {
+      "label": "Open the output folder in the system file explorer.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L709",
+      "id": "pdf_to_rag_ui_rationale_709",
+      "community": 1,
+      "norm_label": "open the output folder in the system file explorer."
+    },
+    {
+      "label": "Copy the generated JSON file(s) to a user-chosen location.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L717",
+      "id": "pdf_to_rag_ui_rationale_717",
+      "community": 1,
+      "norm_label": "copy the generated json file(s) to a user-chosen location."
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "diagnose",
+      "target": "diagnose_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "diagnose",
+      "target": "pdf_to_rag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "diagnose",
+      "target": "pdf_to_rag_clean_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "diagnose",
+      "target": "pdf_to_rag_detect_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "diagnose",
+      "target": "pdf_to_rag_extract_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "diagnose",
+      "target": "pdf_to_rag_is_heading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "diagnose_rationale_1",
+      "target": "diagnose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "diagnose_main",
+      "target": "pdf_to_rag_clean_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "diagnose_main",
+      "target": "pdf_to_rag_detect_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "diagnose_main",
+      "target": "pdf_to_rag_extract_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "diagnose.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "diagnose_main",
+      "target": "pdf_to_rag_is_heading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L536",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_build_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L607",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_build_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L769",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_build_parser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L231",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_clean_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L661",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_detect_chapter_number",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L363",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_detect_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_extract_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L315",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_is_heading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L193",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_join_wrapped_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_looks_image_artifact_line",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_looks_list_bullet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_looks_table_row",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L293",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_looks_title_case",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L812",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_normalise_table_block",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L680",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_process_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_rewrite_table_blocks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L599",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_save_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L618",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_save_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_split_table_cells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L630",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "pdf_to_rag_validate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_1",
+      "target": "pdf_to_rag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "pdf_to_rag_extract_text",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L712",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_extract_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_29",
+      "target": "pdf_to_rag_extract_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L607",
+      "weight": 1.0,
+      "source": "pdf_to_rag_build_markdown",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L231",
+      "weight": 1.0,
+      "source": "pdf_to_rag_clean_text",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L661",
+      "weight": 1.0,
+      "source": "pdf_to_rag_detect_chapter_number",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L363",
+      "weight": 1.0,
+      "source": "pdf_to_rag_detect_sections",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L315",
+      "weight": 1.0,
+      "source": "pdf_to_rag_is_heading",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L193",
+      "weight": 1.0,
+      "source": "pdf_to_rag_join_wrapped_lines",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_image_artifact_line",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_list_bullet",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_table_row",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L293",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_title_case",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "pdf_to_rag_normalise_table_block",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L680",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rewrite_table_blocks",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L599",
+      "weight": 1.0,
+      "source": "pdf_to_rag_save_json",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L618",
+      "weight": 1.0,
+      "source": "pdf_to_rag_save_markdown",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "pdf_to_rag_split_table_cells",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L630",
+      "weight": 1.0,
+      "source": "pdf_to_rag_validate",
+      "target": "pdf_to_rag_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "source": "pdf_to_rag_join_wrapped_lines",
+      "target": "pdf_to_rag_looks_list_bullet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_list_bullet",
+      "target": "pdf_to_rag_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_table_row",
+      "target": "pdf_to_rag_looks_list_bullet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L315",
+      "weight": 1.0,
+      "source": "pdf_to_rag_is_heading",
+      "target": "pdf_to_rag_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_image_artifact_line",
+      "target": "pdf_to_rag_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_table_row",
+      "target": "pdf_to_rag_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L293",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_title_case",
+      "target": "pdf_to_rag_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "pdf_to_rag_looks_table_row",
+      "target": "pdf_to_rag_split_table_cells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "pdf_to_rag_normalise_table_block",
+      "target": "pdf_to_rag_split_table_cells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L209",
+      "weight": 1.0,
+      "source": "pdf_to_rag_join_wrapped_lines",
+      "target": "pdf_to_rag_looks_table_row",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rewrite_table_blocks",
+      "target": "pdf_to_rag_looks_table_row",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L267",
+      "weight": 1.0,
+      "source": "pdf_to_rag_clean_text",
+      "target": "pdf_to_rag_looks_image_artifact_line",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L182",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rewrite_table_blocks",
+      "target": "pdf_to_rag_normalise_table_block",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L271",
+      "weight": 1.0,
+      "source": "pdf_to_rag_clean_text",
+      "target": "pdf_to_rag_rewrite_table_blocks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L272",
+      "weight": 1.0,
+      "source": "pdf_to_rag_clean_text",
+      "target": "pdf_to_rag_join_wrapped_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L716",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_clean_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_232",
+      "target": "pdf_to_rag_clean_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L357",
+      "weight": 1.0,
+      "source": "pdf_to_rag_is_heading",
+      "target": "pdf_to_rag_looks_title_case",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L294",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_294",
+      "target": "pdf_to_rag_looks_title_case",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L427",
+      "weight": 1.0,
+      "source": "pdf_to_rag_detect_sections",
+      "target": "pdf_to_rag_is_heading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_316",
+      "target": "pdf_to_rag_is_heading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L720",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_detect_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L368",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_368",
+      "target": "pdf_to_rag_detect_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L536",
+      "weight": 1.0,
+      "source": "pdf_to_rag_build_json",
+      "target": "pdf_to_rag_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L727",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_build_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L537",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_537",
+      "target": "pdf_to_rag_build_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L661",
+      "weight": 1.0,
+      "source": "pdf_to_rag_detect_chapter_number",
+      "target": "pdf_to_rag_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L748",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_save_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L600",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_600",
+      "target": "pdf_to_rag_save_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L608",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_608",
+      "target": "pdf_to_rag_build_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L623",
+      "weight": 1.0,
+      "source": "pdf_to_rag_save_markdown",
+      "target": "pdf_to_rag_build_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L750",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_save_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L619",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_619",
+      "target": "pdf_to_rag_save_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L730",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_validate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L631",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_631",
+      "target": "pdf_to_rag_validate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L698",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "pdf_to_rag_detect_chapter_number",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L662",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_662",
+      "target": "pdf_to_rag_detect_chapter_number",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_detect_chapter_number",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L657",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_run_pipeline",
+      "target": "pdf_to_rag_detect_chapter_number"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L840",
+      "weight": 1.0,
+      "source": "pdf_to_rag_main",
+      "target": "pdf_to_rag_process_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L687",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_687",
+      "target": "pdf_to_rag_process_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_process_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L660",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_run_pipeline",
+      "target": "pdf_to_rag_process_pdf"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L769",
+      "weight": 1.0,
+      "source": "pdf_to_rag_build_parser",
+      "target": "argumentparser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L813",
+      "weight": 1.0,
+      "source": "pdf_to_rag_main",
+      "target": "pdf_to_rag_build_parser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_ui_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_ui_clean_dnd_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_ui_enable_high_dpi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_ui_hide_console_window",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui",
+      "target": "pdf_to_rag_ui_textredirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_1",
+      "target": "pdf_to_rag_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_35",
+      "target": "pdf_to_rag_ui_enable_high_dpi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_52",
+      "target": "pdf_to_rag_ui_hide_console_window",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L535",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_drop",
+      "target": "pdf_to_rag_ui_clean_dnd_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_clean_dnd_path",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_87",
+      "target": "pdf_to_rag_ui_clean_dnd_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L543",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_add_pdfs",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L770",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_log_err",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L764",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_log_ok",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_make_button",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L676",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L643",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_run_pipeline",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect_append",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect_init",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect_write",
+      "target": "pdf_to_rag_ui_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L781",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_redirect_output",
+      "target": "pdf_to_rag_ui_textredirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_113",
+      "target": "pdf_to_rag_ui_textredirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect",
+      "target": "pdf_to_rag_ui_textredirect_append",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect",
+      "target": "pdf_to_rag_ui_textredirect_flush",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect",
+      "target": "pdf_to_rag_ui_textredirect_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect",
+      "target": "pdf_to_rag_ui_textredirect_write",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect_init",
+      "target": "scrolledtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L414",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_build_ui",
+      "target": "scrolledtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_textredirect_write",
+      "target": "pdf_to_rag_ui_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L788",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_center_window",
+      "target": "pdf_to_rag_ui_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_make_button",
+      "target": "pdf_to_rag_ui_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L676",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L543",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_add_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L529",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_browse_out",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L521",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_browse_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_build_scroll_container",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L208",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_build_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L788",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_center_window",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L553",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_clear_all_fields",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L549",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_clear_selected_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L430",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_draw_drop_zone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L770",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_log_err",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L764",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_log_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_make_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_on_canvas_configure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_on_content_configure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L676",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_on_done",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L534",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_on_drop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_on_mouse_wheel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_on_shift_mouse_wheel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L708",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_open_output_folder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L780",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_redirect_output",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L643",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_run_pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L716",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_save_copies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L591",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_set_status_error",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L586",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_set_status_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L563",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_spin_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L600",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_start_conversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L573",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_start_status_spinner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L578",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_stop_status_spinner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L484",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app",
+      "target": "pdf_to_rag_ui_app_zone_hover",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_138",
+      "target": "pdf_to_rag_ui_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L155",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_init",
+      "target": "pdf_to_rag_ui_app_build_scroll_container",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_init",
+      "target": "pdf_to_rag_ui_app_build_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L158",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_init",
+      "target": "pdf_to_rag_ui_app_center_window",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_init",
+      "target": "pdf_to_rag_ui_app_redirect_output",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L161",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_161",
+      "target": "pdf_to_rag_ui_app_build_scroll_container",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L245",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_build_ui",
+      "target": "pdf_to_rag_ui_app_browse_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L242",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_build_ui",
+      "target": "pdf_to_rag_ui_app_draw_drop_zone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L260",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_build_ui",
+      "target": "pdf_to_rag_ui_app_make_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L246",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_build_ui",
+      "target": "pdf_to_rag_ui_app_zone_hover",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L547",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_add_pdfs",
+      "target": "pdf_to_rag_ui_app_draw_drop_zone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L551",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_clear_selected_pdfs",
+      "target": "pdf_to_rag_ui_app_draw_drop_zone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L430",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_draw_drop_zone",
+      "target": "pdf_to_rag_ui_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L488",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_zone_hover",
+      "target": "pdf_to_rag_ui_app_draw_drop_zone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_make_button",
+      "target": "pdf_to_rag_ui_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L484",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_zone_hover",
+      "target": "pdf_to_rag_ui_py_bool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L541",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_drop",
+      "target": "pdf_to_rag_ui_app_zone_hover",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_make_button",
+      "target": "button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_make_button",
+      "target": "widget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L527",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_browse_pdf",
+      "target": "pdf_to_rag_ui_app_add_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L538",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_drop",
+      "target": "pdf_to_rag_ui_app_add_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L555",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_clear_all_fields",
+      "target": "pdf_to_rag_ui_app_clear_selected_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L688",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_app_clear_selected_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L561",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_clear_all_fields",
+      "target": "pdf_to_rag_ui_app_set_status_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L554",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_554",
+      "target": "pdf_to_rag_ui_app_clear_all_fields",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L576",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_start_status_spinner",
+      "target": "pdf_to_rag_ui_app_spin_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L564",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_564",
+      "target": "pdf_to_rag_ui_app_spin_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L632",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_start_conversion",
+      "target": "pdf_to_rag_ui_app_start_status_spinner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L592",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_set_status_error",
+      "target": "pdf_to_rag_ui_app_stop_status_spinner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L587",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_set_status_ready",
+      "target": "pdf_to_rag_ui_app_stop_status_spinner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L691",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_app_set_status_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L695",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_app_set_status_error",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L697",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_app_log_err",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L693",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_on_done",
+      "target": "pdf_to_rag_ui_app_log_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L709",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_709",
+      "target": "pdf_to_rag_ui_app_open_output_folder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L741",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_app_save_copies",
+      "target": "pdf_to_rag_ui_app_log_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag_ui.py",
+      "source_location": "L717",
+      "weight": 1.0,
+      "source": "pdf_to_rag_ui_rationale_717",
+      "target": "pdf_to_rag_ui_app_save_copies",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
