@@ -1,2 +1,2 @@
-Not a git repository, or git is unavailable.
-fatal: not a git repository (or any of the parent directories): .git
+On branch main
+nothing to commit, working tree clean
