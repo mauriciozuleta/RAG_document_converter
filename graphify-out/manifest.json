@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\pdf_to_rag.py": {
-    "mtime": 1783343887.5691247,
-    "ast_hash": "f05b97f77f7bc4df3044bd534eab5e69",
+    "mtime": 1791250093.844744,
+    "ast_hash": "1378331c2c62420d48990f8412d25bd9",
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\pdf_to_rag_ui.py": {
@@ -17,6 +17,36 @@
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\requirements.txt": {
     "mtime": 1774196893.0853376,
     "ast_hash": "a346883ea79755fd2ab781ac526f9596",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\hts_extract.py": {
+    "mtime": 1791250033.6266541,
+    "ast_hash": "935026efda1cc1a941c0fc7456f588a4",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\test_pdf_to_rag.py": {
+    "mtime": 1791250060.6141129,
+    "ast_hash": "7ba46a03664f4d70012c762cdc99ab0e",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\verification\\hts_chapter1_sample.json": {
+    "mtime": 1791250040.9306662,
+    "ast_hash": "555af2ec30875c6f5c5d91915414f90d",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\CLAUDE.md": {
+    "mtime": 1784933897.6361575,
+    "ast_hash": "e0f3b3b5353f2645e4107e4783e539e3",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\chapter1_audit.png": {
+    "mtime": 1791249267.100668,
+    "ast_hash": "69e4918257a0a74b54b08c37ba65852b",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\chapter1_table_audit.png": {
+    "mtime": 1791249292.8364909,
+    "ast_hash": "af3f687de663316ce8e0be51a0afc937",
     "semantic_hash": ""
   }
 }

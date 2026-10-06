@@ -1,7 +1,7 @@
 """
 pdf_to_rag.py
 -------------
-Converts FAA handbook PDF files into structured JSON files suitable for
+Converts PDF files, including HTS schedules, into structured JSON suitable for
 Retrieval-Augmented Generation (RAG).
 
 Usage:
@@ -229,54 +229,12 @@ def _join_wrapped_lines(lines: list[str]) -> list[str]:
 
 
 def clean_text(raw_text: str) -> str:
-    """
-    Clean extracted PDF text:
-      - Remove standalone page numbers (e.g. "3-4", "Page 12").
-      - Remove figure captions (e.g. "Figure 3-8. Nose reference...").
-      - Remove common image/OCR artifact lines.
-      - Rewrite table-like blocks into machine-readable row text.
-      - Remove repeated headers/footers (lines that appear 3+ times).
-      - Rejoin wrapped paragraph lines and de-hyphenate word breaks.
-      - Normalise whitespace (collapse 3+ blank lines → 2 blank lines).
-      - Preserve paragraph structure.
-    """
-    text = _RE_CID_ARTIFACT.sub("", raw_text)
+    """Normalize blank lines without deleting potentially meaningful text."""
+    # Without page coordinates, repeated lines and bare numbers cannot safely
+    # be classified as furniture. Preserve them, captions, and unknown glyphs.
+    text = raw_text.replace("\r\n", "\n").replace("\f", "\n\n")
+    return _RE_MULTI_BLANK.sub("\n\n", text).strip()
 
-    # --- Remove figure / image captions ---
-    text = _RE_FIGURE_CAPTION.sub("", text)
-    text = _RE_IMAGE_CAPTION.sub("", text)
-
-    # --- Remove page-number lines ---
-    text = _RE_PAGE_NUMBER.sub("", text)
-
-    # --- Remove repeated headers / footers ---
-    # Count how often each stripped line appears; remove if it appears 3+ times
-    # and is short (typical of headers/footers).
-    lines = text.splitlines()
-    line_counts: dict[str, int] = {}
-    for line in lines:
-        stripped = line.strip()
-        if stripped:
-            line_counts[stripped] = line_counts.get(stripped, 0) + 1
-
-    cleaned_lines = []
-    for line in lines:
-        stripped = line.strip()
-        if stripped and line_counts.get(stripped, 0) >= 3 and len(stripped) < 120:
-            continue
-        if _looks_image_artifact_line(line):
-            continue
-        cleaned_lines.append(line)
-
-    cleaned_lines = _rewrite_table_blocks(cleaned_lines)
-    cleaned_lines = _join_wrapped_lines(cleaned_lines)
-
-    text = "\n".join(cleaned_lines)
-
-    # --- Collapse excessive blank lines ---
-    text = _RE_MULTI_BLANK.sub("\n\n", text)
-
-    return text.strip()
 
 
 # ---------------------------------------------------------------------------
@@ -486,6 +444,9 @@ def detect_sections(
 
     # ── Build sections ───────────────────────────────────────────────────────
     sections: list[dict] = []
+    preamble = "\n".join(lines[:clean_headings[0]["line"]]).strip()
+    if preamble:
+        sections.append({"title": "Preamble", "content": preamble})
     for idx, h in enumerate(clean_headings):
         content_start = h["end"] + 1
         content_end = clean_headings[idx + 1]["line"] if idx + 1 < len(clean_headings) else n
@@ -551,8 +512,7 @@ def build_json(chapter_number: int, sections: list[dict]) -> dict:
         ]
     }
 
-    The first detected heading is used as the chapter title and is NOT
-    included as a numbered section.
+    The title is metadata; all detected sections remain in the output.
     """
     if not sections:
         chapter_title = "Unknown"
@@ -566,12 +526,12 @@ def build_json(chapter_number: int, sections: list[dict]) -> dict:
             if _RE_CHAPTER_LINE.match(sec["title"]):
                 raw = re.sub(r"^Chapter\s+\d+[\s:–\-]+", "", sec["title"], flags=re.IGNORECASE)
                 chapter_title = re.sub(r"\s+", " ", raw).strip() or sec["title"]
-                body_start = j + 1
+                body_start = 0
                 break
         else:
             # No "Chapter N:" line — use first heading as title
             chapter_title = re.sub(r"\s+", " ", sections[0]["title"]).strip()
-            body_start = 1
+            body_start = 0
         body_sections = sections[body_start:]
 
     numbered_sections = []
@@ -606,7 +566,7 @@ def save_json(data: dict, output_path: str) -> None:
 
 def build_markdown(data: dict) -> str:
     """Render the RAG JSON structure as a Markdown document."""
-    lines = [f"# Chapter {data.get('chapter', 0)}: {data.get('title', 'Unknown')}", ""]
+    lines = [f"# {data.get('title', 'Unknown')}", ""]
     for sec in data.get("sections", []):
         lines.append(f"## {sec['id']} {sec['title']}")
         lines.append("")
@@ -666,10 +626,12 @@ def detect_chapter_number(pdf_path: str) -> int:
       ch3.pdf        →  3
       chapter3.pdf   →  3
       03.pdf         →  3
-    Falls back to 0 if no number is found.
+    Falls back to 0 unless an explicit chapter marker or short numeric name exists.
     """
     stem = Path(pdf_path).stem  # filename without extension
-    match = re.search(r"(\d+)", stem)
+    match = re.search(r"(?:^|[ _-])(?:chapter|ch)[ _-]*(\d+)(?:\D|$)", stem, re.IGNORECASE)
+    if not match:
+        match = re.fullmatch(r"(\d{1,3})", stem)
     return int(match.group(1)) if match else 0
 
 
@@ -707,24 +669,18 @@ def process_pdf(
     print(f"[INFO] Document type mode: {doc_type}")
     print(f"[INFO] Output format(s): {', '.join(formats)}")
 
-    # --- Extract ---
-    print("[INFO] Extracting text …")
-    raw = extract_text(pdf_path)
-
-    # --- Clean ---
-    print("[INFO] Cleaning text …")
-    cleaned = clean_text(raw)
-
-    # --- Detect sections ---
-    print("[INFO] Detecting sections …")
-    sections = detect_sections(
-        cleaned,
-        doc_type=doc_type,
-        source_name=Path(pdf_path).name,
-    )
-
-    # --- Build JSON ---
-    data = build_json(chapter_number, sections)
+    # HTS documents require coordinates; prose heuristics destroy tariff tables.
+    from hts_extract import is_hts, extract_hts
+    if is_hts(pdf_path):
+        print("[INFO] Extracting HTS pages with column positions and chapter metadata ...")
+        data = extract_hts(pdf_path)
+    else:
+        print("[INFO] Extracting text ...")
+        raw = extract_text(pdf_path)
+        cleaned = clean_text(raw)
+        sections = detect_sections(cleaned, doc_type=doc_type,
+                                   source_name=Path(pdf_path).name)
+        data = build_json(chapter_number, sections)
 
     # --- Validate ---
     warnings = validate(data)
@@ -739,7 +695,7 @@ def process_pdf(
                 base_name = base_name[: -len(ext)]
                 break
     else:
-        base_name = f"chapter_{chapter_number}_rag"
+        base_name = f"{Path(pdf_path).stem}_rag" if not chapter_number else f"chapter_{chapter_number}_rag"
 
     output_files: list[str] = []
     for f in formats:
@@ -769,7 +725,7 @@ def process_pdf(
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="pdf_to_rag",
-        description="Convert FAA handbook PDF files to RAG-ready JSON.",
+        description="Convert PDF files to RAG-ready JSON, preserving HTS table columns.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
