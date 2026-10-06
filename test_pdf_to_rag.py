@@ -51,6 +51,7 @@ class PreservationTests(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('HTS_TEST_PDF'), 'Set HTS_TEST_PDF for integration checks')
     def test_chapter_two_superscript_stays_with_description(self):
         section = extract_hts(os.environ['HTS_TEST_PDF'], page_numbers=[919])['sections'][0]
+        self.assertEqual(section['chapter'], 2)
         row = next(line for line in section['layout_text'].splitlines() if '0201.10.50' in line)
         self.assertIn('Other', row)
         self.assertIn('1/', row)

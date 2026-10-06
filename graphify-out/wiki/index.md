@@ -10,9 +10,15 @@ HTS detection adds chapter context and supplementary physical table rows. Its au
 
 Schema version 2 keeps `title` and `sections`, adds `source_lines`, `raw_text`, `layout_text`, `warnings`, and `review_required`. Markdown uses variable-length fenced text blocks to preserve layout and safely display literal Markdown from source documents. Per-page warnings appear in both Markdown and JSON and in conversion logs. General document-type selections are recorded as metadata rather than forcing destructive heading heuristics.
 
-Empty/sparse text, unresolved glyphs, embedded images, and graphical rules are flagged. No OCR engine is installed or invoked: scans and text inside images need OCR before results can be considered complete. This pipeline is a conservative local preservation format, not a guarantee of semantic reconstruction for arbitrary tables, mathematics, or diagrams.
+Empty/sparse text, unresolved glyphs, embedded images, and graphical rules are flagged. Optional local PaddleOCR PP-StructureV3 now processes scanned text and table layout. The GUI enables it by default; uncheck it for native extraction. The CLI defaults to native extraction and accepts `--engine paddle`. Models download on first use, then inference runs locally on CPU. Formula, chart, and seal recognition are disabled. Model-derived output must be checked against native evidence and original pages. This pipeline is a conservative local preservation format, not a guarantee of semantic reconstruction for arbitrary tables, mathematics, or diagrams.
 
 Run `python -m unittest -v`. Set `HTS_TEST_PDF` to the supplied 2026 Revision 20 PDF for the real Chapter 1 and Chapter 2 checks. Tests generate small real PDFs without additional test dependencies. `verification/layout_verified_sample.md` and `.json` are local comparison artifacts.
+
+### Running with OCR
+
+Use `launch_app.ps1` to start the isolated `.venv` environment. Recreate it with `python -m venv .venv` and `.\.venv\Scripts\python -m pip install -r requirements-ocr.txt`. PaddleOCR 3.7.0 and PaddlePaddle 3.3.1 are pinned. The page field accepts `911-920` or `1,3-5`; blank processes all pages. The corresponding CLI flag is `--pages`.
+
+`paddle_extract.py` renders one page at a time, applies PP-StructureV3, and retains native content plus structured model JSON. `content` becomes model Markdown, `native_content` preserves the prior extraction, and `ocr_result` includes recognition/table data. OCR coordinates are image pixels; native coordinates remain PDF points. Markdown includes model output followed by fenced native text for comparison. Extracted model images are stored in an adjacent `_ocr_assets` folder, which must accompany Markdown when moving files. OCR failures abort the conversion rather than silently falling back.
 
 ### Project Overview
 

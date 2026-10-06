@@ -39,6 +39,15 @@ def extract_hts(path, page_numbers=None):
         number = selected[index] + 1 if selected is not None else index + 1
         details = inspect_page(page)
         lines = sorted(_lines(page), key=lambda line: (-line.y0, line.x0))
+        # A requested page subset may begin after the chapter's title page.
+        for line in lines:
+            marker = re.fullmatch(r'(\d{1,2})-\d+', line.get_text().strip())
+            if marker and line.y0 > page.height * .85:
+                number_from_margin = int(marker.group(1))
+                if chapter != number_from_margin:
+                    chapter = number_from_margin
+                    chapter_title = f'Chapter {chapter}'
+                break
         # Only centered, standalone chapter headings qualify; origin rules in
         # general notes also contain left-aligned "Chapter N" labels.
         for line in lines:

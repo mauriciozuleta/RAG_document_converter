@@ -571,6 +571,8 @@ def build_markdown(data: dict) -> str:
         lines.extend([f"## {sec['id']} {sec['title']}", ""])
         for warning in sec.get("warnings", []):
             lines.extend([f"> Extraction review: {warning}", ""])
+        if sec.get("ocr_markdown"):
+            lines.extend([sec["ocr_markdown"], "", "### Native PDF text for comparison", ""])
         text = sec.get("layout_text", sec["content"])
         # Fenced text protects indentation, pipes, lists, and literal source
         # Markdown from being interpreted as document formatting.
@@ -653,6 +655,8 @@ def process_pdf(
     output_filename: str | None = None,
     doc_type: str = "auto",
     output_format: str = "json",
+    engine: str = "native",
+    pages: str = "",
 ) -> list[str]:
     """
         Run the full pipeline for a single PDF:
@@ -677,16 +681,28 @@ def process_pdf(
     print(f"[INFO] Document type mode: {doc_type}")
     print(f"[INFO] Output format(s): {', '.join(formats)}")
 
+    from paddle_extract import parse_pages
+    selected_pages = parse_pages(pages)
+    if engine not in {"native", "paddle"}:
+        raise ValueError("Unknown extraction engine")
     # HTS documents require coordinates; prose heuristics destroy tariff tables.
     from hts_extract import is_hts, extract_hts
     if is_hts(pdf_path):
         print("[INFO] Extracting HTS pages with column positions and chapter metadata ...")
-        data = extract_hts(pdf_path)
+        data = extract_hts(pdf_path, page_numbers=selected_pages)
     else:
         from document_extract import extract_document
         print("[INFO] Extracting pages with source text and coordinates ...")
-        data = extract_document(pdf_path)
+        data = extract_document(pdf_path, page_numbers=selected_pages)
         data["requested_doc_type"] = doc_type
+
+    if not data["sections"]:
+        raise ValueError("No pages extracted; check the requested page range.")
+    if selected_pages is not None and len(data["sections"]) != len(selected_pages):
+        raise ValueError("Requested page range exceeds the document length.")
+    if engine == "paddle":
+        from paddle_extract import enrich_document
+        data = enrich_document(data, pdf_path, assets_dir=Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets"))
 
     # --- Validate ---
     warnings = validate(data)
@@ -768,6 +784,8 @@ Examples:
         metavar="FORMAT",
         help="Output format: json, md, or both (default: json).",
     )
+    parser.add_argument("--engine", choices=["native", "paddle"], default="native")
+    parser.add_argument("--pages", default="", help="PDF pages, e.g. 911-920 or 1,3-5; blank means all")
     return parser
 
 
@@ -799,7 +817,7 @@ def main() -> None:
     success, failed = 0, 0
     for pdf in expanded:
         try:
-            process_pdf(pdf, output_dir, doc_type=doc_type, output_format=output_format)
+            process_pdf(pdf, output_dir, doc_type=doc_type, output_format=output_format, engine=args.engine, pages=args.pages)
             success += 1
         except FileNotFoundError:
             print(f"ERROR: File not found: {pdf}", file=sys.stderr)

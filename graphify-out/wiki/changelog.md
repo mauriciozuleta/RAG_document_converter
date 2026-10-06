@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-06 - Integrate local PaddleOCR
+
+The user requested installation and integration of an open-source OCR option for another test. Added PaddleOCR PP-StructureV3 for local CPU OCR and table parsing while preserving native evidence.
+
+- Added isolated environment requirements and GUI launcher.
+- Added GUI OCR toggle, page selection, and CLI engine/page flags.
+- Exported model Markdown, structured results, and image assets alongside native text.
+- Added page-range and evidence-preservation tests.
+
+
 ## 2026-10-06 - General page-aware preservation
 
 The user requested reliable conversion beyond HTS documents. The general pipeline now retains source text and page coordinates, reports extraction limitations, and preserves layout in Markdown. OCR remains a required follow-up for scans.

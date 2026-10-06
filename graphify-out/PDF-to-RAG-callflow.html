@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>PDF to RAG — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 166 nodes, 295 edges, 14 communities. Commit: 3c0dc19</p>
+<p class="subtitle">Generated from graphify knowledge graph: 170 nodes, 317 edges, 17 communities. Commit: 58cfe63</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -69,12 +69,14 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#analysis-clustering">Analysis &amp; Clustering</a>
     <a href="#cli-skills">CLI &amp; Skill Installers</a>
     <a href="#tests-fixtures">Tests &amp; Fixtures</a>
-    <a href="#community-1">Community 1</a>
     <a href="#community-2">Community 2</a>
-    <a href="#community-3">Community 3</a>
+    <a href="#community-1">Community 1</a>
     <a href="#community-4">Community 4</a>
+    <a href="#community-13">Community 13</a>
+    <a href="#community-3">Community 3</a>
     <a href="#community-9">Community 9</a>
-    <a href="#community-17">Community 17</a>
+    <a href="#community-14">Community 14</a>
+    <a href="#community-15">Community 15</a>
 </div>
 
 <!-- ====== Architecture Overview ====== -->
@@ -84,40 +86,44 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    EXTRACT_PIPELINE_5F350230("Extraction Pipeline<br/><small>48 nodes</small>")
+    EXTRACT_PIPELINE_5F350230("Extraction Pipeline<br/><small>23 nodes</small>")
     class EXTRACT_PIPELINE_5F350230 module;
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>47 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>59 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
-    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>8 nodes</small>")
+    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>14 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>8 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>6 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>17 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
-    COMMUNITY_1_3073A0DB("Community 1<br/><small>13 nodes</small>")
-    class COMMUNITY_1_3073A0DB module;
     COMMUNITY_2_8C8DF7B9("Community 2<br/><small>12 nodes</small>")
     class COMMUNITY_2_8C8DF7B9 module;
-    COMMUNITY_3_D8DFCEA7("Community 3<br/><small>7 nodes</small>")
-    class COMMUNITY_3_D8DFCEA7 module;
-    COMMUNITY_4_AC2DC2A9("Community 4<br/><small>7 nodes</small>")
+    COMMUNITY_1_3073A0DB("Community 1<br/><small>10 nodes</small>")
+    class COMMUNITY_1_3073A0DB module;
+    COMMUNITY_4_AC2DC2A9("Community 4<br/><small>10 nodes</small>")
     class COMMUNITY_4_AC2DC2A9 module;
-    COMMUNITY_9_1D55D1EE("Community 9<br/><small>7 nodes</small>")
+    COMMUNITY_13_E329587C("Community 13<br/><small>5 nodes</small>")
+    class COMMUNITY_13_E329587C module;
+    COMMUNITY_3_D8DFCEA7("Community 3<br/><small>4 nodes</small>")
+    class COMMUNITY_3_D8DFCEA7 module;
+    COMMUNITY_9_1D55D1EE("Community 9<br/><small>4 nodes</small>")
     class COMMUNITY_9_1D55D1EE module;
-    COMMUNITY_17_648F8D7C("Community 17<br/><small>3 nodes</small>")
-    class COMMUNITY_17_648F8D7C module;
-    BUILD_GRAPH_321CBB04 -->|contains x21| EXTRACT_PIPELINE_5F350230
-    COMMUNITY_1_3073A0DB -->|method x6| COMMUNITY_9_1D55D1EE
-    COMMUNITY_1_3073A0DB -->|method x5| ANALYSIS_CLUSTERING_C79796DA
-    EXTRACT_PIPELINE_5F350230 -->|imports x4| BUILD_GRAPH_321CBB04
-    COMMUNITY_1_3073A0DB -->|method x4| COMMUNITY_3_D8DFCEA7
-    COMMUNITY_1_3073A0DB -->|method x4| COMMUNITY_4_AC2DC2A9
-    COMMUNITY_4_AC2DC2A9 -->|calls x3| ANALYSIS_CLUSTERING_C79796DA
-    EXTRACT_PIPELINE_5F350230 -->|imports x2| COMMUNITY_2_8C8DF7B9
-    EXTRACT_PIPELINE_5F350230 -->|calls x2| ANALYSIS_CLUSTERING_C79796DA
-    ANALYSIS_CLUSTERING_C79796DA -->|references x2| COMMUNITY_2_8C8DF7B9
-    COMMUNITY_2_8C8DF7B9 -->|calls x2| COMMUNITY_3_D8DFCEA7
-    COMMUNITY_3_D8DFCEA7 -->|references x2| COMMUNITY_4_AC2DC2A9
+    COMMUNITY_14_21BC55C3("Community 14<br/><small>3 nodes</small>")
+    class COMMUNITY_14_21BC55C3 module;
+    COMMUNITY_15_4BECAAD7("Community 15<br/><small>1 nodes</small>")
+    class COMMUNITY_15_4BECAAD7 module;
+    COMMUNITY_1_3073A0DB -->|method x7| COMMUNITY_4_AC2DC2A9
+    EXTRACT_PIPELINE_5F350230 -->|imports x6| BUILD_GRAPH_321CBB04
+    TESTS_FIXTURES_B84B1DCC -->|imports x6| BUILD_GRAPH_321CBB04
+    BUILD_GRAPH_321CBB04 -->|imports x6| EXTRACT_PIPELINE_5F350230
+    COMMUNITY_1_3073A0DB -->|method x6| ANALYSIS_CLUSTERING_C79796DA
+    EXTRACT_PIPELINE_5F350230 -->|imports x3| TESTS_FIXTURES_B84B1DCC
+    BUILD_GRAPH_321CBB04 -->|imports x3| COMMUNITY_2_8C8DF7B9
+    BUILD_GRAPH_321CBB04 -->|calls x3| TESTS_FIXTURES_B84B1DCC
+    ANALYSIS_CLUSTERING_C79796DA -->|references x3| COMMUNITY_4_AC2DC2A9
+    COMMUNITY_1_3073A0DB -->|method x3| COMMUNITY_3_D8DFCEA7
+    COMMUNITY_1_3073A0DB -->|method x3| COMMUNITY_13_E329587C
+    BUILD_GRAPH_321CBB04 -->|contains x2| ANALYSIS_CLUSTERING_C79796DA
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -134,23 +140,23 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>48</td><td><code>6, 11</code></td></tr><tr><td>Graph Build</td><td>47</td><td><code>0, 5, 12</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>8</td><td><code>8</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>8</td><td><code>7</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>6</td><td><code>10</code></td></tr><tr><td>Community 1</td><td>13</td><td><code>1</code></td></tr><tr><td>Community 2</td><td>12</td><td><code>2</code></td></tr><tr><td>Community 3</td><td>7</td><td><code>3</code></td></tr><tr><td>Community 4</td><td>7</td><td><code>4</code></td></tr><tr><td>Community 9</td><td>7</td><td><code>9</code></td></tr><tr><td>Community 17</td><td>3</td><td><code>17</code></td></tr>
+      <tr><td>Extraction Pipeline</td><td>23</td><td><code>11</code></td></tr><tr><td>Graph Build</td><td>59</td><td><code>0, 5, 17</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>14</td><td><code>8, 12</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>8</td><td><code>7</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>17</td><td><code>6, 10</code></td></tr><tr><td>Community 2</td><td>12</td><td><code>2</code></td></tr><tr><td>Community 1</td><td>10</td><td><code>1</code></td></tr><tr><td>Community 4</td><td>10</td><td><code>4</code></td></tr><tr><td>Community 13</td><td>5</td><td><code>13</code></td></tr><tr><td>Community 3</td><td>4</td><td><code>3</code></td></tr><tr><td>Community 9</td><td>4</td><td><code>9</code></td></tr><tr><td>Community 14</td><td>3</td><td><code>14</code></td></tr><tr><td>Community 15</td><td>1</td><td><code>15</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">CLI &amp; Skill Installers -&gt; Extraction Pipeline -&gt; Graph Build -&gt; Community 2 -&gt; Community 3 -&gt; Community 4 -&gt; Analysis &amp; Clustering</div>
+    <div class="arrow-chain">CLI &amp; Skill Installers -&gt; Extraction Pipeline -&gt; Graph Build -&gt; Tests &amp; Fixtures -&gt; Analysis &amp; Clustering -&gt; Community 4 -&gt; Community 2</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>166 nodes · 295 edges · 14 communities (11 shown, 3 thin omitted)</li>
+      <li>170 nodes · 317 edges · 17 communities (11 shown, 6 thin omitted)</li>
       <li>Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.8)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `App` - 32 edges</li>
-      <li>2. `process_pdf()` - 21 edges</li>
+      <li>2. `process_pdf()` - 24 edges</li>
       <li>3. `str` - 18 edges</li>
     </ul>
   </div>
@@ -158,82 +164,81 @@ flowchart LR
 <hr>
 <!-- ====== 2. Extraction Pipeline ====== -->
 <h2 id="extract-pipeline">2. Extraction Pipeline</h2>
-<p>Extraction Pipeline groups implementation around pdf, ragpy, test, extractpy, mostly in pdf_to_rag.py, hts_extract.py, test_pdf_to_rag.py. This section covers 48 nodes and 72 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Extraction Pipeline groups implementation around extractpy, document, test, paddle, mostly in test_document_extract.py, document_extract.py, paddle_extract.py. This section covers 23 nodes and 43 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Extraction Pipeline (48 nodes, 72 edges)
-    subgraph extract_pipeline_pdf_to_rag_py_172ef67a["pdf_to_rag.py"]
-        pdf_to_rag_build_markdown_3d935b08("build_markdown()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_build_json_ed391f1b("build_json()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_detect_chapter_number_3ae73541("detect_chapter_number()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_process_pdf_a887d45e("process_pdf()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_save_markdown_1744ad03("save_markdown()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_validate_cb46e69d("validate()<br/><small>pdf_to_rag.py</small>")
-    end
-    subgraph extract_pipeline_test_pdf_to_rag_py_5d032ec6["test_pdf_to_rag.py"]
-        test_pdf_to_rag_preservationtests_95d2e356("PreservationTests<br/><small>test_pdf_to_rag.py</small>")
-        test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a("test_chapter_two_superscript_stays_with_description()<br/><small>test_pdf_to_rag.py</small>")
-        test_pdf_to_rag_preservationtests_test_original_befbb597("test_original_chapter_one()<br/><small>test_pdf_to_rag.py</small>")
-        test_pdf_to_rag_preservationtests_test_preamble_2987c626("test_preamble_and_title_body_survive()<br/><small>test_pdf_to_rag.py</small>")
+    %% Section: Extraction Pipeline (23 nodes, 43 edges)
+    subgraph extract_pipeline_test_document_extract_py_85c989f7["test_document_extract.py"]
+        test_document_extract_write_pdf_d44150f8("write_pdf()<br/><small>test_document_extract.py</small>")
+        test_document_extract_documenttests_f2c5168d("DocumentTests<br/><small>test_document_extract.py</small>")
+        test_document_extract_documenttests_test_columns_8aa927ce("test_columns_repetition_and_provenance()<br/><small>test_document_extract.py</small>")
+        test_document_extract_documenttests_test_unextra_42717ae3("test_unextractable_page_is_not_silently_empty()<br/><small>test_document_extract.py</small>")
+        test_document_extract_2e7e00c9("test_document_extract.py")
     end
     subgraph extract_pipeline_document_extract_py_557072e2["document_extract.py"]
         document_extract_extract_document_42963e1a("extract_document()<br/><small>document_extract.py</small>")
+        document_extract_7b867fc7("document_extract.py")
         document_extract_walk_36c2dd75("walk()<br/><small>document_extract.py</small>")
         document_extract_inspect_page_b270983f("inspect_page()<br/><small>document_extract.py</small>")
     end
-    subgraph extract_pipeline_hts_extract_py_6b176ec6["hts_extract.py"]
-        hts_extract_extract_hts_a2566a0a("extract_hts()<br/><small>hts_extract.py</small>")
-        hts_extract_is_hts_8a0fe4ab("is_hts()<br/><small>hts_extract.py</small>")
-        hts_extract_lines_887e104a("_lines()<br/><small>hts_extract.py</small>")
+    subgraph extract_pipeline_paddle_extract_py_24e8c813["paddle_extract.py"]
+        paddle_extract_parse_pages_6c023444("parse_pages()<br/><small>paddle_extract.py</small>")
+        paddle_extract_create_pipeline_7ace9337("create_pipeline()<br/><small>paddle_extract.py</small>")
+        paddle_extract_enrich_document_0a9b8378("enrich_document()<br/><small>paddle_extract.py</small>")
+        paddle_extract_a26652a4("paddle_extract.py")
     end
-    subgraph extract_pipeline_test_document_extract_py_85c989f7["test_document_extract.py"]
-        test_document_extract_documenttests_test_columns_8aa927ce("test_columns_repetition_and_provenance()<br/><small>test_document_extract.py</small>")
-        test_document_extract_documenttests_test_unextra_42717ae3("test_unextractable_page_is_not_silently_empty()<br/><small>test_document_extract.py</small>")
+    subgraph extract_pipeline_test_paddle_extract_py_f93c2086["test_paddle_extract.py"]
+        test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2("test_ocr_keeps_native_evidence()<br/><small>test_paddle_extract.py</small>")
+        test_paddle_extract_paddletests_test_page_ranges_a8e9dc8d("test_page_ranges()<br/><small>test_paddle_extract.py</small>")
+        test_paddle_extract_paddletests_afee8fd1("PaddleTests<br/><small>test_paddle_extract.py</small>")
+        test_paddle_extract_c0098d99("test_paddle_extract.py")
     end
+    pdf_to_rag_build_markdown_3d935b08("build_markdown()<br/><small>pdf_to_rag.py</small>")
     document_extract_walk_36c2dd75 -->|calls| document_extract_inspect_page_b270983f
     document_extract_inspect_page_b270983f -->|calls| document_extract_extract_document_42963e1a
-    document_extract_inspect_page_b270983f -->|calls| hts_extract_extract_hts_a2566a0a
-    document_extract_extract_document_42963e1a -->|calls| pdf_to_rag_process_pdf_a887d45e
     document_extract_extract_document_42963e1a -->|calls| test_document_extract_documenttests_test_columns_8aa927ce
     document_extract_extract_document_42963e1a -->|calls| test_document_extract_documenttests_test_unextra_42717ae3
-    hts_extract_is_hts_8a0fe4ab -->|calls| pdf_to_rag_process_pdf_a887d45e
-    hts_extract_lines_887e104a -->|calls| hts_extract_extract_hts_a2566a0a
-    hts_extract_extract_hts_a2566a0a -->|calls| pdf_to_rag_process_pdf_a887d45e
-    hts_extract_extract_hts_a2566a0a -->|calls| test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a
-    hts_extract_extract_hts_a2566a0a -->|calls| test_pdf_to_rag_preservationtests_test_original_befbb597
-    pdf_to_rag_build_json_ed391f1b -->|calls| pdf_to_rag_process_pdf_a887d45e
-    pdf_to_rag_build_json_ed391f1b -->|calls| test_pdf_to_rag_preservationtests_test_preamble_2987c626
-    pdf_to_rag_build_markdown_3d935b08 -->|calls| pdf_to_rag_save_markdown_1744ad03
+    document_extract_extract_document_42963e1a -->|calls| test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2
+    paddle_extract_parse_pages_6c023444 -->|calls| test_paddle_extract_paddletests_test_page_ranges_a8e9dc8d
+    paddle_extract_create_pipeline_7ace9337 -->|calls| paddle_extract_enrich_document_0a9b8378
+    paddle_extract_enrich_document_0a9b8378 -->|calls| test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2
     pdf_to_rag_build_markdown_3d935b08 -->|calls| test_document_extract_documenttests_test_columns_8aa927ce
     pdf_to_rag_build_markdown_3d935b08 -->|calls| test_document_extract_documenttests_test_unextra_42717ae3
-    pdf_to_rag_save_markdown_1744ad03 -->|calls| pdf_to_rag_process_pdf_a887d45e
-    pdf_to_rag_validate_cb46e69d -->|calls| pdf_to_rag_process_pdf_a887d45e
-    pdf_to_rag_detect_chapter_number_3ae73541 -->|calls| pdf_to_rag_process_pdf_a887d45e
-    pdf_to_rag_process_pdf_a887d45e -->|calls| test_document_extract_documenttests_test_columns_8aa927ce
-    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a
-    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_original_befbb597
-    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_preamble_2987c626
-    %% Omitted for readability: 30 nodes, 0 edges
-    class pdf_to_rag_build_markdown_3d935b08 function;
-    class pdf_to_rag_build_json_ed391f1b function;
-    class pdf_to_rag_detect_chapter_number_3ae73541 function;
-    class pdf_to_rag_process_pdf_a887d45e function;
-    class pdf_to_rag_save_markdown_1744ad03 function;
-    class pdf_to_rag_validate_cb46e69d function;
-    class test_pdf_to_rag_preservationtests_95d2e356 test;
-    class test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a test;
-    class test_pdf_to_rag_preservationtests_test_original_befbb597 test;
-    class test_pdf_to_rag_preservationtests_test_preamble_2987c626 test;
-    class document_extract_extract_document_42963e1a function;
-    class document_extract_walk_36c2dd75 function;
-    class document_extract_inspect_page_b270983f function;
-    class hts_extract_extract_hts_a2566a0a function;
-    class hts_extract_is_hts_8a0fe4ab function;
-    class hts_extract_lines_887e104a function;
+    pdf_to_rag_build_markdown_3d935b08 -->|calls| test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2
+    test_document_extract_write_pdf_d44150f8 -->|calls| test_document_extract_documenttests_test_columns_8aa927ce
+    test_document_extract_write_pdf_d44150f8 -->|calls| test_document_extract_documenttests_test_unextra_42717ae3
+    test_document_extract_write_pdf_d44150f8 -->|calls| test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2
+    test_document_extract_documenttests_f2c5168d -->|method| test_document_extract_documenttests_test_columns_8aa927ce
+    test_document_extract_documenttests_f2c5168d -->|method| test_document_extract_documenttests_test_unextra_42717ae3
+    test_paddle_extract_paddletests_afee8fd1 -->|method| test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2
+    test_paddle_extract_paddletests_afee8fd1 -->|method| test_paddle_extract_paddletests_test_page_ranges_a8e9dc8d
+    document_extract_7b867fc7 -->|imports| test_document_extract_2e7e00c9
+    document_extract_7b867fc7 -->|imports| test_paddle_extract_c0098d99
+    document_extract_extract_document_42963e1a -->|imports| test_document_extract_2e7e00c9
+    document_extract_extract_document_42963e1a -->|imports| test_paddle_extract_c0098d99
+    paddle_extract_a26652a4 -->|imports| test_paddle_extract_c0098d99
+    paddle_extract_parse_pages_6c023444 -->|imports| test_paddle_extract_c0098d99
+    %% Omitted for readability: 5 nodes, 5 edges
+    class test_document_extract_write_pdf_d44150f8 test;
+    class test_document_extract_documenttests_f2c5168d test;
     class test_document_extract_documenttests_test_columns_8aa927ce test;
     class test_document_extract_documenttests_test_unextra_42717ae3 test;
+    class test_document_extract_2e7e00c9 test;
+    class document_extract_extract_document_42963e1a function;
+    class document_extract_7b867fc7 module;
+    class document_extract_walk_36c2dd75 function;
+    class document_extract_inspect_page_b270983f function;
+    class paddle_extract_parse_pages_6c023444 function;
+    class paddle_extract_create_pipeline_7ace9337 function;
+    class paddle_extract_enrich_document_0a9b8378 function;
+    class paddle_extract_a26652a4 module;
+    class test_paddle_extract_paddletests_test_ocr_keeps_n_46edf8e2 test;
+    class test_paddle_extract_paddletests_test_page_ranges_a8e9dc8d test;
+    class test_paddle_extract_paddletests_afee8fd1 test;
+    class test_paddle_extract_c0098d99 test;
+    class pdf_to_rag_build_markdown_3d935b08 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -260,7 +265,7 @@ flowchart LR
   <td><code>document_extract.py</code><br><small style="color:var(--muted)">document_extract.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>hts_extract.py</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
+  <td><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
   <td>Module file in document_extract.py.</td>
 </tr>
 <tr>
@@ -276,11 +281,19 @@ flowchart LR
   <td><code>inspect_page()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>walk()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
-  <td><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small><br><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>hts_extract.py</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
   <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
   <td>4</td>
+  <td><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>inspect_page()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
+  <td><code>test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_ocr_keeps_native_evidence()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br>+2 more</td>
+  <td>extract_document() node in document_extract.py.</td>
+</tr>
+<tr>
+  <td>5</td>
   <td><code>Conservative, auditable extraction for arbitrary PDF layouts.  Source text and c</code><br><small style="color:var(--muted)">document_extract.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -288,212 +301,148 @@ flowchart LR
   <td>Design note for Conservative, auditable extraction for arbitrary PDF layouts.  Source text and c.</td>
 </tr>
 <tr>
-  <td>5</td>
-  <td><code>hts_extract.py</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>document_extract.py</code><br><small style="color:var(--muted)">document_extract.py</small><br><code>inspect_page()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
-  <td><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
-  <td>Module file in hts_extract.py.</td>
-</tr>
-<tr>
   <td>6</td>
-  <td><code>is_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>paddle_extract.py</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td>is_hts() node in hts_extract.py.</td>
+  <td><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
+  <td>Module file in paddle_extract.py.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>_lines()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>parse_pages()</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
-  <td>_lines() node in hts_extract.py.</td>
+  <td><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br><code>test_page_ranges()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
+  <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>create_pipeline()</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>_lines()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>inspect_page()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_chapter_two_superscript_stays_with_description()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_original_chapter_one()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br>+1 more</td>
-  <td>extract_hts() node in hts_extract.py.</td>
+  <td>External entry / no inbound edge</td>
+  <td><code>enrich_document()</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
+  <td>create_pipeline() node in paddle_extract.py.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>Coordinate-preserving HTS extraction using the existing pdfminer dependency.</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Coordinate-preserving HTS extraction using the existing pdfminer dependency..</td>
+  <td><code>enrich_document()</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>create_pipeline()</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
+  <td><code>test_ocr_keeps_native_evidence()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
+  <td>enrich_document() node in paddle_extract.py.</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>Return page-sized sections with explicit chapter and source metadata.      pag</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>Local PaddleOCR PP-StructureV3 enrichment, retaining native PDF evidence.</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Design note for Return page-sized sections with explicit chapter and source metadata.      pag.</td>
+  <td>Design note for Local PaddleOCR PP-StructureV3 enrichment, retaining native PDF evidence..</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>build_json()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_preamble_and_title_body_survive()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
-  <td>build_json() node in pdf_to_rag.py.</td>
+  <td><code>test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_ocr_keeps_native_evidence()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br>+2 more</td>
+  <td>Exports documentation data to a target format.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>int</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Render the RAG JSON structure as a Markdown document.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>int node in pdf_to_rag.py.</td>
+  <td>Design note for Render the RAG JSON structure as a Markdown document..</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>detect_chapter_number()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_year_is_not_a_chapter()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
-  <td>detect_chapter_number() node in pdf_to_rag.py.</td>
+  <td><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>document_extract.py</code><br><small style="color:var(--muted)">document_extract.py</small><br><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
+  <td><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
+  <td>Module file in test_document_extract.py.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>Assemble the final RAG JSON object.      Schema:     {         &quot;chapter&quot;: &lt;i</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>write_pdf()</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Assemble the final RAG JSON object.      Schema:     {         &quot;chapter&quot;: &lt;i.</td>
+  <td><code>test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_ocr_keeps_native_evidence()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br>+1 more</td>
+  <td>write_pdf() node in test_document_extract.py.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>Infer the chapter number from the filename.     Supports patterns such as:</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>DocumentTests</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Infer the chapter number from the filename.     Supports patterns such as:.</td>
+  <td><code>test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_unextractable_page_is_not_silently_empty()</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
+  <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>.test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td><code>build_json()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>detect_chapter_number()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br>+1 more</td>
+  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>DocumentTests</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small><br>+1 more</td>
   <td>No direct outbound edge</td>
-  <td>Module file in test_pdf_to_rag.py.</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>.test_unextractable_page_is_not_silently_empty()</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>test_chapter_two_superscript_stays_with_description()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_cleaning_keeps_meaningful_repetition_and_numbers()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_original_chapter_one()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br>+2 more</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>DocumentTests</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small><br>+1 more</td>
+  <td>No direct outbound edge</td>
+  <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>.test_cleaning_keeps_meaningful_repetition_and_numbers()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>Small real PDF fixtures generated without additional dependencies.</code><br><small style="color:var(--muted)">test_document_extract.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Design note for Small real PDF fixtures generated without additional dependencies..</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>.test_preamble_and_title_body_survive()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>test_paddle_extract.py</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td><code>build_json()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>document_extract.py</code><br><small style="color:var(--muted)">document_extract.py</small><br><code>enrich_document()</code><br><small style="color:var(--muted)">paddle_extract.py</small><br>+5 more</td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Module file in test_paddle_extract.py.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>.test_year_is_not_a_chapter()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>PaddleTests</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td><code>detect_chapter_number()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
-  <td>No direct outbound edge</td>
+  <td>External entry / no inbound edge</td>
+  <td><code>test_ocr_keeps_native_evidence()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br><code>test_page_ranges()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>.test_original_chapter_one()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>.test_page_ranges()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>PaddleTests</code><br><small style="color:var(--muted)">test_paddle_extract.py</small><br><code>parse_pages()</code><br><small style="color:var(--muted)">paddle_extract.py</small></td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Organizes documentation pages, navigation, or content lookup.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>.test_chapter_two_superscript_stays_with_description()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>.test_ocr_keeps_native_evidence()</code><br><small style="color:var(--muted)">test_paddle_extract.py</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>enrich_document()</code><br><small style="color:var(--muted)">paddle_extract.py</small><br><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small><br>+2 more</td>
   <td>No direct outbound edge</td>
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>Return page-sized sections with explicit chapter and source metadata.      page_</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>Render the RAG JSON structure as a Markdown document.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Design note for Return page-sized sections with explicit chapter and source metadata.      page_.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>Infer the chapter number from the filename.     Supports patterns such as:</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Infer the chapter number from the filename.     Supports patterns such as:.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>Assemble the final RAG JSON object.      Schema:     {         &quot;chapter&quot;: &lt;i</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Assemble the final RAG JSON object.      Schema:     {         &quot;chapter&quot;: &lt;i.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>Infer the chapter number from the filename.     Supports patterns such as:</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Infer the chapter number from the filename.     Supports patterns such as:.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>extract_document()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>inspect_page()</code><br><small style="color:var(--muted)">document_extract.py</small></td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small><br>+1 more</td>
-  <td>extract_document() node in document_extract.py.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>save_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_columns_repetition_and_provenance()</code><br><small style="color:var(--muted)">test_document_extract.py</small><br><code>test_document_extract.py</code><br><small style="color:var(--muted)">test_document_extract.py</small><br>+1 more</td>
-  <td>Exports documentation data to a target format.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>save_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>build_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td>Exports documentation data to a target format.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>validate()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td>validate() node in pdf_to_rag.py.</td>
+  <td>Design note for Render the RAG JSON structure as a Markdown document..</td>
 </tr>
 </table>
 
@@ -502,54 +451,56 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag.py</code></td><td>23 nodes</td></tr>
-<tr><td><code>hts_extract.py</code></td><td>7 nodes</td></tr>
-<tr><td><code>test_pdf_to_rag.py</code></td><td>7 nodes</td></tr>
-<tr><td><code>test_document_extract.py</code></td><td>6 nodes</td></tr>
+      <tr><td><code>test_document_extract.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>document_extract.py</code></td><td>5 nodes</td></tr>
+<tr><td><code>paddle_extract.py</code></td><td>5 nodes</td></tr>
+<tr><td><code>test_paddle_extract.py</code></td><td>4 nodes</td></tr>
+<tr><td><code>pdf_to_rag.py</code></td><td>3 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x23, explains x21, contains x9, imports x7. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x14, contains x9, imports x7, explains x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 3. Graph Build ====== -->
 <h2 id="build-graph">3. Graph Build</h2>
-<p>Graph Build groups implementation around pdf, ragpy, samplejson, verification, mostly in pdf_to_rag.py, verification/layout_verified_sample.json, verification/hts_chapter1_sample.json. This section covers 47 nodes and 81 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around pdf, ragpy, json, pipeline, mostly in pdf_to_rag.py, pdf_to_rag_ui.py, diagnose.py. This section covers 59 nodes and 114 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (47 nodes, 81 edges)
+    %% Section: Graph Build (59 nodes, 114 edges)
     subgraph build_graph_pdf_to_rag_py_dc122b5e["pdf_to_rag.py"]
+        pdf_to_rag_build_json_ed391f1b("build_json()<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_detect_chapter_number_3ae73541("detect_chapter_number()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_looks_list_bullet_b6809aa3("_looks_list_bullet()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_split_table_cells_c372bb63("_split_table_cells()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_build_parser_102374f9("build_parser()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_looks_image_artifact_line_3fc9026a("_looks_image_artifact_line()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_clean_text_8b876d40("clean_text()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_detect_sections_fc9a8f9d("detect_sections()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_extract_text_7d2a9265("extract_text()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_is_heading_1b9afa39("_is_heading()<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_process_pdf_a887d45e("process_pdf()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_join_wrapped_lines_b015d0ef("_join_wrapped_lines()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_looks_table_row_94c4fc43("_looks_table_row()<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_split_table_cells_c372bb63("_split_table_cells()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_normalise_table_block_8ddea505("_normalise_table_block()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_rewrite_table_blocks_47bf1ca4("_rewrite_table_blocks()<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_looks_image_artifact_line_3fc9026a("_looks_image_artifact_line()<br/><small>pdf_to_rag.py</small>")
         pdf_to_rag_looks_title_case_47faa4e4("_looks_title_case()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_main_2493db2c("main()<br/><small>pdf_to_rag.py</small>")
-        pdf_to_rag_ca33f1a5("pdf_to_rag.py")
-        argumentparser_3428d4f3("ArgumentParser<br/><small>pdf_to_rag.py</small>")
     end
     subgraph build_graph_diagnose_py_e86785f4["diagnose.py"]
         diagnose_77e720c8("diagnose.py")
         diagnose_main_5a690b9a("main()<br/><small>diagnose.py</small>")
     end
+    hts_extract_is_hts_8a0fe4ab("is_hts()<br/><small>hts_extract.py</small>")
     diagnose_main_5a690b9a -->|calls| pdf_to_rag_clean_text_8b876d40
     diagnose_main_5a690b9a -->|calls| pdf_to_rag_detect_sections_fc9a8f9d
     diagnose_main_5a690b9a -->|calls| pdf_to_rag_extract_text_7d2a9265
     diagnose_main_5a690b9a -->|calls| pdf_to_rag_is_heading_1b9afa39
+    hts_extract_is_hts_8a0fe4ab -->|calls| pdf_to_rag_process_pdf_a887d45e
+    pdf_to_rag_extract_text_7d2a9265 -->|calls| pdf_to_rag_process_pdf_a887d45e
     pdf_to_rag_looks_list_bullet_b6809aa3 -->|calls| pdf_to_rag_join_wrapped_lines_b015d0ef
     pdf_to_rag_looks_list_bullet_b6809aa3 -->|calls| pdf_to_rag_looks_table_row_94c4fc43
     pdf_to_rag_split_table_cells_c372bb63 -->|calls| pdf_to_rag_looks_table_row_94c4fc43
@@ -560,33 +511,33 @@ flowchart LR
     pdf_to_rag_normalise_table_block_8ddea505 -->|calls| pdf_to_rag_rewrite_table_blocks_47bf1ca4
     pdf_to_rag_rewrite_table_blocks_47bf1ca4 -->|calls| pdf_to_rag_clean_text_8b876d40
     pdf_to_rag_join_wrapped_lines_b015d0ef -->|calls| pdf_to_rag_clean_text_8b876d40
+    pdf_to_rag_clean_text_8b876d40 -->|calls| pdf_to_rag_process_pdf_a887d45e
     pdf_to_rag_looks_title_case_47faa4e4 -->|calls| pdf_to_rag_is_heading_1b9afa39
     pdf_to_rag_is_heading_1b9afa39 -->|calls| pdf_to_rag_detect_sections_fc9a8f9d
-    pdf_to_rag_build_parser_102374f9 -->|calls| pdf_to_rag_main_2493db2c
-    diagnose_77e720c8 -->|imports| pdf_to_rag_ca33f1a5
+    pdf_to_rag_detect_sections_fc9a8f9d -->|calls| pdf_to_rag_process_pdf_a887d45e
+    pdf_to_rag_build_json_ed391f1b -->|calls| pdf_to_rag_process_pdf_a887d45e
+    pdf_to_rag_detect_chapter_number_3ae73541 -->|calls| pdf_to_rag_process_pdf_a887d45e
     diagnose_77e720c8 -->|imports| pdf_to_rag_clean_text_8b876d40
     diagnose_77e720c8 -->|imports| pdf_to_rag_detect_sections_fc9a8f9d
-    diagnose_77e720c8 -->|imports| pdf_to_rag_extract_text_7d2a9265
-    diagnose_77e720c8 -->|imports| pdf_to_rag_is_heading_1b9afa39
-    %% Omitted for readability: 29 nodes, 0 edges
+    %% Omitted for readability: 41 nodes, 2 edges
+    class pdf_to_rag_build_json_ed391f1b function;
+    class pdf_to_rag_detect_chapter_number_3ae73541 function;
     class pdf_to_rag_looks_list_bullet_b6809aa3 function;
-    class pdf_to_rag_split_table_cells_c372bb63 function;
-    class pdf_to_rag_build_parser_102374f9 function;
-    class pdf_to_rag_looks_image_artifact_line_3fc9026a function;
     class pdf_to_rag_clean_text_8b876d40 function;
     class pdf_to_rag_detect_sections_fc9a8f9d function;
     class pdf_to_rag_extract_text_7d2a9265 function;
     class pdf_to_rag_is_heading_1b9afa39 function;
+    class pdf_to_rag_process_pdf_a887d45e function;
     class pdf_to_rag_join_wrapped_lines_b015d0ef function;
     class pdf_to_rag_looks_table_row_94c4fc43 function;
+    class pdf_to_rag_split_table_cells_c372bb63 function;
     class pdf_to_rag_normalise_table_block_8ddea505 function;
     class pdf_to_rag_rewrite_table_blocks_47bf1ca4 function;
+    class pdf_to_rag_looks_image_artifact_line_3fc9026a function;
     class pdf_to_rag_looks_title_case_47faa4e4 function;
-    class pdf_to_rag_main_2493db2c function;
-    class pdf_to_rag_ca33f1a5 module;
-    class argumentparser_3428d4f3 klass;
     class diagnose_77e720c8 module;
     class diagnose_main_5a690b9a function;
+    class hts_extract_is_hts_8a0fe4ab function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -634,22 +585,30 @@ flowchart LR
 </tr>
 <tr>
   <td>4</td>
-  <td><code>pdf_to_rag.py</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>diagnose.py</code><br><small style="color:var(--muted)">diagnose.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>Module file in pdf_to_rag.py.</td>
+  <td><code>is_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>extract_text()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>pdf_to_rag.py</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td>is_hts() node in hts_extract.py.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>extract_text()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>diagnose.py</code><br><small style="color:var(--muted)">diagnose.py</small><br><code>main()</code><br><small style="color:var(--muted)">diagnose.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>extract_text() node in pdf_to_rag.py.</td>
+  <td><code>pdf_to_rag.py</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>diagnose.py</code><br><small style="color:var(--muted)">diagnose.py</small><br><code>is_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td>Module file in pdf_to_rag.py.</td>
 </tr>
 <tr>
   <td>6</td>
+  <td><code>extract_text()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>diagnose.py</code><br><small style="color:var(--muted)">diagnose.py</small><br><code>is_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>main()</code><br><small style="color:var(--muted)">diagnose.py</small></td>
+  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td>extract_text() node in pdf_to_rag.py.</td>
+</tr>
+<tr>
+  <td>7</td>
   <td><code>str</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -657,7 +616,7 @@ flowchart LR
   <td>str node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>8</td>
   <td><code>_looks_list_bullet()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -665,7 +624,7 @@ flowchart LR
   <td>_looks_list_bullet() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>9</td>
   <td><code>bool</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -673,7 +632,7 @@ flowchart LR
   <td>bool node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>10</td>
   <td><code>_split_table_cells()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -681,7 +640,7 @@ flowchart LR
   <td>_split_table_cells() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>11</td>
   <td><code>_looks_table_row()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_looks_list_bullet()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>_split_table_cells()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
@@ -689,7 +648,7 @@ flowchart LR
   <td>_looks_table_row() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>12</td>
   <td><code>_looks_image_artifact_line()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -697,7 +656,7 @@ flowchart LR
   <td>_looks_image_artifact_line() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>13</td>
   <td><code>_normalise_table_block()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_split_table_cells()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
@@ -705,7 +664,7 @@ flowchart LR
   <td>_normalise_table_block() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>_rewrite_table_blocks()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_looks_table_row()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>_normalise_table_block()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
@@ -713,7 +672,7 @@ flowchart LR
   <td>_rewrite_table_blocks() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>_join_wrapped_lines()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_looks_list_bullet()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>_looks_table_row()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
@@ -721,15 +680,15 @@ flowchart LR
   <td>_join_wrapped_lines() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>16</td>
   <td><code>clean_text()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_join_wrapped_lines()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>_looks_image_artifact_line()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>_rewrite_table_blocks()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br>+2 more</td>
-  <td>No direct outbound edge</td>
+  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
   <td>clean_text() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>17</td>
   <td><code>_looks_title_case()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -737,7 +696,7 @@ flowchart LR
   <td>_looks_title_case() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>18</td>
   <td><code>_is_heading()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_looks_title_case()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>diagnose.py</code><br><small style="color:var(--muted)">diagnose.py</small><br><code>main()</code><br><small style="color:var(--muted)">diagnose.py</small></td>
@@ -745,47 +704,23 @@ flowchart LR
   <td>_is_heading() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>19</td>
   <td><code>detect_sections()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_is_heading()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>diagnose.py</code><br><small style="color:var(--muted)">diagnose.py</small><br><code>main()</code><br><small style="color:var(--muted)">diagnose.py</small></td>
-  <td>No direct outbound edge</td>
+  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_preamble_and_title_body_survive()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
   <td>detect_sections() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>20</td>
   <td><code>save_json()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
+  <td><code>process_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td>save_json() node in pdf_to_rag.py.</td>
 </tr>
 <tr>
-  <td>20</td>
-  <td><code>build_parser()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td>build_parser() node in pdf_to_rag.py.</td>
-</tr>
-<tr>
   <td>21</td>
-  <td><code>ArgumentParser</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>ArgumentParser node in pdf_to_rag.py.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>build_parser()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>main() node in pdf_to_rag.py.</td>
-</tr>
-<tr>
-  <td>23</td>
   <td><code>pdf_to_rag.py ------------- Converts PDF files, including HTS schedules, into</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -793,7 +728,7 @@ flowchart LR
   <td>Design note for pdf_to_rag.py ------------- Converts PDF files, including HTS schedules, into.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>22</td>
   <td><code>Extract raw text from a PDF using pdfminer.six (deterministic, no AI).</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -801,7 +736,7 @@ flowchart LR
   <td>Design note for Extract raw text from a PDF using pdfminer.six (deterministic, no AI)..</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>23</td>
   <td><code>Normalize blank lines without deleting potentially meaningful text.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -809,7 +744,7 @@ flowchart LR
   <td>Design note for Normalize blank lines without deleting potentially meaningful text..</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>24</td>
   <td><code>Lenient Title Case check.     The first word must be capitalised; every subsequ</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -817,7 +752,7 @@ flowchart LR
   <td>Design note for Lenient Title Case check.     The first word must be capitalised; every subsequ.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>25</td>
   <td><code>Return True when a line qualifies as a section heading.     ALL conditions must</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -825,7 +760,7 @@ flowchart LR
   <td>Design note for Return True when a line qualifies as a section heading.     ALL conditions must.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>26</td>
   <td><code>Split cleaned text into sections using a three-pass heading pipeline.      Pas</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -833,7 +768,7 @@ flowchart LR
   <td>Design note for Split cleaned text into sections using a three-pass heading pipeline.      Pas.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>27</td>
   <td><code>Write the JSON structure to *output_path* with UTF-8 encoding.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -841,12 +776,28 @@ flowchart LR
   <td>Design note for Write the JSON structure to *output_path* with UTF-8 encoding..</td>
 </tr>
 <tr>
-  <td>30</td>
+  <td>28</td>
+  <td><code>test_pdf_to_rag.py</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>build_json()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>clean_text()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br><code>detect_chapter_number()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small><br>+2 more</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in test_pdf_to_rag.py.</td>
+</tr>
+<tr>
+  <td>29</td>
   <td><code>Lenient Title Case check.     The first word must be capitalised; every subsequ</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>Design note for Lenient Title Case check.     The first word must be capitalised; every subsequ.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>Return True when a line qualifies as a section heading.     ALL conditions must</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Return True when a line qualifies as a section heading.     ALL conditions must.</td>
 </tr>
 </table>
 
@@ -855,46 +806,69 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag.py</code></td><td>30 nodes</td></tr>
-<tr><td><code>verification/layout_verified_sample.json</code></td><td>8 nodes</td></tr>
-<tr><td><code>verification/hts_chapter1_sample.json</code></td><td>6 nodes</td></tr>
+      <tr><td><code>pdf_to_rag.py</code></td><td>49 nodes</td></tr>
+<tr><td><code>pdf_to_rag_ui.py</code></td><td>4 nodes</td></tr>
 <tr><td><code>diagnose.py</code></td><td>3 nodes</td></tr>
+<tr><td><code>test_pdf_to_rag.py</code></td><td>2 nodes</td></tr>
+<tr><td><code>hts_extract.py</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x28, references x19, calls x17, explains x12. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x30, explains x28, references x24, contains x20. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 4. Analysis & Clustering ====== -->
 <h2 id="analysis-clustering">4. Analysis &amp; Clustering</h2>
-<p>Analysis &amp; Clustering groups implementation around pdf, rag, uipy, path, mostly in pdf_to_rag_ui.py. This section covers 8 nodes and 8 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Analysis &amp; Clustering groups implementation around pdf, rag, uipy, path, mostly in pdf_to_rag_ui.py, pdf_to_rag.py. This section covers 14 nodes and 16 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Analysis &amp; Clustering (8 nodes, 8 edges)
-    pdf_to_rag_ui_app_browse_pdf_11642be6("_browse_pdf()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_clean_dnd_path_d76e10fe("_clean_dnd_path()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_on_drop_9a17ad4c("_on_drop()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_add_pdfs_c89c743f("_add_pdfs()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_log_err_d5d4d678("_log_err()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_run_pipeline_a75b7b1b("_run_pipeline()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_py_str_b4c7df28("str<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_rationale_87_f1d52fb6("Parse the path string returned by tkint...<br/><small>pdf_to_rag_ui.py</small>")
+    %% Section: Analysis &amp; Clustering (14 nodes, 16 edges)
+    subgraph analysis_clustering_pdf_to_rag_ui_py_fe5e21c4["pdf_to_rag_ui.py"]
+        pdf_to_rag_ui_app_build_ui_a9e8fbf9("_build_ui()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74("_draw_drop_zone()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_clean_dnd_path_d76e10fe("_clean_dnd_path()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_app_browse_pdf_11642be6("_browse_pdf()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_app_on_drop_9a17ad4c("_on_drop()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_app_zone_hover_1e4bf00c("_zone_hover()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_app_add_pdfs_c89c743f("_add_pdfs()<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_py_bool_54577b92("bool<br/><small>pdf_to_rag_ui.py</small>")
+        pdf_to_rag_ui_rationale_87_f1d52fb6("Parse the path string returned by tkint...<br/><small>pdf_to_rag_ui.py</small>")
+    end
+    subgraph analysis_clustering_pdf_to_rag_py_e759b78d["pdf_to_rag.py"]
+        pdf_to_rag_save_markdown_1744ad03("save_markdown()<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_rationale_587_15d1c850("Write the RAG data as a Markdown docume...<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_rationale_585_35310846("Write the RAG data as a Markdown docume...<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_rationale_579_4bba2be5("Write the RAG data as a Markdown docume...<br/><small>pdf_to_rag.py</small>")
+        pdf_to_rag_rationale_619_6774a86f("Write the RAG data as a Markdown docume...<br/><small>pdf_to_rag.py</small>")
+    end
     pdf_to_rag_ui_clean_dnd_path_d76e10fe -->|calls| pdf_to_rag_ui_app_on_drop_9a17ad4c
+    pdf_to_rag_ui_app_build_ui_a9e8fbf9 -->|calls| pdf_to_rag_ui_app_browse_pdf_11642be6
+    pdf_to_rag_ui_app_build_ui_a9e8fbf9 -->|calls| pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74
+    pdf_to_rag_ui_app_build_ui_a9e8fbf9 -->|calls| pdf_to_rag_ui_app_zone_hover_1e4bf00c
+    pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74 -->|calls| pdf_to_rag_ui_app_add_pdfs_c89c743f
+    pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74 -->|calls| pdf_to_rag_ui_app_zone_hover_1e4bf00c
+    pdf_to_rag_ui_app_zone_hover_1e4bf00c -->|calls| pdf_to_rag_ui_app_on_drop_9a17ad4c
     pdf_to_rag_ui_app_browse_pdf_11642be6 -->|calls| pdf_to_rag_ui_app_add_pdfs_c89c743f
     pdf_to_rag_ui_app_on_drop_9a17ad4c -->|calls| pdf_to_rag_ui_app_add_pdfs_c89c743f
-    class pdf_to_rag_ui_app_browse_pdf_11642be6 function;
+    class pdf_to_rag_ui_app_build_ui_a9e8fbf9 function;
+    class pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74 function;
     class pdf_to_rag_ui_clean_dnd_path_d76e10fe function;
+    class pdf_to_rag_ui_app_browse_pdf_11642be6 function;
     class pdf_to_rag_ui_app_on_drop_9a17ad4c function;
+    class pdf_to_rag_ui_app_zone_hover_1e4bf00c function;
     class pdf_to_rag_ui_app_add_pdfs_c89c743f function;
-    class pdf_to_rag_ui_app_log_err_d5d4d678 function;
-    class pdf_to_rag_ui_app_run_pipeline_a75b7b1b function;
-    class pdf_to_rag_ui_py_str_b4c7df28 function;
+    class pdf_to_rag_ui_py_bool_54577b92 function;
     class pdf_to_rag_ui_rationale_87_f1d52fb6 concept;
+    class pdf_to_rag_save_markdown_1744ad03 function;
+    class pdf_to_rag_rationale_587_15d1c850 concept;
+    class pdf_to_rag_rationale_585_35310846 concept;
+    class pdf_to_rag_rationale_579_4bba2be5 concept;
+    class pdf_to_rag_rationale_619_6774a86f concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -926,59 +900,107 @@ flowchart LR
 </tr>
 <tr>
   <td>2</td>
-  <td><code>str</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>._build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>str node in pdf_to_rag_ui.py.</td>
+  <td><code>_browse_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._build_ui() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>._browse_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>._draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_add_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._draw_drop_zone() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>bool</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>bool node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>._zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_on_drop()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._zone_hover() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>._browse_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><code>_add_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td>._browse_pdf() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>7</td>
   <td><code>._on_drop()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>_clean_dnd_path()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_clean_dnd_path()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><code>_add_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td>._on_drop() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>8</td>
   <td><code>._add_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>_browse_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_drop()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_browse_pdf()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_drop()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td>No direct outbound edge</td>
   <td>._add_pdfs() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
-  <td>6</td>
-  <td><code>._run_pipeline()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>._run_pipeline() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>._log_err()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>._log_err() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>8</td>
+  <td>9</td>
   <td><code>Parse the path string returned by tkinterdnd2 (handles spaces &amp; braces).</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>Design note for Parse the path string returned by tkinterdnd2 (handles spaces &amp; braces)..</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>save_markdown()</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Exports documentation data to a target format.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>Write the RAG data as a Markdown document to *output_path*.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Write the RAG data as a Markdown document to *output_path*..</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>Write the RAG data as a Markdown document to *output_path*.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Write the RAG data as a Markdown document to *output_path*..</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>Write the RAG data as a Markdown document to *output_path*.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Write the RAG data as a Markdown document to *output_path*..</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>Write the RAG data as a Markdown document to *output_path*.</code><br><small style="color:var(--muted)">pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Write the RAG data as a Markdown document to *output_path*..</td>
 </tr>
 </table>
 
@@ -987,12 +1009,13 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag_ui.py</code></td><td>8 nodes</td></tr>
+      <tr><td><code>pdf_to_rag_ui.py</code></td><td>9 nodes</td></tr>
+<tr><td><code>pdf_to_rag.py</code></td><td>5 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: references x4, calls x3, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x9, explains x5, references x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1132,29 +1155,59 @@ flowchart LR
 
 <!-- ====== 6. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">6. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around page, layout, verified, samplemd, mostly in verification/layout_verified_sample.md. This section covers 6 nodes and 5 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around page, hts, test, pdf, mostly in hts_extract.py, verification/layout_verified_sample.md, test_pdf_to_rag.py. This section covers 17 nodes and 17 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (6 nodes, 5 edges)
-    verification_layout_verified_sample_harmonized_t_62cac805("Harmonized Tariff Schedule of the Unite...<br/><small>verification/layout_verified_sample.md</small>")
-    verification_layout_verified_sample_md_verificat_0a39f649("layout_verified_sample.md")
-    verification_layout_verified_sample_page_911_liv_fe3fc08f("page-911 LIVE ANIMALS — PDF page 911<br/><small>verification/layout_verified_sample.md</small>")
-    verification_layout_verified_sample_page_912_liv_6c42b9f1("page-912 LIVE ANIMALS — PDF page 912<br/><small>verification/layout_verified_sample.md</small>")
-    verification_layout_verified_sample_page_913_liv_2edc41c7("page-913 LIVE ANIMALS — PDF page 913<br/><small>verification/layout_verified_sample.md</small>")
-    verification_layout_verified_sample_page_920_liv_7f1c4ab8("page-920 LIVE ANIMALS — PDF page 920<br/><small>verification/layout_verified_sample.md</small>")
-    verification_layout_verified_sample_md_verificat_0a39f649 -->|contains| verification_layout_verified_sample_harmonized_t_62cac805
-    verification_layout_verified_sample_harmonized_t_62cac805 -->|contains| verification_layout_verified_sample_page_911_liv_fe3fc08f
-    verification_layout_verified_sample_harmonized_t_62cac805 -->|contains| verification_layout_verified_sample_page_912_liv_6c42b9f1
-    verification_layout_verified_sample_harmonized_t_62cac805 -->|contains| verification_layout_verified_sample_page_913_liv_2edc41c7
-    verification_layout_verified_sample_harmonized_t_62cac805 -->|contains| verification_layout_verified_sample_page_920_liv_7f1c4ab8
+    %% Section: Tests &amp; Fixtures (17 nodes, 17 edges)
+    subgraph tests_fixtures_hts_extract_py_cf3236da["hts_extract.py"]
+        hts_extract_extract_hts_a2566a0a("extract_hts()<br/><small>hts_extract.py</small>")
+        hts_extract_lines_887e104a("_lines()<br/><small>hts_extract.py</small>")
+        hts_extract_21728aa9("hts_extract.py")
+        hts_extract_rationale_1_fcfa3cd4("Coordinate-preserving HTS extraction us...<br/><small>hts_extract.py</small>")
+        hts_extract_rationale_28_7f039702("Return page-sized sections with explici...<br/><small>hts_extract.py</small>")
+        hts_extract_rationale_27_14150600("Return page-sized sections with explici...<br/><small>hts_extract.py</small>")
+    end
+    subgraph tests_fixtures_verification_layout_verified_samp_a6eab0fc["verification/layout_verified_sample.md"]
+        verification_layout_verified_sample_harmonized_t_62cac805("Harmonized Tariff Schedule of the Unite...<br/><small>verification/layout_verified_sample.md</small>")
+        verification_layout_verified_sample_md_verificat_0a39f649("layout_verified_sample.md")
+        verification_layout_verified_sample_page_911_liv_fe3fc08f("page-911 LIVE ANIMALS — PDF page 911<br/><small>verification/layout_verified_sample.md</small>")
+        verification_layout_verified_sample_page_912_liv_6c42b9f1("page-912 LIVE ANIMALS — PDF page 912<br/><small>verification/layout_verified_sample.md</small>")
+        verification_layout_verified_sample_page_913_liv_2edc41c7("page-913 LIVE ANIMALS — PDF page 913<br/><small>verification/layout_verified_sample.md</small>")
+        verification_layout_verified_sample_page_920_liv_7f1c4ab8("page-920 LIVE ANIMALS — PDF page 920<br/><small>verification/layout_verified_sample.md</small>")
+    end
+    subgraph tests_fixtures_test_pdf_to_rag_py_e4c6c0b6["test_pdf_to_rag.py"]
+        test_pdf_to_rag_preservationtests_95d2e356("PreservationTests<br/><small>test_pdf_to_rag.py</small>")
+        test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a("test_chapter_two_superscript_stays_with_description()<br/><small>test_pdf_to_rag.py</small>")
+        test_pdf_to_rag_preservationtests_test_original_befbb597("test_original_chapter_one()<br/><small>test_pdf_to_rag.py</small>")
+        test_pdf_to_rag_preservationtests_test_cleaning_366a0019("test_cleaning_keeps_meaningful_repetition_and_numbers()<br/><small>test_pdf_to_rag.py</small>")
+        test_pdf_to_rag_preservationtests_test_year_is_n_14c13578("test_year_is_not_a_chapter()<br/><small>test_pdf_to_rag.py</small>")
+    end
+    hts_extract_lines_887e104a -->|calls| hts_extract_extract_hts_a2566a0a
+    hts_extract_extract_hts_a2566a0a -->|calls| test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a
+    hts_extract_extract_hts_a2566a0a -->|calls| test_pdf_to_rag_preservationtests_test_original_befbb597
+    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a
+    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_cleaning_366a0019
+    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_original_befbb597
+    test_pdf_to_rag_preservationtests_95d2e356 -->|method| test_pdf_to_rag_preservationtests_test_year_is_n_14c13578
+    class hts_extract_extract_hts_a2566a0a function;
+    class hts_extract_lines_887e104a function;
+    class hts_extract_21728aa9 module;
+    class hts_extract_rationale_1_fcfa3cd4 concept;
+    class hts_extract_rationale_28_7f039702 concept;
+    class hts_extract_rationale_27_14150600 concept;
     class verification_layout_verified_sample_harmonized_t_62cac805 concept;
     class verification_layout_verified_sample_md_verificat_0a39f649 concept;
     class verification_layout_verified_sample_page_911_liv_fe3fc08f concept;
     class verification_layout_verified_sample_page_912_liv_6c42b9f1 concept;
     class verification_layout_verified_sample_page_913_liv_2edc41c7 concept;
     class verification_layout_verified_sample_page_920_liv_7f1c4ab8 concept;
+    class test_pdf_to_rag_preservationtests_95d2e356 test;
+    class test_pdf_to_rag_preservationtests_test_chapter_t_13ffab6a test;
+    class test_pdf_to_rag_preservationtests_test_original_befbb597 test;
+    class test_pdf_to_rag_preservationtests_test_cleaning_366a0019 test;
+    class test_pdf_to_rag_preservationtests_test_year_is_n_14c13578 test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1178,6 +1231,94 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
+  <td><code>hts_extract.py</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in hts_extract.py.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>_lines()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td>_lines() node in hts_extract.py.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_lines()</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><code>test_chapter_two_superscript_stays_with_description()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_original_chapter_one()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td>extract_hts() node in hts_extract.py.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>Coordinate-preserving HTS extraction using the existing pdfminer dependency.</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Coordinate-preserving HTS extraction using the existing pdfminer dependency..</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>Return page-sized sections with explicit chapter and source metadata.      pag</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Return page-sized sections with explicit chapter and source metadata.      pag.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>test_chapter_two_superscript_stays_with_description()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_cleaning_keeps_meaningful_repetition_and_numbers()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br><code>test_original_chapter_one()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small><br>+1 more</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>.test_cleaning_keeps_meaningful_repetition_and_numbers()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>.test_year_is_not_a_chapter()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>.test_original_chapter_one()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>.test_chapter_two_superscript_stays_with_description()</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>extract_hts()</code><br><small style="color:var(--muted)">hts_extract.py</small><br><code>PreservationTests</code><br><small style="color:var(--muted)">test_pdf_to_rag.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>Return page-sized sections with explicit chapter and source metadata.      page_</code><br><small style="color:var(--muted)">hts_extract.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Return page-sized sections with explicit chapter and source metadata.      page_.</td>
+</tr>
+<tr>
+  <td>12</td>
   <td><code>layout_verified_sample.md</code><br><small style="color:var(--muted)">verification/layout_verified_sample.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1185,7 +1326,7 @@ flowchart LR
   <td>Documentation node describing layout_verified_sample.md.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>13</td>
   <td><code>Harmonized Tariff Schedule of the United States</code><br><small style="color:var(--muted)">verification/layout_verified_sample.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1193,7 +1334,7 @@ flowchart LR
   <td>Documentation node describing Harmonized Tariff Schedule of the United States.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>14</td>
   <td><code>page-911 LIVE ANIMALS — PDF page 911</code><br><small style="color:var(--muted)">verification/layout_verified_sample.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1201,7 +1342,7 @@ flowchart LR
   <td>Documentation node describing page-911 LIVE ANIMALS — PDF page 911.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>15</td>
   <td><code>page-912 LIVE ANIMALS — PDF page 912</code><br><small style="color:var(--muted)">verification/layout_verified_sample.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1209,7 +1350,7 @@ flowchart LR
   <td>Documentation node describing page-912 LIVE ANIMALS — PDF page 912.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>16</td>
   <td><code>page-913 LIVE ANIMALS — PDF page 913</code><br><small style="color:var(--muted)">verification/layout_verified_sample.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1217,7 +1358,7 @@ flowchart LR
   <td>Documentation node describing page-913 LIVE ANIMALS — PDF page 913.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>17</td>
   <td><code>page-920 LIVE ANIMALS — PDF page 920</code><br><small style="color:var(--muted)">verification/layout_verified_sample.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1231,205 +1372,20 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>verification/layout_verified_sample.md</code></td><td>6 nodes</td></tr>
+      <tr><td><code>hts_extract.py</code></td><td>6 nodes</td></tr>
+<tr><td><code>verification/layout_verified_sample.md</code></td><td>6 nodes</td></tr>
+<tr><td><code>test_pdf_to_rag.py</code></td><td>5 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x7, method x4, explains x3, calls x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 7. Community 1 ====== -->
-<h2 id="community-1">7. Community 1</h2>
-<p>Community 1 groups implementation around pdf, rag, uipy, configure, mostly in pdf_to_rag_ui.py. This section covers 13 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Community 1 (13 nodes, 14 edges)
-    pdf_to_rag_ui_app_a3030694("App<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_spin_status_23659090("_spin_status()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_start_status_spinner_46f83ca6("_start_status_spinner()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_browse_out_12b10cc8("_browse_out()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_on_canvas_configure_f193d8f6("_on_canvas_configure()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_on_content_configure_df526a8c("_on_content_configure()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_on_mouse_wheel_66cf4d56("_on_mouse_wheel()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_on_shift_mouse_wheel_91879c9c("_on_shift_mouse_wheel()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_open_output_folder_1cbab65a("_open_output_folder()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_start_conversion_78a3ac66("_start_conversion()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_rationale_564_4f066661("Animate a simple ASCII spinner while co...<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_rationale_709_a10634d3("Open the output folder in the system fi...<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_rationale_138_6ec1acb1("PDF → RAG Converter GUI.<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_browse_out_12b10cc8
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_canvas_configure_f193d8f6
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_content_configure_df526a8c
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_mouse_wheel_66cf4d56
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_shift_mouse_wheel_91879c9c
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_open_output_folder_1cbab65a
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_spin_status_23659090
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_start_conversion_78a3ac66
-    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_start_status_spinner_46f83ca6
-    pdf_to_rag_ui_app_spin_status_23659090 -->|calls| pdf_to_rag_ui_app_start_status_spinner_46f83ca6
-    pdf_to_rag_ui_app_start_status_spinner_46f83ca6 -->|calls| pdf_to_rag_ui_app_start_conversion_78a3ac66
-    class pdf_to_rag_ui_app_a3030694 klass;
-    class pdf_to_rag_ui_app_spin_status_23659090 function;
-    class pdf_to_rag_ui_app_start_status_spinner_46f83ca6 function;
-    class pdf_to_rag_ui_app_browse_out_12b10cc8 function;
-    class pdf_to_rag_ui_app_on_canvas_configure_f193d8f6 function;
-    class pdf_to_rag_ui_app_on_content_configure_df526a8c function;
-    class pdf_to_rag_ui_app_on_mouse_wheel_66cf4d56 function;
-    class pdf_to_rag_ui_app_on_shift_mouse_wheel_91879c9c function;
-    class pdf_to_rag_ui_app_open_output_folder_1cbab65a function;
-    class pdf_to_rag_ui_app_start_conversion_78a3ac66 function;
-    class pdf_to_rag_ui_rationale_564_4f066661 concept;
-    class pdf_to_rag_ui_rationale_709_a10634d3 concept;
-    class pdf_to_rag_ui_rationale_138_6ec1acb1 concept;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>_browse_out()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_canvas_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_content_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br>+6 more</td>
-  <td>App node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>._on_content_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>Reads, resolves, or persists project configuration.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>._on_canvas_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>Reads, resolves, or persists project configuration.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>._on_mouse_wheel()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._on_mouse_wheel() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>._on_shift_mouse_wheel()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._on_shift_mouse_wheel() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>._browse_out()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._browse_out() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>._spin_status()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><code>_start_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._spin_status() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>._start_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_spin_status()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><code>_start_conversion()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._start_status_spinner() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>._start_conversion()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_start_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._start_conversion() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>._open_output_folder()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._open_output_folder() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>PDF → RAG Converter GUI.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for PDF → RAG Converter GUI..</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>Animate a simple ASCII spinner while conversion is running.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Animate a simple ASCII spinner while conversion is running..</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>Open the output folder in the system file explorer.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Open the output folder in the system file explorer..</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag_ui.py</code></td><td>13 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: method x9, explains x3, calls x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 8. Community 2 ====== -->
-<h2 id="community-2">8. Community 2</h2>
+<!-- ====== 7. Community 2 ====== -->
+<h2 id="community-2">7. Community 2</h2>
 <p>Community 2 groups implementation around pdf, rag, uipy, enable, mostly in pdf_to_rag_ui.py. This section covers 12 nodes and 11 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1597,30 +1553,425 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 9. Community 3 ====== -->
-<h2 id="community-3">9. Community 3</h2>
-<p>Community 3 groups implementation around pdf, rag, uipy, write, mostly in pdf_to_rag_ui.py. This section covers 7 nodes and 6 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 8. Community 1 ====== -->
+<h2 id="community-1">8. Community 1</h2>
+<p>Community 1 groups implementation around pdf, rag, uipy, status, mostly in pdf_to_rag_ui.py. This section covers 10 nodes and 11 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Community 3 (7 nodes, 6 edges)
+    %% Section: Community 1 (10 nodes, 11 edges)
+    pdf_to_rag_ui_app_a3030694("App<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5("_stop_status_spinner()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_browse_out_12b10cc8("_browse_out()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_on_canvas_configure_f193d8f6("_on_canvas_configure()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_on_content_configure_df526a8c("_on_content_configure()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_on_mouse_wheel_66cf4d56("_on_mouse_wheel()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_on_shift_mouse_wheel_91879c9c("_on_shift_mouse_wheel()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_set_status_error_114fdfd9("_set_status_error()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_set_status_ready_7fb8ea55("_set_status_ready()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_rationale_138_6ec1acb1("PDF → RAG Converter GUI.<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_browse_out_12b10cc8
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_canvas_configure_f193d8f6
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_content_configure_df526a8c
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_mouse_wheel_66cf4d56
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_on_shift_mouse_wheel_91879c9c
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_set_status_error_114fdfd9
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_set_status_ready_7fb8ea55
+    pdf_to_rag_ui_app_a3030694 -->|method| pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5
+    pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5 -->|calls| pdf_to_rag_ui_app_set_status_error_114fdfd9
+    pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5 -->|calls| pdf_to_rag_ui_app_set_status_ready_7fb8ea55
+    class pdf_to_rag_ui_app_a3030694 klass;
+    class pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5 function;
+    class pdf_to_rag_ui_app_browse_out_12b10cc8 function;
+    class pdf_to_rag_ui_app_on_canvas_configure_f193d8f6 function;
+    class pdf_to_rag_ui_app_on_content_configure_df526a8c function;
+    class pdf_to_rag_ui_app_on_mouse_wheel_66cf4d56 function;
+    class pdf_to_rag_ui_app_on_shift_mouse_wheel_91879c9c function;
+    class pdf_to_rag_ui_app_set_status_error_114fdfd9 function;
+    class pdf_to_rag_ui_app_set_status_ready_7fb8ea55 function;
+    class pdf_to_rag_ui_rationale_138_6ec1acb1 concept;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>_browse_out()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_canvas_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_content_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br>+5 more</td>
+  <td>App node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>._on_content_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Reads, resolves, or persists project configuration.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>._on_canvas_configure()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Reads, resolves, or persists project configuration.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>._on_mouse_wheel()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._on_mouse_wheel() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>._on_shift_mouse_wheel()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._on_shift_mouse_wheel() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>._browse_out()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._browse_out() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>._stop_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_set_status_error()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_set_status_ready()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._stop_status_spinner() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>._set_status_ready()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_stop_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._set_status_ready() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>._set_status_error()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_stop_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>App</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._set_status_error() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>PDF → RAG Converter GUI.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for PDF → RAG Converter GUI..</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>pdf_to_rag_ui.py</code></td><td>10 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: method x8, calls x2, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 9. Community 4 ====== -->
+<h2 id="community-4">9. Community 4</h2>
+<p>Community 4 groups implementation around pdf, rag, uipy, button, mostly in pdf_to_rag_ui.py. This section covers 10 nodes and 13 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Community 4 (10 nodes, 13 edges)
+    pdf_to_rag_ui_app_on_done_b7323408("_on_done()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_log_err_d5d4d678("_log_err()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_log_ok_a9315c97("_log_ok()<br/><small>pdf_to_rag_ui.py</small>")
+    button_7b7fcc78("Button<br/><small>pdf_to_rag_ui.py</small>")
+    widget_ff700e02("Widget<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_center_window_2761f445("_center_window()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_make_button_5d30d76c("_make_button()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_py_int_3ddade63("int<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_py_str_b4c7df28("str<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_textredirect_write_fcdd0f06("write()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_on_done_b7323408 -->|calls| pdf_to_rag_ui_app_log_err_d5d4d678
+    pdf_to_rag_ui_app_on_done_b7323408 -->|calls| pdf_to_rag_ui_app_log_ok_a9315c97
+    class pdf_to_rag_ui_app_on_done_b7323408 function;
+    class pdf_to_rag_ui_app_log_err_d5d4d678 function;
+    class pdf_to_rag_ui_app_log_ok_a9315c97 function;
+    class button_7b7fcc78 klass;
+    class widget_ff700e02 klass;
+    class pdf_to_rag_ui_app_center_window_2761f445 function;
+    class pdf_to_rag_ui_app_make_button_5d30d76c function;
+    class pdf_to_rag_ui_py_int_3ddade63 function;
+    class pdf_to_rag_ui_py_str_b4c7df28 function;
+    class pdf_to_rag_ui_textredirect_write_fcdd0f06 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>str</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>str node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>.write()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>.write() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>int</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>int node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>._make_button()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>._make_button() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>Widget</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Widget node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>Button</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Button node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>._on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>_log_err()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_log_ok()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._on_done() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>._log_ok()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._log_ok() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>._log_err()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._log_err() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>._center_window()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>._center_window() node in pdf_to_rag_ui.py.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>pdf_to_rag_ui.py</code></td><td>10 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: references x11, calls x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 10. Community 13 ====== -->
+<h2 id="community-13">10. Community 13</h2>
+<p>Community 13 groups implementation around pdf, rag, uipy, spinner, mostly in pdf_to_rag_ui.py. This section covers 5 nodes and 4 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Community 13 (5 nodes, 4 edges)
+    pdf_to_rag_ui_app_spin_status_23659090("_spin_status()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_start_status_spinner_46f83ca6("_start_status_spinner()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_start_conversion_78a3ac66("_start_conversion()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_rationale_573_6199b139("Animate a simple ASCII spinner while co...<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_rationale_564_4f066661("Animate a simple ASCII spinner while co...<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_spin_status_23659090 -->|calls| pdf_to_rag_ui_app_start_status_spinner_46f83ca6
+    pdf_to_rag_ui_app_start_status_spinner_46f83ca6 -->|calls| pdf_to_rag_ui_app_start_conversion_78a3ac66
+    class pdf_to_rag_ui_app_spin_status_23659090 function;
+    class pdf_to_rag_ui_app_start_status_spinner_46f83ca6 function;
+    class pdf_to_rag_ui_app_start_conversion_78a3ac66 function;
+    class pdf_to_rag_ui_rationale_573_6199b139 concept;
+    class pdf_to_rag_ui_rationale_564_4f066661 concept;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>._spin_status()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>_start_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._spin_status() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>._start_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_spin_status()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_start_conversion()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>._start_status_spinner() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>._start_conversion()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_start_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>._start_conversion() node in pdf_to_rag_ui.py.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>Animate a simple ASCII spinner while conversion is running.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Animate a simple ASCII spinner while conversion is running..</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>Animate a simple ASCII spinner while conversion is running.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Animate a simple ASCII spinner while conversion is running..</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>pdf_to_rag_ui.py</code></td><td>5 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x2, explains x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 11. Community 3 ====== -->
+<h2 id="community-3">11. Community 3</h2>
+<p>Community 3 groups implementation around pdf, rag, uipy, build, mostly in pdf_to_rag_ui.py. This section covers 4 nodes and 3 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Community 3 (4 nodes, 3 edges)
     pdf_to_rag_ui_app_init_25ef8fbc("__init__()<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_app_build_scroll_container_d7ca705d("_build_scroll_container()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_center_window_2761f445("_center_window()<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_app_redirect_output_6b1d4eab("_redirect_output()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_py_int_3ddade63("int<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_textredirect_write_fcdd0f06("write()<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_rationale_161_e09567fd("Create a scrollable host for the full U...<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_app_init_25ef8fbc -->|calls| pdf_to_rag_ui_app_build_scroll_container_d7ca705d
-    pdf_to_rag_ui_app_init_25ef8fbc -->|calls| pdf_to_rag_ui_app_center_window_2761f445
     pdf_to_rag_ui_app_init_25ef8fbc -->|calls| pdf_to_rag_ui_app_redirect_output_6b1d4eab
     class pdf_to_rag_ui_app_init_25ef8fbc function;
     class pdf_to_rag_ui_app_build_scroll_container_d7ca705d function;
-    class pdf_to_rag_ui_app_center_window_2761f445 function;
     class pdf_to_rag_ui_app_redirect_output_6b1d4eab function;
-    class pdf_to_rag_ui_py_int_3ddade63 function;
-    class pdf_to_rag_ui_textredirect_write_fcdd0f06 function;
     class pdf_to_rag_ui_rationale_161_e09567fd concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1645,30 +1996,14 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>.write()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>.write() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>int</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>int node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>3</td>
   <td><code>.__init__()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>_build_scroll_container()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_center_window()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_redirect_output()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_build_scroll_container()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_redirect_output()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td>.__init__() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>2</td>
   <td><code>._build_scroll_container()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>__init__()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
@@ -1676,7 +2011,7 @@ flowchart LR
   <td>._build_scroll_container() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>3</td>
   <td><code>._redirect_output()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>__init__()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
@@ -1684,15 +2019,7 @@ flowchart LR
   <td>._redirect_output() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
-  <td>6</td>
-  <td><code>._center_window()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>__init__()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._center_window() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>7</td>
+  <td>4</td>
   <td><code>Create a scrollable host for the full UI (both axes).</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1706,164 +2033,32 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag_ui.py</code></td><td>7 nodes</td></tr>
+      <tr><td><code>pdf_to_rag_ui.py</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x3, references x2, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x2, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 10. Community 4 ====== -->
-<h2 id="community-4">10. Community 4</h2>
-<p>Community 4 groups implementation around pdf, rag, uipy, zone, mostly in pdf_to_rag_ui.py. This section covers 7 nodes and 9 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 12. Community 9 ====== -->
+<h2 id="community-9">12. Community 9</h2>
+<p>Community 9 groups implementation around clear, pdf, rag, uipy, mostly in pdf_to_rag_ui.py. This section covers 4 nodes and 3 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Community 4 (7 nodes, 9 edges)
-    pdf_to_rag_ui_app_build_ui_a9e8fbf9("_build_ui()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74("_draw_drop_zone()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_make_button_5d30d76c("_make_button()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_zone_hover_1e4bf00c("_zone_hover()<br/><small>pdf_to_rag_ui.py</small>")
-    button_7b7fcc78("Button<br/><small>pdf_to_rag_ui.py</small>")
-    widget_ff700e02("Widget<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_py_bool_54577b92("bool<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_build_ui_a9e8fbf9 -->|calls| pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74
-    pdf_to_rag_ui_app_build_ui_a9e8fbf9 -->|calls| pdf_to_rag_ui_app_make_button_5d30d76c
-    pdf_to_rag_ui_app_build_ui_a9e8fbf9 -->|calls| pdf_to_rag_ui_app_zone_hover_1e4bf00c
-    pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74 -->|calls| pdf_to_rag_ui_app_zone_hover_1e4bf00c
-    class pdf_to_rag_ui_app_build_ui_a9e8fbf9 function;
-    class pdf_to_rag_ui_app_draw_drop_zone_cd4f3b74 function;
-    class pdf_to_rag_ui_app_make_button_5d30d76c function;
-    class pdf_to_rag_ui_app_zone_hover_1e4bf00c function;
-    class button_7b7fcc78 klass;
-    class widget_ff700e02 klass;
-    class pdf_to_rag_ui_py_bool_54577b92 function;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>._build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>_draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_make_button()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._build_ui() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>._draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><code>_zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._draw_drop_zone() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>bool</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>bool node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>._zone_hover()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_draw_drop_zone()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._zone_hover() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>._make_button()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_build_ui()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._make_button() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>Widget</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Widget node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>Button</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Button node in pdf_to_rag_ui.py.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag_ui.py</code></td><td>7 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: references x5, calls x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 11. Community 9 ====== -->
-<h2 id="community-9">11. Community 9</h2>
-<p>Community 9 groups implementation around pdf, rag, uipy, clear, mostly in pdf_to_rag_ui.py. This section covers 7 nodes and 8 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Community 9 (7 nodes, 8 edges)
+    %% Section: Community 9 (4 nodes, 3 edges)
     pdf_to_rag_ui_app_clear_selected_pdfs_6d8f018f("_clear_selected_pdfs()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5("_stop_status_spinner()<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_app_clear_all_fields_e3977dfd("_clear_all_fields()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_set_status_error_114fdfd9("_set_status_error()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_set_status_ready_7fb8ea55("_set_status_ready()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_on_done_b7323408("_on_done()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_rationale_563_c38cc868("Clear all user-input fields and reset o...<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_rationale_554_7a250c6d("Clear all user-input fields and reset o...<br/><small>pdf_to_rag_ui.py</small>")
     pdf_to_rag_ui_app_clear_selected_pdfs_6d8f018f -->|calls| pdf_to_rag_ui_app_clear_all_fields_e3977dfd
-    pdf_to_rag_ui_app_clear_selected_pdfs_6d8f018f -->|calls| pdf_to_rag_ui_app_on_done_b7323408
-    pdf_to_rag_ui_app_clear_all_fields_e3977dfd -->|calls| pdf_to_rag_ui_app_set_status_ready_7fb8ea55
-    pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5 -->|calls| pdf_to_rag_ui_app_set_status_error_114fdfd9
-    pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5 -->|calls| pdf_to_rag_ui_app_set_status_ready_7fb8ea55
-    pdf_to_rag_ui_app_set_status_ready_7fb8ea55 -->|calls| pdf_to_rag_ui_app_on_done_b7323408
-    pdf_to_rag_ui_app_set_status_error_114fdfd9 -->|calls| pdf_to_rag_ui_app_on_done_b7323408
     class pdf_to_rag_ui_app_clear_selected_pdfs_6d8f018f function;
-    class pdf_to_rag_ui_app_stop_status_spinner_4d3d85b5 function;
     class pdf_to_rag_ui_app_clear_all_fields_e3977dfd function;
-    class pdf_to_rag_ui_app_set_status_error_114fdfd9 function;
-    class pdf_to_rag_ui_app_set_status_ready_7fb8ea55 function;
-    class pdf_to_rag_ui_app_on_done_b7323408 function;
+    class pdf_to_rag_ui_rationale_563_c38cc868 concept;
     class pdf_to_rag_ui_rationale_554_7a250c6d concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1891,7 +2086,7 @@ flowchart LR
   <td><code>._clear_selected_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>_clear_all_fields()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>_clear_all_fields()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td>._clear_selected_pdfs() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
@@ -1899,43 +2094,19 @@ flowchart LR
   <td><code>._clear_all_fields()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_clear_selected_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><code>_set_status_ready()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td>No direct outbound edge</td>
   <td>._clear_all_fields() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>._stop_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Clear all user-input fields and reset output actions state.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>_set_status_error()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_set_status_ready()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._stop_status_spinner() node in pdf_to_rag_ui.py.</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Clear all user-input fields and reset output actions state..</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>._set_status_ready()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_clear_all_fields()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_stop_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><code>_on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._set_status_ready() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>._set_status_error()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_stop_status_spinner()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><code>_on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._set_status_error() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>._on_done()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_clear_selected_pdfs()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_set_status_error()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small><br><code>_set_status_ready()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._on_done() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>7</td>
   <td><code>Clear all user-input fields and reset output actions state.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1949,31 +2120,32 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>pdf_to_rag_ui.py</code></td><td>7 nodes</td></tr>
+      <tr><td><code>pdf_to_rag_ui.py</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x7, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: explains x2, calls x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 12. Community 17 ====== -->
-<h2 id="community-17">12. Community 17</h2>
-<p>Community 17 groups implementation around pdf, rag, uipy, save, mostly in pdf_to_rag_ui.py. This section covers 3 nodes and 2 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 13. Community 14 ====== -->
+<h2 id="community-14">13. Community 14</h2>
+<p>Community 14 groups implementation around open, output, folder, pdf, mostly in pdf_to_rag_ui.py. This section covers 3 nodes and 2 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Community 17 (3 nodes, 2 edges)
-    pdf_to_rag_ui_app_save_copies_b413a497("_save_copies()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_log_ok_a9315c97("_log_ok()<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_rationale_717_96947be4("Copy the generated JSON file(s) to a us...<br/><small>pdf_to_rag_ui.py</small>")
-    pdf_to_rag_ui_app_save_copies_b413a497 -->|calls| pdf_to_rag_ui_app_log_ok_a9315c97
-    class pdf_to_rag_ui_app_save_copies_b413a497 function;
-    class pdf_to_rag_ui_app_log_ok_a9315c97 function;
-    class pdf_to_rag_ui_rationale_717_96947be4 concept;
+    %% Section: Community 14 (3 nodes, 2 edges)
+    pdf_to_rag_ui_app_open_output_folder_1cbab65a("_open_output_folder()<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_rationale_709_a10634d3("Open the output folder in the system fi...<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_rationale_723_1991798a("Open the output folder in the system fi...<br/><small>pdf_to_rag_ui.py</small>")
+    pdf_to_rag_ui_app_open_output_folder_1cbab65a -->|explains| pdf_to_rag_ui_rationale_709_a10634d3
+    pdf_to_rag_ui_app_open_output_folder_1cbab65a -->|explains| pdf_to_rag_ui_rationale_723_1991798a
+    class pdf_to_rag_ui_app_open_output_folder_1cbab65a function;
+    class pdf_to_rag_ui_rationale_709_a10634d3 concept;
+    class pdf_to_rag_ui_rationale_723_1991798a concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1997,27 +2169,27 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>._save_copies()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>._open_output_folder()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>_log_ok()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>._save_copies() node in pdf_to_rag_ui.py.</td>
+  <td>No direct outbound edge</td>
+  <td>._open_output_folder() node in pdf_to_rag_ui.py.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>._log_ok()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_save_copies()</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._log_ok() node in pdf_to_rag_ui.py.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>Copy the generated JSON file(s) to a user-chosen location.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><code>Open the output folder in the system file explorer.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Design note for Copy the generated JSON file(s) to a user-chosen location..</td>
+  <td>Design note for Open the output folder in the system file explorer..</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>Open the output folder in the system file explorer.</code><br><small style="color:var(--muted)">pdf_to_rag_ui.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Open the output folder in the system file explorer..</td>
 </tr>
 </table>
 
@@ -2031,7 +2203,63 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x1, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: explains x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 14. Community 15 ====== -->
+<h2 id="community-15">14. Community 15</h2>
+<p>Community 15 groups implementation around launch, appps1, mostly in launch_app.ps1. This section covers 1 nodes and 0 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Community 15 (1 nodes, 0 edges)
+    launch_app_13120ec6("launch_app.ps1")
+    class launch_app_13120ec6 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>launch_app.ps1</code><br><small style="color:var(--muted)">launch_app.ps1</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>launch_app.ps1 node in launch_app.ps1.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>launch_app.ps1</code></td><td>1 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: No high-confidence call edges detected. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -2042,17 +2270,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>166</td></tr>
-      <tr><td>Edges</td><td>295</td></tr>
+      <tr><td>Nodes</td><td>170</td></tr>
+      <tr><td>Edges</td><td>317</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>14</td></tr>
-      <tr><td>Documented Sections</td><td>11</td></tr>
+      <tr><td>Communities</td><td>17</td></tr>
+      <tr><td>Documented Sections</td><td>13</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>294</td></tr>
+      <tr><td>EXTRACTED</td><td>316</td></tr>
       <tr><td>INFERRED</td><td>1</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -2061,7 +2289,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>PDF to RAG — Architecture Documentation</p>
-  <p>Generated: 2026-10-06 15:22 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-10-06 15:53 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

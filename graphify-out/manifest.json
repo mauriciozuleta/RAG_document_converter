@@ -5,13 +5,13 @@
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\pdf_to_rag.py": {
-    "mtime": 1791300107.2103257,
-    "ast_hash": "b100292f56a5f8d152b9ca989b2f62af",
+    "mtime": 1791301596.8531153,
+    "ast_hash": "5ae14bfd853fc27956f925238a103ca1",
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\pdf_to_rag_ui.py": {
-    "mtime": 1783343933.9271903,
-    "ast_hash": "d6fc0d06a88f3685914713f1b356f136",
+    "mtime": 1791301515.6590137,
+    "ast_hash": "261d9d4dce843de78a04f052a4d3052d",
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\requirements.txt": {
@@ -20,13 +20,13 @@
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\hts_extract.py": {
-    "mtime": 1791300013.5388327,
-    "ast_hash": "f5b719e67a7f9f8e3dc498ea0b444205",
+    "mtime": 1791302002.0930316,
+    "ast_hash": "9cd5192c5b23d9dbf50b547aec800852",
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\test_pdf_to_rag.py": {
-    "mtime": 1791300119.3883264,
-    "ast_hash": "f2eb8dc56a987972e6150377268c9c38",
+    "mtime": 1791302002.1195526,
+    "ast_hash": "e89938c5d153f515f8226be4cb8e4d77",
     "semantic_hash": ""
   },
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\verification\\hts_chapter1_sample.json": {
@@ -77,6 +77,26 @@
   "D:\\OneDrive\\0. software Lab\\PDF to RAG\\verification\\chapter2_page920.png": {
     "mtime": 1791251703.5176318,
     "ast_hash": "fafdc2780cf26f752f0ed50e0c36103b",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\launch_app.ps1": {
+    "mtime": 1791301596.4667313,
+    "ast_hash": "075a87a8483b2a9d670522985eeb61b9",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\paddle_extract.py": {
+    "mtime": 1791301791.9506567,
+    "ast_hash": "8ca4edbddfa5b6694dc0aeadc018f296",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\test_paddle_extract.py": {
+    "mtime": 1791301624.499525,
+    "ast_hash": "00595f6f07e11f1e2249418b1dc5d107",
+    "semantic_hash": ""
+  },
+  "D:\\OneDrive\\0. software Lab\\PDF to RAG\\requirements-ocr.txt": {
+    "mtime": 1791301515.3549623,
+    "ast_hash": "d1d720683eb4506309d6ce0e069b16f4",
     "semantic_hash": ""
   }
 }

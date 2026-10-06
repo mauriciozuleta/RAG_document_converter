@@ -350,6 +350,15 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             conv_frame, "Convert", self._start_conversion, width=20, big=True
         )
         self._convert_btn.pack()
+        self._ocr_var = tk.BooleanVar(value=True)
+        tk.Checkbutton(conv_frame, text="PaddleOCR: local OCR and table layout (slower)",
+                       variable=self._ocr_var, bg=BG, fg=TEXT, selectcolor=SURFACE).pack()
+        page_frame = tk.Frame(conv_frame, bg=BG)
+        page_frame.pack(pady=4)
+        tk.Label(page_frame, text="PDF pages (blank = all):", bg=BG, fg=TEXT).pack(side="left")
+        self._pages_var = tk.StringVar()
+        tk.Entry(page_frame, textvariable=self._pages_var, width=18).pack(side="left", padx=8)
+
 
         self._status_var = tk.StringVar(value="Status: Ready")
         self._status_label = tk.Label(
@@ -636,7 +645,8 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         # Run in background thread so the UI stays responsive
         threading.Thread(
             target=self._run_pipeline,
-            args=(list(self._pdf_paths), out_dir, custom_name, output_format),
+            args=(list(self._pdf_paths), out_dir, custom_name, output_format,
+                  "paddle" if self._ocr_var.get() else "native", self._pages_var.get()),
             daemon=True,
         ).start()
 
@@ -646,6 +656,8 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         out_dir: str,
         custom_name: str,
         output_format: str,
+        engine: str = "native",
+        pages: str = "",
     ) -> None:
         success, failed = 0, 0
         output_paths: list[str] = []
@@ -663,6 +675,8 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
                     output_filename=output_name,
                     doc_type="auto",
                     output_format=output_format,
+                    engine=engine,
+                    pages=pages,
                 )
                 output_paths.extend(out)
                 success += 1
