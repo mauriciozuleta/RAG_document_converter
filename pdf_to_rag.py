@@ -568,11 +568,17 @@ def build_markdown(data: dict) -> str:
     """Render the RAG JSON structure as a Markdown document."""
     lines = [f"# {data.get('title', 'Unknown')}", ""]
     for sec in data.get("sections", []):
-        lines.append(f"## {sec['id']} {sec['title']}")
-        lines.append("")
-        lines.append(sec["content"])
-        lines.append("")
+        lines.extend([f"## {sec['id']} {sec['title']}", ""])
+        for warning in sec.get("warnings", []):
+            lines.extend([f"> Extraction review: {warning}", ""])
+        text = sec.get("layout_text", sec["content"])
+        # Fenced text protects indentation, pipes, lists, and literal source
+        # Markdown from being interpreted as document formatting.
+        longest = max((len(m[0]) for m in re.finditer(r"`+", text)), default=0)
+        fence = "`" * max(3, longest + 1)
+        lines.extend([fence + "text", text, fence, ""])
     return "\n".join(lines).strip() + "\n"
+
 
 
 def save_markdown(data: dict, output_path: str) -> None:
@@ -599,13 +605,15 @@ def validate(data: dict) -> list[str]:
         warnings.append("WARNING: No headings were detected in the document.")
         return warnings
 
-    if len(sections) < 2:
+    if len(sections) < 2 and not data.get('schema_version'):
         warnings.append(
             f"WARNING: Only {len(sections)} section detected. Expected at least 2."
         )
 
     for sec in sections:
-        if len(sec.get("content", "")) < 200:
+        for issue in sec.get("warnings", []):
+            warnings.append(f"WARNING: {sec['id']}: {issue}")
+        if not sec.get("source_page") and len(sec.get("content", "")) < 200:
             warnings.append(
                 f"WARNING: Section '{sec['id']} – {sec['title']}' is unusually short "
                 f"({len(sec['content'])} chars)."
@@ -675,12 +683,10 @@ def process_pdf(
         print("[INFO] Extracting HTS pages with column positions and chapter metadata ...")
         data = extract_hts(pdf_path)
     else:
-        print("[INFO] Extracting text ...")
-        raw = extract_text(pdf_path)
-        cleaned = clean_text(raw)
-        sections = detect_sections(cleaned, doc_type=doc_type,
-                                   source_name=Path(pdf_path).name)
-        data = build_json(chapter_number, sections)
+        from document_extract import extract_document
+        print("[INFO] Extracting pages with source text and coordinates ...")
+        data = extract_document(pdf_path)
+        data["requested_doc_type"] = doc_type
 
     # --- Validate ---
     warnings = validate(data)

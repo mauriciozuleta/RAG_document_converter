@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-06 - General page-aware preservation
+
+The user requested reliable conversion beyond HTS documents. The general pipeline now retains source text and page coordinates, reports extraction limitations, and preserves layout in Markdown. OCR remains a required follow-up for scans.
+
+- Added general PDF layout extraction and per-page review warnings.
+- Made spatial text authoritative for HTS; preserved indentation and superscripts.
+- Added seven tests including real HTS checks and generated multi-column/empty-page fixtures.
+- Preserved source Markdown with safe fenced output.
+
+
 ## 2026-10-05 ? Preserve HTS extraction data
 
 The user requested fixes after comparing a damaged HTS JSON export with the original PDF. The converter now preserves meaningful text and uses page coordinates for HTS schedules.

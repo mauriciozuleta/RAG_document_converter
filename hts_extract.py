@@ -7,7 +7,8 @@ import re
 from pathlib import Path
 
 from pdfminer.high_level import extract_pages, extract_text
-from pdfminer.layout import LTTextLine, LTLine, LTRect
+from pdfminer.layout import LTTextLine, LTLine, LTRect, LAParams
+from document_extract import inspect_page
 
 
 def is_hts(path):
@@ -34,8 +35,9 @@ def extract_hts(path, page_numbers=None):
               "source": Path(path).name, "sections": []}
     chapter = None
     chapter_title = "Front matter and general notes"
-    for index, page in enumerate(extract_pages(path, page_numbers=selected)):
+    for index, page in enumerate(extract_pages(path, page_numbers=selected, laparams=LAParams(detect_vertical=True, all_texts=True))):
         number = selected[index] + 1 if selected is not None else index + 1
+        details = inspect_page(page)
         lines = sorted(_lines(page), key=lambda line: (-line.y0, line.x0))
         # Only centered, standalone chapter headings qualify; origin rules in
         # general notes also contain left-aligned "Chapter N" labels.
@@ -88,10 +90,15 @@ def extract_hts(path, page_numbers=None):
         section = {"id": f"page-{number}", "title": f"{chapter_title} — PDF page {number}",
                    "chapter": chapter, "chapter_title": chapter_title,
                    "source_page": number, "content": "\n".join(rendered), "tags": []}
+        section.update(details)
+        section["content"] = details["layout_text"]
         if table_rows:
             section["table_rows"] = table_rows
+            section["warnings"].append("Table rows are physical lines, not complete records; use source coordinates and layout for hierarchy and continuations.")
             section["table_row_semantics"] = "Physical lines; blank cells and continuations are not inferred."
         result["sections"].append(section)
         if number % 100 == 0:
             print(f"[INFO] Extracted PDF page {number}", flush=True)
+    result["schema_version"] = 2
+    result["review_required"] = any(s["warnings"] for s in result["sections"])
     return result

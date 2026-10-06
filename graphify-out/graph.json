@@ -9,7 +9,7 @@
       "source_file": "diagnose.py",
       "source_location": "L1",
       "id": "diagnose",
-      "community": 5,
+      "community": 0,
       "norm_label": "diagnose.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "diagnose.py",
       "source_location": "L17",
       "id": "diagnose_main",
-      "community": 5,
+      "community": 0,
       "norm_label": "main()"
     },
     {
@@ -27,8 +27,53 @@
       "source_file": "diagnose.py",
       "source_location": "L1",
       "id": "diagnose_rationale_1",
-      "community": 5,
+      "community": 0,
       "norm_label": "diagnose.py  \u2014  full pipeline diagnostic for pdf_to_rag. shows raw extraction,"
+    },
+    {
+      "label": "document_extract.py",
+      "file_type": "code",
+      "source_file": "document_extract.py",
+      "source_location": "L1",
+      "id": "document_extract",
+      "community": 6,
+      "norm_label": "document_extract.py"
+    },
+    {
+      "label": "walk()",
+      "file_type": "code",
+      "source_file": "document_extract.py",
+      "source_location": "L13",
+      "id": "document_extract_walk",
+      "community": 6,
+      "norm_label": "walk()"
+    },
+    {
+      "label": "inspect_page()",
+      "file_type": "code",
+      "source_file": "document_extract.py",
+      "source_location": "L20",
+      "id": "document_extract_inspect_page",
+      "community": 6,
+      "norm_label": "inspect_page()"
+    },
+    {
+      "label": "extract_document()",
+      "file_type": "code",
+      "source_file": "document_extract.py",
+      "source_location": "L64",
+      "id": "document_extract_extract_document",
+      "community": 11,
+      "norm_label": "extract_document()"
+    },
+    {
+      "label": "Conservative, auditable extraction for arbitrary PDF layouts.  Source text and c",
+      "file_type": "rationale",
+      "source_file": "document_extract.py",
+      "source_location": "L1",
+      "id": "document_extract_rationale_1",
+      "community": 6,
+      "norm_label": "conservative, auditable extraction for arbitrary pdf layouts.  source text and c"
     },
     {
       "label": "hts_extract.py",
@@ -43,16 +88,16 @@
       "label": "is_hts()",
       "file_type": "code",
       "source_file": "hts_extract.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "id": "hts_extract_is_hts",
-      "community": 10,
+      "community": 6,
       "norm_label": "is_hts()"
     },
     {
       "label": "_lines()",
       "file_type": "code",
       "source_file": "hts_extract.py",
-      "source_location": "L18",
+      "source_location": "L19",
       "id": "hts_extract_lines",
       "community": 6,
       "norm_label": "_lines()"
@@ -61,28 +106,28 @@
       "label": "extract_hts()",
       "file_type": "code",
       "source_file": "hts_extract.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "id": "hts_extract_extract_hts",
       "community": 6,
       "norm_label": "extract_hts()"
     },
     {
-      "label": "Coordinate-preserving HTS extraction using the existing pdfminer dependency.  Ta",
+      "label": "Coordinate-preserving HTS extraction using the existing pdfminer dependency.",
       "file_type": "rationale",
       "source_file": "hts_extract.py",
       "source_location": "L1",
       "id": "hts_extract_rationale_1",
       "community": 6,
-      "norm_label": "coordinate-preserving hts extraction using the existing pdfminer dependency.  ta"
+      "norm_label": "coordinate-preserving hts extraction using the existing pdfminer dependency."
     },
     {
-      "label": "Return page-sized sections with explicit chapter and source metadata.      page_",
+      "label": "Return page-sized sections with explicit chapter and source metadata.      pag",
       "file_type": "rationale",
       "source_file": "hts_extract.py",
-      "source_location": "L27",
-      "id": "hts_extract_rationale_27",
+      "source_location": "L28",
+      "id": "hts_extract_rationale_28",
       "community": 6,
-      "norm_label": "return page-sized sections with explicit chapter and source metadata.      page_"
+      "norm_label": "return page-sized sections with explicit chapter and source metadata.      pag"
     },
     {
       "label": "pdf_to_rag.py",
@@ -90,7 +135,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L1",
       "id": "pdf_to_rag",
-      "community": 13,
+      "community": 0,
       "norm_label": "pdf_to_rag.py"
     },
     {
@@ -99,7 +144,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L28",
       "id": "pdf_to_rag_extract_text",
-      "community": 10,
+      "community": 0,
       "norm_label": "extract_text()"
     },
     {
@@ -198,7 +243,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L251",
       "id": "pdf_to_rag_looks_title_case",
-      "community": 14,
+      "community": 0,
       "norm_label": "_looks_title_case()"
     },
     {
@@ -207,7 +252,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L273",
       "id": "pdf_to_rag_is_heading",
-      "community": 5,
+      "community": 0,
       "norm_label": "_is_heading()"
     },
     {
@@ -216,7 +261,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L321",
       "id": "pdf_to_rag_detect_sections",
-      "community": 5,
+      "community": 0,
       "norm_label": "detect_sections()"
     },
     {
@@ -243,7 +288,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L559",
       "id": "pdf_to_rag_save_json",
-      "community": 15,
+      "community": 0,
       "norm_label": "save_json()"
     },
     {
@@ -259,7 +304,7 @@
       "label": "save_markdown()",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L578",
+      "source_location": "L584",
       "id": "pdf_to_rag_save_markdown",
       "community": 11,
       "norm_label": "save_markdown()"
@@ -268,16 +313,16 @@
       "label": "validate()",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L590",
+      "source_location": "L596",
       "id": "pdf_to_rag_validate",
-      "community": 16,
+      "community": 11,
       "norm_label": "validate()"
     },
     {
       "label": "detect_chapter_number()",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L621",
+      "source_location": "L629",
       "id": "pdf_to_rag_detect_chapter_number",
       "community": 6,
       "norm_label": "detect_chapter_number()"
@@ -286,36 +331,36 @@
       "label": "process_pdf()",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L642",
+      "source_location": "L650",
       "id": "pdf_to_rag_process_pdf",
-      "community": 10,
+      "community": 11,
       "norm_label": "process_pdf()"
     },
     {
       "label": "build_parser()",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L725",
+      "source_location": "L731",
       "id": "pdf_to_rag_build_parser",
-      "community": 13,
+      "community": 0,
       "norm_label": "build_parser()"
     },
     {
       "label": "ArgumentParser",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L725",
+      "source_location": "L731",
       "id": "argumentparser",
-      "community": 13,
+      "community": 0,
       "norm_label": "argumentparser"
     },
     {
       "label": "main()",
       "file_type": "code",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L768",
+      "source_location": "L774",
       "id": "pdf_to_rag_main",
-      "community": 13,
+      "community": 0,
       "norm_label": "main()"
     },
     {
@@ -324,7 +369,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L1",
       "id": "pdf_to_rag_rationale_1",
-      "community": 13,
+      "community": 0,
       "norm_label": "pdf_to_rag.py ------------- converts pdf files, including hts schedules, into"
     },
     {
@@ -333,7 +378,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L29",
       "id": "pdf_to_rag_rationale_29",
-      "community": 10,
+      "community": 0,
       "norm_label": "extract raw text from a pdf using pdfminer.six (deterministic, no ai)."
     },
     {
@@ -351,7 +396,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L252",
       "id": "pdf_to_rag_rationale_252",
-      "community": 14,
+      "community": 0,
       "norm_label": "lenient title case check.     the first word must be capitalised; every subsequ"
     },
     {
@@ -360,7 +405,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L274",
       "id": "pdf_to_rag_rationale_274",
-      "community": 5,
+      "community": 0,
       "norm_label": "return true when a line qualifies as a section heading.     all conditions must"
     },
     {
@@ -369,7 +414,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L326",
       "id": "pdf_to_rag_rationale_326",
-      "community": 5,
+      "community": 0,
       "norm_label": "split cleaned text into sections using a three-pass heading pipeline.      pas"
     },
     {
@@ -387,7 +432,7 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L560",
       "id": "pdf_to_rag_rationale_560",
-      "community": 15,
+      "community": 0,
       "norm_label": "write the json structure to *output_path* with utf-8 encoding."
     },
     {
@@ -403,8 +448,8 @@
       "label": "Write the RAG data as a Markdown document to *output_path*.",
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L579",
-      "id": "pdf_to_rag_rationale_579",
+      "source_location": "L585",
+      "id": "pdf_to_rag_rationale_585",
       "community": 11,
       "norm_label": "write the rag data as a markdown document to *output_path*."
     },
@@ -412,17 +457,17 @@
       "label": "Validate the built JSON structure.     Returns a (possibly empty) list of warni",
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L591",
-      "id": "pdf_to_rag_rationale_591",
-      "community": 16,
+      "source_location": "L597",
+      "id": "pdf_to_rag_rationale_597",
+      "community": 11,
       "norm_label": "validate the built json structure.     returns a (possibly empty) list of warni"
     },
     {
       "label": "Infer the chapter number from the filename.     Supports patterns such as:",
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L622",
-      "id": "pdf_to_rag_rationale_622",
+      "source_location": "L630",
+      "id": "pdf_to_rag_rationale_630",
       "community": 6,
       "norm_label": "infer the chapter number from the filename.     supports patterns such as:"
     },
@@ -430,9 +475,9 @@
       "label": "Run the full pipeline for a single PDF:       extract \u2192 clean \u2192 detect sections",
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
-      "source_location": "L649",
-      "id": "pdf_to_rag_rationale_649",
-      "community": 10,
+      "source_location": "L657",
+      "id": "pdf_to_rag_rationale_657",
+      "community": 11,
       "norm_label": "run the full pipeline for a single pdf:       extract \u2192 clean \u2192 detect sections"
     },
     {
@@ -949,6 +994,60 @@
       "norm_label": "copy the generated json file(s) to a user-chosen location."
     },
     {
+      "label": "test_document_extract.py",
+      "file_type": "code",
+      "source_file": "test_document_extract.py",
+      "source_location": "L1",
+      "id": "test_document_extract",
+      "community": 11,
+      "norm_label": "test_document_extract.py"
+    },
+    {
+      "label": "write_pdf()",
+      "file_type": "code",
+      "source_file": "test_document_extract.py",
+      "source_location": "L10",
+      "id": "test_document_extract_write_pdf",
+      "community": 11,
+      "norm_label": "write_pdf()"
+    },
+    {
+      "label": "DocumentTests",
+      "file_type": "code",
+      "source_file": "test_document_extract.py",
+      "source_location": "L29",
+      "id": "test_document_extract_documenttests",
+      "community": 11,
+      "norm_label": "documenttests"
+    },
+    {
+      "label": ".test_columns_repetition_and_provenance()",
+      "file_type": "code",
+      "source_file": "test_document_extract.py",
+      "source_location": "L30",
+      "id": "test_document_extract_documenttests_test_columns_repetition_and_provenance",
+      "community": 11,
+      "norm_label": ".test_columns_repetition_and_provenance()"
+    },
+    {
+      "label": ".test_unextractable_page_is_not_silently_empty()",
+      "file_type": "code",
+      "source_file": "test_document_extract.py",
+      "source_location": "L54",
+      "id": "test_document_extract_documenttests_test_unextractable_page_is_not_silently_empty",
+      "community": 11,
+      "norm_label": ".test_unextractable_page_is_not_silently_empty()"
+    },
+    {
+      "label": "Small real PDF fixtures generated without additional dependencies.",
+      "file_type": "rationale",
+      "source_file": "test_document_extract.py",
+      "source_location": "L1",
+      "id": "test_document_extract_rationale_1",
+      "community": 11,
+      "norm_label": "small real pdf fixtures generated without additional dependencies."
+    },
+    {
       "label": "test_pdf_to_rag.py",
       "file_type": "code",
       "source_file": "test_pdf_to_rag.py",
@@ -1003,6 +1102,15 @@
       "norm_label": ".test_original_chapter_one()"
     },
     {
+      "label": ".test_chapter_two_superscript_stays_with_description()",
+      "file_type": "code",
+      "source_file": "test_pdf_to_rag.py",
+      "source_location": "L52",
+      "id": "test_pdf_to_rag_preservationtests_test_chapter_two_superscript_stays_with_description",
+      "community": 6,
+      "norm_label": ".test_chapter_two_superscript_stays_with_description()"
+    },
+    {
       "label": "hts_chapter1_sample.json",
       "file_type": "code",
       "source_file": "verification/hts_chapter1_sample.json",
@@ -1055,6 +1163,78 @@
       "id": "verification_hts_chapter1_sample_sections",
       "community": 12,
       "norm_label": "sections"
+    },
+    {
+      "label": "layout_verified_sample.json",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L1",
+      "id": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "community": 5,
+      "norm_label": "layout_verified_sample.json"
+    },
+    {
+      "label": "document_type",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L2",
+      "id": "verification_layout_verified_sample_document_type",
+      "community": 5,
+      "norm_label": "document_type"
+    },
+    {
+      "label": "chapter",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L3",
+      "id": "verification_layout_verified_sample_chapter",
+      "community": 5,
+      "norm_label": "chapter"
+    },
+    {
+      "label": "title",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L4",
+      "id": "verification_layout_verified_sample_title",
+      "community": 5,
+      "norm_label": "title"
+    },
+    {
+      "label": "source",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L5",
+      "id": "verification_layout_verified_sample_source",
+      "community": 5,
+      "norm_label": "source"
+    },
+    {
+      "label": "sections",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L6",
+      "id": "verification_layout_verified_sample_sections",
+      "community": 5,
+      "norm_label": "sections"
+    },
+    {
+      "label": "schema_version",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L3762",
+      "id": "verification_layout_verified_sample_schema_version",
+      "community": 5,
+      "norm_label": "schema_version"
+    },
+    {
+      "label": "review_required",
+      "file_type": "code",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L3763",
+      "id": "verification_layout_verified_sample_review_required",
+      "community": 5,
+      "norm_label": "review_required"
     },
     {
       "label": "CLAUDE.md",
@@ -1129,11 +1309,110 @@
       "norm_label": "developer os integration"
     },
     {
+      "label": "layout_verified_sample.md",
+      "file_type": "document",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L1",
+      "id": "verification_layout_verified_sample_md_verification_layout_verified_sample",
+      "community": 10,
+      "norm_label": "layout_verified_sample.md"
+    },
+    {
+      "label": "Harmonized Tariff Schedule of the United States",
+      "file_type": "document",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L1",
+      "id": "verification_layout_verified_sample_harmonized_tariff_schedule_of_the_united_states",
+      "community": 10,
+      "norm_label": "harmonized tariff schedule of the united states"
+    },
+    {
+      "label": "page-911 LIVE ANIMALS \u2014 PDF page 911",
+      "file_type": "document",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L3",
+      "id": "verification_layout_verified_sample_page_911_live_animals_pdf_page_911",
+      "community": 10,
+      "norm_label": "page-911 live animals \u2014 pdf page 911"
+    },
+    {
+      "label": "page-912 LIVE ANIMALS \u2014 PDF page 912",
+      "file_type": "document",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L29",
+      "id": "verification_layout_verified_sample_page_912_live_animals_pdf_page_912",
+      "community": 10,
+      "norm_label": "page-912 live animals \u2014 pdf page 912"
+    },
+    {
+      "label": "page-913 LIVE ANIMALS \u2014 PDF page 913",
+      "file_type": "document",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L71",
+      "id": "verification_layout_verified_sample_page_913_live_animals_pdf_page_913",
+      "community": 10,
+      "norm_label": "page-913 live animals \u2014 pdf page 913"
+    },
+    {
+      "label": "page-920 LIVE ANIMALS \u2014 PDF page 920",
+      "file_type": "document",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L136",
+      "id": "verification_layout_verified_sample_page_920_live_animals_pdf_page_920",
+      "community": 10,
+      "norm_label": "page-920 live animals \u2014 pdf page 920"
+    },
+    {
+      "label": "Return page-sized sections with explicit chapter and source metadata.      page_",
+      "file_type": "rationale",
+      "source_file": "hts_extract.py",
+      "source_location": "L27",
+      "community": 6,
+      "norm_label": "return page-sized sections with explicit chapter and source metadata.      page_",
+      "id": "hts_extract_rationale_27"
+    },
+    {
+      "label": "Write the RAG data as a Markdown document to *output_path*.",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L579",
+      "community": 11,
+      "norm_label": "write the rag data as a markdown document to *output_path*.",
+      "id": "pdf_to_rag_rationale_579"
+    },
+    {
+      "label": "Validate the built JSON structure.     Returns a (possibly empty) list of warni",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L591",
+      "community": 11,
+      "norm_label": "validate the built json structure.     returns a (possibly empty) list of warni",
+      "id": "pdf_to_rag_rationale_591"
+    },
+    {
+      "label": "Infer the chapter number from the filename.     Supports patterns such as:",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L622",
+      "community": 6,
+      "norm_label": "infer the chapter number from the filename.     supports patterns such as:",
+      "id": "pdf_to_rag_rationale_622"
+    },
+    {
+      "label": "Run the full pipeline for a single PDF:       extract \u2192 clean \u2192 detect sections",
+      "file_type": "rationale",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L649",
+      "community": 11,
+      "norm_label": "run the full pipeline for a single pdf:       extract \u2192 clean \u2192 detect sections",
+      "id": "pdf_to_rag_rationale_649"
+    },
+    {
       "label": "Lenient Title Case check.     The first word must be capitalised; every subsequ",
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
       "source_location": "L294",
-      "community": 14,
+      "community": 0,
       "norm_label": "lenient title case check.     the first word must be capitalised; every subsequ",
       "id": "pdf_to_rag_rationale_294"
     },
@@ -1142,7 +1421,7 @@
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
       "source_location": "L316",
-      "community": 5,
+      "community": 0,
       "norm_label": "return true when a line qualifies as a section heading.     all conditions must",
       "id": "pdf_to_rag_rationale_316"
     },
@@ -1151,7 +1430,7 @@
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
       "source_location": "L368",
-      "community": 5,
+      "community": 0,
       "norm_label": "split cleaned text into sections using a three-pass heading pipeline.      pas",
       "id": "pdf_to_rag_rationale_368"
     },
@@ -1169,7 +1448,7 @@
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
       "source_location": "L600",
-      "community": 15,
+      "community": 0,
       "norm_label": "write the json structure to *output_path* with utf-8 encoding.",
       "id": "pdf_to_rag_rationale_600"
     },
@@ -1196,7 +1475,7 @@
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
       "source_location": "L631",
-      "community": 16,
+      "community": 11,
       "norm_label": "validate the built json structure.     returns a (possibly empty) list of warni",
       "id": "pdf_to_rag_rationale_631"
     },
@@ -1214,7 +1493,7 @@
       "file_type": "rationale",
       "source_file": "pdf_to_rag.py",
       "source_location": "L687",
-      "community": 10,
+      "community": 11,
       "norm_label": "run the full pipeline for a single pdf:       extract \u2192 clean \u2192 detect sections",
       "id": "pdf_to_rag_rationale_687"
     }
@@ -1342,12 +1621,173 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "document_extract.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "document_extract",
+      "target": "document_extract_extract_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "document_extract.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "document_extract",
+      "target": "document_extract_inspect_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "document_extract.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "document_extract",
+      "target": "document_extract_walk",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "document_extract.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "document_extract_rationale_1",
+      "target": "document_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "hts_extract.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "hts_extract",
+      "target": "document_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "document_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "document_extract.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "document_extract_inspect_page",
+      "target": "document_extract_walk",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "document_extract.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "document_extract_extract_document",
+      "target": "document_extract_inspect_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "hts_extract.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "hts_extract",
+      "target": "document_extract_inspect_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "hts_extract.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "hts_extract_extract_hts",
+      "target": "document_extract_inspect_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L686",
+      "weight": 1.0,
+      "source": "pdf_to_rag",
+      "target": "document_extract_extract_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L688",
+      "weight": 1.0,
+      "source": "pdf_to_rag_process_pdf",
+      "target": "document_extract_extract_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "document_extract_extract_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test_document_extract.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_columns_repetition_and_provenance",
+      "target": "document_extract_extract_document"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test_document_extract.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_unextractable_page_is_not_silently_empty",
+      "target": "document_extract_extract_document"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "hts_extract.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hts_extract",
-      "target": "hts_extract_extract_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_extract_hts"
     },
     {
       "relation": "contains",
@@ -1355,9 +1795,9 @@
       "source_file": "hts_extract.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hts_extract",
-      "target": "hts_extract_is_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_is_hts"
     },
     {
       "relation": "contains",
@@ -1365,9 +1805,9 @@
       "source_file": "hts_extract.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hts_extract",
-      "target": "hts_extract_lines",
-      "confidence_score": 1.0
+      "target": "hts_extract_lines"
     },
     {
       "relation": "rationale_for",
@@ -1375,9 +1815,9 @@
       "source_file": "hts_extract.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hts_extract_rationale_1",
-      "target": "hts_extract",
-      "confidence_score": 1.0
+      "target": "hts_extract"
     },
     {
       "relation": "imports_from",
@@ -1386,9 +1826,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "hts_extract",
-      "confidence_score": 1.0
+      "target": "hts_extract"
     },
     {
       "relation": "calls",
@@ -1408,9 +1848,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L673",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag",
-      "target": "hts_extract_is_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_is_hts"
     },
     {
       "relation": "calls",
@@ -1419,9 +1859,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L674",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_process_pdf",
-      "target": "hts_extract_is_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_is_hts"
     },
     {
       "relation": "calls",
@@ -1430,9 +1870,9 @@
       "source_file": "hts_extract.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hts_extract_extract_hts",
-      "target": "hts_extract_lines",
-      "confidence_score": 1.0
+      "target": "hts_extract_lines"
     },
     {
       "relation": "rationale_for",
@@ -1440,7 +1880,17 @@
       "source_file": "hts_extract.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hts_extract_rationale_27",
+      "target": "hts_extract_extract_hts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "hts_extract.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "hts_extract_rationale_28",
       "target": "hts_extract_extract_hts",
       "confidence_score": 1.0
     },
@@ -1451,9 +1901,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L673",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag",
-      "target": "hts_extract_extract_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_extract_hts"
     },
     {
       "relation": "calls",
@@ -1462,9 +1912,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L676",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_process_pdf",
-      "target": "hts_extract_extract_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_extract_hts"
     },
     {
       "relation": "imports",
@@ -1473,9 +1923,20 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "hts_extract_extract_hts",
-      "confidence_score": 1.0
+      "target": "hts_extract_extract_hts"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test_pdf_to_rag.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "test_pdf_to_rag_preservationtests_test_chapter_two_superscript_stays_with_description",
+      "target": "hts_extract_extract_hts"
     },
     {
       "relation": "calls",
@@ -1723,12 +2184,23 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "pdf_to_rag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "pdf_to_rag",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag"
     },
     {
       "relation": "references",
@@ -2142,9 +2614,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "pdf_to_rag_clean_text",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_clean_text"
     },
     {
       "relation": "calls",
@@ -2174,9 +2646,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L252",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_252",
-      "target": "pdf_to_rag_looks_title_case",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_looks_title_case"
     },
     {
       "relation": "rationale_for",
@@ -2205,9 +2677,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L274",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_274",
-      "target": "pdf_to_rag_is_heading",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_is_heading"
     },
     {
       "relation": "rationale_for",
@@ -2236,9 +2708,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L326",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_326",
-      "target": "pdf_to_rag_detect_sections",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_detect_sections"
     },
     {
       "relation": "rationale_for",
@@ -2257,9 +2729,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "pdf_to_rag_detect_sections",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_detect_sections"
     },
     {
       "relation": "calls",
@@ -2300,9 +2772,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L498",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_498",
-      "target": "pdf_to_rag_build_json",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_build_json"
     },
     {
       "relation": "rationale_for",
@@ -2321,9 +2793,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "pdf_to_rag_build_json",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_build_json"
     },
     {
       "relation": "calls",
@@ -2364,9 +2836,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L560",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_560",
-      "target": "pdf_to_rag_save_json",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_save_json"
     },
     {
       "relation": "rationale_for",
@@ -2384,9 +2856,9 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L568",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_568",
-      "target": "pdf_to_rag_build_markdown",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_build_markdown"
     },
     {
       "relation": "rationale_for",
@@ -2410,6 +2882,39 @@
       "target": "pdf_to_rag_build_markdown"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "pdf_to_rag_build_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test_document_extract.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_columns_repetition_and_provenance",
+      "target": "pdf_to_rag_build_markdown"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test_document_extract.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_unextractable_page_is_not_silently_empty",
+      "target": "pdf_to_rag_build_markdown"
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -2426,7 +2931,17 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L579",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_579",
+      "target": "pdf_to_rag_save_markdown"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L585",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_585",
       "target": "pdf_to_rag_save_markdown",
       "confidence_score": 1.0
     },
@@ -2457,7 +2972,17 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L591",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_591",
+      "target": "pdf_to_rag_validate"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L597",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_597",
       "target": "pdf_to_rag_validate",
       "confidence_score": 1.0
     },
@@ -2488,7 +3013,17 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L622",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_622",
+      "target": "pdf_to_rag_detect_chapter_number"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L630",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_630",
       "target": "pdf_to_rag_detect_chapter_number",
       "confidence_score": 1.0
     },
@@ -2531,9 +3066,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "pdf_to_rag_detect_chapter_number",
-      "confidence_score": 1.0
+      "target": "pdf_to_rag_detect_chapter_number"
     },
     {
       "relation": "calls",
@@ -2563,7 +3098,17 @@
       "source_file": "pdf_to_rag.py",
       "source_location": "L649",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pdf_to_rag_rationale_649",
+      "target": "pdf_to_rag_process_pdf"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "pdf_to_rag.py",
+      "source_location": "L657",
+      "weight": 1.0,
+      "source": "pdf_to_rag_rationale_657",
       "target": "pdf_to_rag_process_pdf",
       "confidence_score": 1.0
     },
@@ -2597,6 +3142,28 @@
       "source_location": "L660",
       "weight": 1.0,
       "source": "pdf_to_rag_ui_app_run_pipeline",
+      "target": "pdf_to_rag_process_pdf"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "pdf_to_rag_process_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test_document_extract.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_columns_repetition_and_provenance",
       "target": "pdf_to_rag_process_pdf"
     },
     {
@@ -3663,11 +4230,93 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "test_document_extract_documenttests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "test_document_extract",
+      "target": "test_document_extract_write_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "test_document_extract_rationale_1",
+      "target": "test_document_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_columns_repetition_and_provenance",
+      "target": "test_document_extract_write_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests_test_unextractable_page_is_not_silently_empty",
+      "target": "test_document_extract_write_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests",
+      "target": "test_document_extract_documenttests_test_columns_repetition_and_provenance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "test_document_extract.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "test_document_extract_documenttests",
+      "target": "test_document_extract_documenttests_test_unextractable_page_is_not_silently_empty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag",
-      "target": "test_pdf_to_rag_preservationtests",
+      "target": "test_pdf_to_rag_preservationtests"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "test_pdf_to_rag.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "test_pdf_to_rag_preservationtests",
+      "target": "test_pdf_to_rag_preservationtests_test_chapter_two_superscript_stays_with_description",
       "confidence_score": 1.0
     },
     {
@@ -3676,9 +4325,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag_preservationtests",
-      "target": "test_pdf_to_rag_preservationtests_test_cleaning_keeps_meaningful_repetition_and_numbers",
-      "confidence_score": 1.0
+      "target": "test_pdf_to_rag_preservationtests_test_cleaning_keeps_meaningful_repetition_and_numbers"
     },
     {
       "relation": "method",
@@ -3686,9 +4335,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag_preservationtests",
-      "target": "test_pdf_to_rag_preservationtests_test_original_chapter_one",
-      "confidence_score": 1.0
+      "target": "test_pdf_to_rag_preservationtests_test_original_chapter_one"
     },
     {
       "relation": "method",
@@ -3696,9 +4345,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag_preservationtests",
-      "target": "test_pdf_to_rag_preservationtests_test_preamble_and_title_body_survive",
-      "confidence_score": 1.0
+      "target": "test_pdf_to_rag_preservationtests_test_preamble_and_title_body_survive"
     },
     {
       "relation": "method",
@@ -3706,9 +4355,9 @@
       "source_file": "test_pdf_to_rag.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_pdf_to_rag_preservationtests",
-      "target": "test_pdf_to_rag_preservationtests_test_year_is_not_a_chapter",
-      "confidence_score": 1.0
+      "target": "test_pdf_to_rag_preservationtests_test_year_is_not_a_chapter"
     },
     {
       "relation": "contains",
@@ -3716,9 +4365,9 @@
       "source_file": "verification/hts_chapter1_sample.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verification_hts_chapter1_sample",
-      "target": "verification_hts_chapter1_sample_chapter",
-      "confidence_score": 1.0
+      "target": "verification_hts_chapter1_sample_chapter"
     },
     {
       "relation": "contains",
@@ -3726,9 +4375,9 @@
       "source_file": "verification/hts_chapter1_sample.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verification_hts_chapter1_sample",
-      "target": "verification_hts_chapter1_sample_document_type",
-      "confidence_score": 1.0
+      "target": "verification_hts_chapter1_sample_document_type"
     },
     {
       "relation": "contains",
@@ -3736,9 +4385,9 @@
       "source_file": "verification/hts_chapter1_sample.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verification_hts_chapter1_sample",
-      "target": "verification_hts_chapter1_sample_sections",
-      "confidence_score": 1.0
+      "target": "verification_hts_chapter1_sample_sections"
     },
     {
       "relation": "contains",
@@ -3746,9 +4395,9 @@
       "source_file": "verification/hts_chapter1_sample.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verification_hts_chapter1_sample",
-      "target": "verification_hts_chapter1_sample_source",
-      "confidence_score": 1.0
+      "target": "verification_hts_chapter1_sample_source"
     },
     {
       "relation": "contains",
@@ -3756,8 +4405,78 @@
       "source_file": "verification/hts_chapter1_sample.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verification_hts_chapter1_sample",
-      "target": "verification_hts_chapter1_sample_title",
+      "target": "verification_hts_chapter1_sample_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_chapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_document_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L3763",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_review_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L3762",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_schema_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_json_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_title",
       "confidence_score": 1.0
     },
     {
@@ -3766,9 +4485,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_project_instructions",
-      "confidence_score": 1.0
+      "target": "claude_project_instructions"
     },
     {
       "relation": "contains",
@@ -3776,9 +4495,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_project_instructions",
-      "target": "claude_commit_messages",
-      "confidence_score": 1.0
+      "target": "claude_commit_messages"
     },
     {
       "relation": "contains",
@@ -3786,9 +4505,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_project_instructions",
-      "target": "claude_dependencies",
-      "confidence_score": 1.0
+      "target": "claude_dependencies"
     },
     {
       "relation": "contains",
@@ -3796,9 +4515,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_project_instructions",
-      "target": "claude_developer_os_integration",
-      "confidence_score": 1.0
+      "target": "claude_developer_os_integration"
     },
     {
       "relation": "contains",
@@ -3806,9 +4525,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_project_instructions",
-      "target": "claude_graphify",
-      "confidence_score": 1.0
+      "target": "claude_graphify"
     },
     {
       "relation": "contains",
@@ -3816,9 +4535,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_project_instructions",
-      "target": "claude_project_wiki",
-      "confidence_score": 1.0
+      "target": "claude_project_wiki"
     },
     {
       "relation": "contains",
@@ -3826,11 +4545,61 @@
       "source_file": "CLAUDE.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_project_instructions",
-      "target": "claude_tests",
+      "target": "claude_tests"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_md_verification_layout_verified_sample",
+      "target": "verification_layout_verified_sample_harmonized_tariff_schedule_of_the_united_states",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_harmonized_tariff_schedule_of_the_united_states",
+      "target": "verification_layout_verified_sample_page_911_live_animals_pdf_page_911",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_harmonized_tariff_schedule_of_the_united_states",
+      "target": "verification_layout_verified_sample_page_912_live_animals_pdf_page_912",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_harmonized_tariff_schedule_of_the_united_states",
+      "target": "verification_layout_verified_sample_page_913_live_animals_pdf_page_913",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verification/layout_verified_sample.md",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "verification_layout_verified_sample_harmonized_tariff_schedule_of_the_united_states",
+      "target": "verification_layout_verified_sample_page_920_live_animals_pdf_page_920",
       "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9251ac586703c979b7f3f3b92f9dc771facc1f56"
+  "built_at_commit": "3c0dc191d4c55ffb0fc9bb4cc406c17da95f03c6"
 }

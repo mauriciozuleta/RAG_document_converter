@@ -41,6 +41,19 @@ class PreservationTests(unittest.TestCase):
         self.assertTrue(any(r['Statistical suffix'] == '10' and r['Unit of quantity'] == 'No.' for r in table['table_rows']))
         self.assertIn('P, PA, PE, S, SG)', table['content'])
         self.assertIn('6.6¢/kg', cattle['content'])
+        for section in data['sections']:
+            for line in section['source_lines']:
+                self.assertIn(line['text'].strip(), section['layout_text'])
+        dairy = next(line for line in table['layout_text'].splitlines() if 'Dairy:' in line)
+        male = next(line for line in table['layout_text'].splitlines() if 'Male...' in line)
+        self.assertGreater(male.index('Male'), dairy.index('Dairy'))
+
+    @unittest.skipUnless(os.environ.get('HTS_TEST_PDF'), 'Set HTS_TEST_PDF for integration checks')
+    def test_chapter_two_superscript_stays_with_description(self):
+        section = extract_hts(os.environ['HTS_TEST_PDF'], page_numbers=[919])['sections'][0]
+        row = next(line for line in section['layout_text'].splitlines() if '0201.10.50' in line)
+        self.assertIn('Other', row)
+        self.assertIn('1/', row)
 
 
 if __name__ == '__main__':
