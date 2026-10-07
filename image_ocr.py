@@ -31,7 +31,8 @@ def enrich_images(section, pdf_path, pipeline, assets_dir):
                         if crop_box[2] <= crop_box[0] or crop_box[3] <= crop_box[1]:
                             results.append({'region': index, 'bbox': bbox, 'markdown': '', 'status': 'Invalid/clipped image region; review required.'})
                             continue
-                        print(f'[INFO] Page {number}: OCR image {index}/{len(section["image_regions"])}', flush=True)
+                        offset, total = section.get('_ocr_progress', (0, len(section['image_regions'])))
+                        print(f'[INFO] OCR section {offset + index} of {total}: page {number}, image {index}; {total - offset - index + 1} remaining including this section.', flush=True)
                         crop = rendered.crop(crop_box)
                         path = Path(temporary) / 'image.png'
                         try:

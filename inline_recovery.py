@@ -87,8 +87,11 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True):
     save_flags()
     (destination/'native_pass.json').write_text(json.dumps(sections,ensure_ascii=False),encoding='utf-8')
     pending = [s for s in sections if s.get('ocr_flags')]
-    print(f'[INFO] Native pass complete. {sum(len(s["ocr_flags"]) for s in pending)} flagged regions on {len(pending)} pages.',flush=True)
+    total_flags = sum(len(s["ocr_flags"]) for s in pending)
+    processed_flags = 0
+    print(f'[INFO] Native text conversion complete: {total_flags} OCR-flagged sections identified on {len(pending)} pages; {total_flags} remaining.',flush=True)
     if not enabled:
+        print(f'[INFO] OCR disabled: {total_flags} flagged sections remain pending.', flush=True)
         return
     from paddle_extract import create_pipeline
     from image_ocr import enrich_images
@@ -108,6 +111,7 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True):
             try:
                 pipeline = pipeline or create_pipeline()
                 section["image_ocr"] = cached or []
+                section["_ocr_progress"] = (processed_flags, total_flags)
                 enrich_images(section,pdf_path,pipeline,destination)
                 cache.parent.mkdir(parents=True,exist_ok=True)
                 cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
@@ -117,7 +121,11 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True):
                 cache.parent.mkdir(parents=True,exist_ok=True)
                 cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
                 section.setdefault('warnings',[]).append(f'OCR recovery failed on page {number}: {exc}')
+        section.pop("_ocr_progress", None)
         render_section(section)
+        for flag in section["ocr_flags"]:
+            processed_flags += 1
+            print(f'[INFO] OCR section {processed_flags} of {total_flags}: {flag["id"]} ? {flag["status"]}; {total_flags - processed_flags} remaining to check.', flush=True)
         if all(f['status'] == 'converted' for f in section['ocr_flags']):
             section['warnings'] = [w for w in section.get('warnings', []) if not w.startswith('Embedded images are not transcribed')]
         save_flags()

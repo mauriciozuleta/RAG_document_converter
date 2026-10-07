@@ -1,3 +1,10 @@
+## 2026-10-07 ? Show total and remaining OCR flags
+
+The user requested a flagged-section count after native text conversion and progress such as 1 of 100.
+
+- Added total flagged sections, global per-region ordinals and remaining counts to conversion logs.
+- Kept unresolved flags distinct from completed checks and reported disabled-OCR pending counts.
+
 ## 2026-10-07 ? Two-pass flagged OCR with inline output
 
 The user requested flags for missed image tables, native extraction before OCR, insertion at the original missing positions, and correct transitions across multipage image sections.
