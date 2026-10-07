@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 
 from pdfminer.high_level import extract_pages
-from pdfminer.layout import LTTextLine, LTImage, LTLine, LTRect, LAParams
+from pdfminer.layout import LTTextLine, LTImage, LTLine, LTRect, LTFigure, LTChar, LAParams
 
 
 def walk(obj):
@@ -43,6 +43,10 @@ def inspect_page(page):
             text += ' ' * max(2 if text else 0, position - len(text)) + line.get_text().strip()
         visual.append(text)
     images = [obj for obj in objects if isinstance(obj, LTImage)]
+    vector_regions = [list(obj.bbox) for obj in objects if isinstance(obj, LTFigure)
+                      and obj.width > 20 and obj.height > 20
+                      and not any(isinstance(child, (LTChar, LTImage)) for child in walk(obj))
+                      and any(isinstance(child, (LTLine, LTRect)) for child in walk(obj))]
     raw = '\n'.join(item['text'] for item in source)
     issues = []
     if not raw.strip():
@@ -57,7 +61,7 @@ def inspect_page(page):
         issues.append('Rules or vector graphics detected; table relationships and diagrams require review.')
     return {'source_lines': source, 'raw_text': raw,
             'layout_text': '\n'.join(visual), 'warnings': issues,
-            'image_count': len(images), 'image_regions': [list(image.bbox) for image in images], 'page_size': [page.width, page.height],
+            'image_count': len(images), 'image_regions': [list(image.bbox) for image in images] + vector_regions, 'page_size': [page.width, page.height],
             'reading_order': 'PDF layout heuristic; coordinates retained for verification'}
 
 

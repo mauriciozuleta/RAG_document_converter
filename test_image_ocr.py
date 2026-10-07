@@ -44,11 +44,9 @@ class ImageRecoveryTests(unittest.TestCase):
             with patch('paddle_extract.create_pipeline',return_value=pipeline):
                 paths=process_pdf(str(pdf),folder,output_format='csv',engine='paddle')
             csvs=[p for p in paths if p.endswith('.csv')]
-            self.assertEqual(len(csvs),2)
+            self.assertEqual(len(csvs),1)
             with open(csvs[0],encoding='utf-8-sig',newline='') as stream:
-                self.assertEqual(list(csv.reader(stream)),[['0012','A'],['0012','B']])
-            with open(csvs[1],encoding='utf-8-sig',newline='') as stream:
-                self.assertEqual(list(csv.reader(stream)),[['image-001']])
+                self.assertEqual(list(csv.reader(stream)),[['0012','A'],['0012','B'],['image-001']])
             with patch('paddle_extract.create_pipeline',side_effect=AssertionError('completed image must not repeat')):
                 process_pdf(str(pdf),folder,output_format='csv',engine='paddle')
 
@@ -57,6 +55,6 @@ class ImageRecoveryTests(unittest.TestCase):
             pdf=Path(folder)/'mixed.pdf';write_pdf(pdf,PROSE+'\n'+IMAGE)
             with patch('paddle_extract.create_pipeline',return_value=self.pipeline('Important image paragraph')):
                 paths=process_pdf(str(pdf),folder,output_format='csv',engine='paddle')
-            notes=[p for p in paths if p.endswith('.md')]
+            notes=[p for p in paths if p.endswith('.csv')]
             self.assertEqual(len(notes),1)
             self.assertIn('Important image paragraph',Path(notes[0]).read_text(encoding='utf-8'))

@@ -9,7 +9,9 @@ def enrich_images(section, pdf_path, pipeline, assets_dir):
     number = section['source_page']
     destination = Path(assets_dir) / f'page-{number}' / 'images'
     destination.mkdir(parents=True, exist_ok=True)
+    completed = {r["region"]:r for r in section.get("image_ocr", []) if r.get("markdown", "").strip()}
     results = []
+    section["image_ocr"] = results
     with pdfium.PdfDocument(pdf_path) as pdf, tempfile.TemporaryDirectory(prefix='pdf_image_ocr_') as temporary:
         page = pdf[number - 1]
         try:
@@ -19,6 +21,9 @@ def enrich_images(section, pdf_path, pipeline, assets_dir):
                 rendered = bitmap.to_pil()
                 try:
                     for index, bbox in enumerate(section.get('image_regions', []), 1):
+                        if index in completed:
+                            results.append(completed[index])
+                            continue
                         x0, y0, x1, y1 = bbox
                         sx, sy = rendered.width / width, rendered.height / height
                         crop_box = (max(0, int(x0*sx)), max(0, int((height-y1)*sy)),

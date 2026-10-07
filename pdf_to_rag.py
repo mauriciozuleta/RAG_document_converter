@@ -571,6 +571,16 @@ def build_markdown(data: dict) -> str:
         lines.extend([f"## {sec['id']} {sec['title']}", ""])
         for warning in sec.get("warnings", []):
             lines.extend([f"> Extraction review: {warning}", ""])
+        if sec.get("ordered_blocks"):
+            for block in sec["ordered_blocks"]:
+                if block["kind"] == "ocr":
+                    lines.extend([block["text"], ""])
+                else:
+                    text = block["text"]
+                    longest = max((len(m[0]) for m in re.finditer(r"`+", text)), default=0)
+                    fence = "`" * max(3, longest + 1)
+                    lines.extend([fence + "text", text, fence, ""])
+            continue
         if sec.get("ocr_markdown"):
             lines.extend([sec["ocr_markdown"], "", "### Native PDF text for comparison", ""])
         text = sec.get("layout_text", sec["content"])
@@ -708,27 +718,12 @@ def process_pdf(
         raise ValueError("No pages extracted; check the requested page range.")
     if selected_pages is not None and len(data["sections"]) != len(selected_pages):
         raise ValueError("Requested page range exceeds the document length.")
-    if engine == "paddle":
-        from paddle_extract import enrich_document
-        from paddle_extract import create_pipeline
-        from image_ocr import enrich_images
-        image_pages = [section for section in data["sections"] if section.get("image_regions")]
-        needs_ocr = [section for section in data["sections"]
-                     if not section.get("image_regions") and
-                     (len(section.get("raw_text", "").strip()) < 40
-                      or "\ufffd" in section.get("raw_text", "")
-                      or "(cid:" in section.get("raw_text", ""))]
-        if image_pages or needs_ocr:
-            pipeline = create_pipeline()
-            assets = Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets")
-            for section in image_pages:
-                enrich_images(section, pdf_path, pipeline, assets)
-            if needs_ocr:
-                enrich_document({"sections": needs_ocr}, pdf_path, pipeline=pipeline, assets_dir=assets)
-            data["extraction_method"] += "; OCR of embedded images and sparse/unreadable pages"
-            data["review_required"] = True
-        else:
-            print("[INFO] Readable text with no embedded images; OCR skipped.", flush=True)
+    from inline_recovery import recover_sections
+    recover_sections(data['sections'], pdf_path,
+                     Path(output_dir) / (Path(pdf_path).stem + '_ocr_assets'),
+                     enabled=engine == 'paddle')
+    data['extraction_method'] += '; ordered native text with flagged inline OCR recovery'
+    data['review_required'] = any(s.get('warnings') or any(f['status'] != 'converted' for f in s.get('ocr_flags', [])) for s in data['sections'])
 
     # --- Validate ---
     warnings = validate(data)

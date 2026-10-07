@@ -31,18 +31,18 @@ class NativeTableTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             pdf=Path(folder)/'blank.pdf';write_pdf(pdf,'')
             with patch('paddle_extract.create_pipeline',side_effect=AssertionError('OCR disabled')):
-                with self.assertRaisesRegex(ValueError,'No tables exported'):
-                    process_pdf(str(pdf),folder,output_format='csv')
+                paths=process_pdf(str(pdf),folder,output_format='csv')
+                self.assertIn('OCR PENDING',Path(paths[0]).read_text(encoding='utf-8-sig'))
             report=json.loads((Path(folder)/'blank_tables_table_report.json').read_text())
-            self.assertIn('OCR is disabled',report['pages'][0]['status'])
+            self.assertEqual(report['pages'][0]['ocr_flags'][0]['status'],'pending')
 
     def test_optional_ocr_for_sparse_page(self):
         with tempfile.TemporaryDirectory() as folder:
             pdf=Path(folder)/'scan.pdf';write_pdf(pdf,'')
-            def enrich(data,*args,**kwargs):
-                data['sections'][0]['ocr_markdown']='<table><tr><td>001</td></tr></table>'
-                return data
-            with patch('paddle_extract.create_pipeline') as create, patch('paddle_extract.enrich_document',side_effect=enrich):
+            def enrich(section,*args,**kwargs):
+                section['image_ocr']=[{'region':1,'markdown':'<table><tr><td>001</td></tr></table>'}]
+                return section
+            with patch('paddle_extract.create_pipeline') as create, patch('image_ocr.enrich_images',side_effect=enrich):
                 paths=process_pdf(str(pdf),folder,output_format='csv',engine='paddle')
                 create.assert_called_once()
             self.assertTrue(Path(paths[0]).exists())

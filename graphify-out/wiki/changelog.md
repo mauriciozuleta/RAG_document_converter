@@ -1,3 +1,11 @@
+## 2026-10-07 ? Two-pass flagged OCR with inline output
+
+The user requested flags for missed image tables, native extraction before OCR, insertion at the original missing positions, and correct transitions across multipage image sections.
+
+- Added ordered recovery flags, image-tile grouping, textless-vector-figure candidates and page-sequence tracking.
+- Fixed Markdown omissions and integrated recovered text into JSON/Markdown and page-level CSV/Excel outputs.
+- Preserved unresolved markers and successful region checkpoints for retry; added ordering, transitions and failure tests.
+
 ## 2026-10-07 ? Recover embedded images on mixed-content pages
 
 The user reported that native-first conversion skipped images and requested automatic OCR of missing content.

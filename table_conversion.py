@@ -1,4 +1,4 @@
-﻿"""Native-first table conversion with durable per-page checkpoints."""
+﻿"""Two-pass table export: native checkpoints, then inline flagged OCR recovery."""
 import hashlib
 import json
 from pathlib import Path
@@ -7,10 +7,11 @@ from pdfminer.high_level import extract_pages
 from pdfminer.pdfpage import PDFPage
 from native_tables import extract_grids
 from table_export import export_tables, TableParser
+from document_extract import inspect_page
+from inline_recovery import recover_sections
 
 
 def replace_checkpoint(temporary, target):
-    # Windows sync/indexing can briefly hold the destination open.
     for attempt in range(6):
         try:
             temporary.replace(target)
@@ -31,7 +32,7 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
     pages = selected if selected is not None else list(range(total_pages))
     if not pages or any(n < 0 or n >= total_pages for n in pages):
         raise ValueError('Requested page range exceeds the document length.')
-    cache = destination / '.table_checkpoints' / f'{digest[:20]}-v2-images-{engine}'
+    cache = destination / '.table_checkpoints' / f'{digest[:20]}-v3-inline'
     cache.mkdir(parents=True, exist_ok=True)
     stored = {}
     for n in pages:
@@ -44,85 +45,75 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
     pending = [n for n in pages if n not in stored]
     layouts = iter(extract_pages(pdf_path, page_numbers=pending)) if pending else iter(())
     started = time.monotonic()
-    paths, sections, report = [], [], []
-    pipeline = None
-    print(f'[INFO] {len(pages)} pages; {len(stored)} cached. Native tables first. OCR fallback: {engine == "paddle"}.', flush=True)
+    sections = []
     for index,n in enumerate(pages,1):
-        cached = n in stored
-        if cached:
+        if n in stored:
             record = stored.pop(n)
         else:
             page = next(layouts)
             tables, text = extract_grids(page)
-            from document_extract import walk
-            from pdfminer.layout import LTImage
-            regions = [list(obj.bbox) for obj in walk(page) if isinstance(obj, LTImage)]
-            image_results = []
-            method = 'native'
-            status = 'tables extracted' if tables else 'No continuous ruled table detected; review page (borderless/complex tables are not inferred).'
-            needs_ocr = len(text.strip()) < 40 or '\ufffd' in text or '(cid:' in text
-            if regions and engine == 'paddle':
-                from image_ocr import enrich_images
-                from paddle_extract import create_pipeline
-                pipeline = pipeline or create_pipeline()
-                section = {'source_page': n+1, 'content': text, 'warnings': [], 'image_regions': regions}
-                enrich_images(section, pdf_path, pipeline, cache/'ocr')
-                image_results = section['image_ocr']
-                for result in image_results:
-                    parser = TableParser()
-                    parser.feed(result['markdown'])
-                    if parser.rows is not None:
-                        raise ValueError(f'Incomplete image table on page {n+1}.')
-                    tables.extend({'rows':rows,'merges':merges} for rows,merges in parser.tables)
-                method = 'native + image OCR'
-                status = 'Native content retained; embedded images processed. Review image OCR artifacts, including non-table text.'
-            elif not tables and needs_ocr and engine == 'paddle':
-                from document_extract import inspect_page
-                from paddle_extract import create_pipeline, enrich_document
-                print(f'[INFO] Page {n+1}: sparse/unreadable text; starting optional OCR.',flush=True)
-                pipeline = pipeline or create_pipeline()
-                details = inspect_page(page)
-                section = {'source_page': n+1, 'content': details['raw_text'], **details}
-                result = enrich_document({'sections':[section]}, pdf_path, pipeline=pipeline, assets_dir=cache/'ocr')
-                parser = TableParser()
-                parser.feed(result['sections'][0]['ocr_markdown'])
-                if parser.rows is not None:
-                    raise ValueError(f'Incomplete OCR table on page {n+1}.')
-                tables = [{'rows':rows,'merges':merges} for rows,merges in parser.tables]
-                method = 'ocr'
-                status = 'tables extracted; review OCR values' if tables else 'OCR found no structured tables; review page.'
-            elif not tables and needs_ocr:
-                status = 'Sparse/unreadable text: OCR may be needed. OCR is disabled.'
-            if regions and engine != 'paddle':
-                status += ' Embedded images not processed: automatic OCR is disabled.'
-            record = {'source_page': n+1,'tables':tables,'method':method,'status':status, 'image_ocr':image_results}
+            details = inspect_page(page)
+            record = {'source_page':n+1,'native_tables':tables,'content':details['raw_text'],**details}
             target = cache/f'page-{n+1}.json'
             temporary = target.with_suffix('.tmp')
             temporary.write_text(json.dumps(record,ensure_ascii=False),encoding='utf-8')
-            replace_checkpoint(temporary, target)
-        report.append({k:v for k,v in record.items() if k != 'tables'} | {'table_count':len(record['tables']), 'table_notes':[t['note'] for t in record['tables'] if 'note' in t]})
-        if record.get('image_ocr'):
-            image_path = destination / f'{base_name}_page-{n+1}_image_ocr.md'
-            image_path.write_text('\n\n'.join(f'## PDF page {n+1}, image {r["region"]}\n{r["status"]}\n\n{r["markdown"]}' for r in record['image_ocr']), encoding='utf-8')
-            paths.append(str(image_path))
-        if record['tables']:
-            if fmt == 'csv':
+            replace_checkpoint(temporary,target)
+        sections.append(record)
+        elapsed = time.monotonic()-started
+        print(f'[INFO] Native pass {index}/{len(pages)} (PDF page {n+1}); elapsed {elapsed:.1f}s; ETA ~{elapsed/index*(len(pages)-index):.0f}s',flush=True)
+    if hasattr(layouts, 'close'):
+        layouts.close()
+    # Every selected page is inspected before any OCR model is loaded.
+    recover_sections(sections,pdf_path,cache/'recovery',enabled=engine=='paddle')
+    report, exported, paths = [], [], []
+    for section in sections:
+        number = section['source_page']
+        blocks = [(t['bbox'],t['rows'],t.get('merges',[])) for t in section['native_tables']]
+        for index,flag in enumerate(section.get('ocr_flags',[]),1):
+            result = next((r for r in section.get('image_ocr',[]) if r['region']==index),None)
+            if result and result.get('markdown','').strip():
+                parser = TableParser()
+                parser.feed(result['markdown'])
+                # Preserve surrounding OCR prose as well as structured cells.
+                if parser.tables and parser.rows is None:
+                    import re
+                    rows,merges = [],[]
+                    for fragment in re.split(r'(<table\b.*?</table>)', result['markdown'], flags=re.I|re.S):
+                        if not fragment.strip():
+                            continue
+                        fragment_parser = TableParser()
+                        fragment_parser.feed(fragment)
+                        if fragment_parser.tables:
+                            for table_rows,table_merges in fragment_parser.tables:
+                                offset=len(rows)
+                                rows.extend(table_rows)
+                                merges.extend((a+offset,b,c+offset,d) for a,b,c,d in table_merges)
+                        else:
+                            rows.append([fragment.strip()])
+                else:
+                    rows,merges = [[result['markdown']]],[]
+                blocks.append((flag['bbox'],rows,merges))
+            else:
+                blocks.append((flag['bbox'],[[f'[OCR {flag["status"].upper()}: {flag["id"]} — image content requires review]']],[]))
+        blocks.sort(key=lambda b:(-b[0][3],b[0][0]))
+        rows,merges = [],[]
+        for bbox,block_rows,block_merges in blocks:
+            offset=len(rows)
+            rows.extend(block_rows)
+            merges.extend((a+offset,b,c+offset,d) for a,b,c,d in block_merges)
+        if rows:
+            record={'source_page':number,'tables':[{'rows':rows,'merges':merges}]}
+            if fmt=='csv':
                 paths.extend(export_tables({'sections':[record]},output_dir,base_name,fmt))
             else:
-                sections.append(record)
-        elapsed = time.monotonic()-started
-        eta = elapsed/index*(len(pages)-index)
-        print(f'[INFO] Page {n+1} ({index}/{len(pages)}): {record["method"]}{" cached" if cached else ""}; {len(record["tables"])} tables; elapsed {elapsed:.1f}s; ETA ~{eta:.0f}s. {record["status"]}',flush=True)
-        # A report survives cancellation along with completed page checkpoints/CSVs.
-        report_path = destination/f'{base_name}_table_report.json'
-        report_temp = report_path.with_suffix('.tmp')
-        report_temp.write_text(json.dumps({'source':str(pdf_path),'requested_pages':len(pages),'completed_pages':index,'pages':report},ensure_ascii=False,indent=2),encoding='utf-8')
-        replace_checkpoint(report_temp, report_path)
-    if fmt == 'xlsx' and sections:
-        paths.extend(export_tables({'sections':sections},output_dir,base_name,fmt))
+                exported.append(record)
+        flags=section.get('ocr_flags',[])
+        status = 'Native tables and image recovery in page order.' if rows else 'No ruled table detected; review digital/borderless content.'
+        report.append({'source_page':number,'status':status,'ocr_flags':flags,'native_table_count':len(section['native_tables'])})
+    if fmt=='xlsx' and exported:
+        paths.extend(export_tables({'sections':exported},output_dir,base_name,fmt))
+    report_path=destination/f'{base_name}_table_report.json'
+    report_path.write_text(json.dumps({'source':str(pdf_path),'completed_pages':len(pages),'pages':report},ensure_ascii=False,indent=2),encoding='utf-8')
     if not paths:
-        raise ValueError(f'No tables exported. See {report_path}. Enable optional OCR for scanned pages; digital borderless tables require review.')
-    missing = sum(not p['table_count'] for p in report)
-    print(f'[INFO] {len(pages)} pages completed; {missing} pages without detected tables. Native extraction preserves ruled bodies; separate or merged headers require review.', flush=True)
-    print(f'[INFO] Review report: {report_path}',flush=True)
-    return paths + [str(report_path)]
+        raise ValueError(f'No tables exported. See {report_path}.')
+    return paths+[str(report_path)]
