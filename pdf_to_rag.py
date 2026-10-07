@@ -665,14 +665,14 @@ def process_pdf(
     Returns the list of paths of the written output file(s).
     If output_filename is provided, that base filename is used (any
     .json/.md extension is stripped and re-applied per output format).
-    output_format is one of "json", "md", or "both".
+    output_format is json, md, both, csv, or xlsx (tables only).
     """
     pdf_path = str(Path(pdf_path).resolve())
     output_dir = str(Path(output_dir).resolve())
     chapter_number = detect_chapter_number(pdf_path)
 
     fmt = (output_format or "json").strip().lower()
-    if fmt not in {"json", "md", "both"}:
+    if fmt not in {"json", "md", "both", "csv", "xlsx"}:
         fmt = "json"
     formats = ["json", "md"] if fmt == "both" else [fmt]
 
@@ -700,6 +700,8 @@ def process_pdf(
         raise ValueError("No pages extracted; check the requested page range.")
     if selected_pages is not None and len(data["sections"]) != len(selected_pages):
         raise ValueError("Requested page range exceeds the document length.")
+    if fmt in {"csv", "xlsx"}:
+        engine = "paddle"
     if engine == "paddle":
         from paddle_extract import enrich_document
         data = enrich_document(data, pdf_path, assets_dir=Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets"))
@@ -712,12 +714,16 @@ def process_pdf(
     # --- Save ---
     if output_filename:
         base_name = output_filename
-        for ext in (".json", ".md"):
+        for ext in (".json", ".md", ".csv", ".xlsx"):
             if base_name.lower().endswith(ext):
                 base_name = base_name[: -len(ext)]
                 break
     else:
         base_name = f"{Path(pdf_path).stem}_rag" if not chapter_number else f"chapter_{chapter_number}_rag"
+
+    if fmt in {"csv", "xlsx"}:
+        from table_export import export_tables
+        return export_tables(data, output_dir, base_name, fmt)
 
     output_files: list[str] = []
     for f in formats:
@@ -779,10 +785,10 @@ Examples:
     )
     parser.add_argument(
         "--format",
-        choices=["json", "md", "both"],
+        choices=["json", "md", "both", "csv", "xlsx"],
         default="json",
         metavar="FORMAT",
-        help="Output format: json, md, or both (default: json).",
+        help="Output format: json, md, both, csv or xlsx; table exports use OCR.",
     )
     parser.add_argument("--engine", choices=["native", "paddle"], default="native")
     parser.add_argument("--pages", default="", help="PDF pages, e.g. 911-920 or 1,3-5; blank means all")

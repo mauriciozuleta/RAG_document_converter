@@ -1,3 +1,11 @@
+## 2026-10-07 ? PDF table export
+
+Requested a PDF-only table conversion option with CSV and Excel output.
+
+- Added Tables CSV and Tables Excel options and corresponding CLI formats.
+- Reused PaddleOCR table recognition, retaining page/table provenance and merged-cell structure.
+- Added tests for CSV quoting, identifiers, literal formulas, merged cells, multiple tables, and no-table errors.
+
 # Changelog
 
 ## 2026-10-06 - Integrate local PaddleOCR

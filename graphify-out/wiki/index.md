@@ -51,3 +51,7 @@ This project appears to be named "PDF to RAG" and is likely designed to convert 
 ### Conclusion
 
 The "PDF to RAG" project seems well-structured and organized, with a clear separation between text processing, GUI, and conversion logic. The high betweenness centrality of certain nodes indicates their critical role in coordinating different parts of the application. Developers new to this project should familiarize themselves with these key components and understand how they interact to achieve the overall goal of converting PDF documents into structured data suitable for RAG systems.
+
+### PDF table exports
+
+Choose Tables CSV or Tables Excel in the output-format controls. These modes automatically use the existing PaddleOCR pipeline on the selected PDF pages. Recognized HTML tables become one UTF-8 CSV file per table or one Excel workbook with a worksheet per table, named by source page and table number. Excel stores cells as text to preserve leading zeros and literal formulas, and retains merged cells. CSV places merged content in the top-left cell with blank continuations; import CSV columns as text in spreadsheet software to preserve identifiers. OCR recognition still requires comparison with the source PDF. No recognized tables produces an error instead of an empty success. Standalone image input is not supported. CLI equivalents are `--format csv` and `--format xlsx`; Excel uses openpyxl already supplied by the OCR environment. There is no interactive table preview in this version.

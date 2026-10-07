@@ -328,7 +328,7 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         ).pack(side="left", padx=(0, 8))
 
         self._format_var = tk.StringVar(value="json")
-        for label, value in (("JSON", "json"), ("Markdown", "md"), ("Both", "both")):
+        for label, value in (("JSON", "json"), ("Markdown", "md"), ("Both", "both"), ("Tables CSV", "csv"), ("Tables Excel", "xlsx")):
             tk.Radiobutton(
                 fmt_frame,
                 text=label,
