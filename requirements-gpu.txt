@@ -1,0 +1,5 @@
+﻿-r requirements.txt
+paddleocr[doc-parser]==3.7.0
+pypdfium2>=4.30,<6
+# Install paddlepaddle-gpu==3.3.1 separately from the official CUDA 12.6 index.
+# Do not install requirements-ocr.txt into this environment (it specifies CPU Paddle).

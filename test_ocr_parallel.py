@@ -53,3 +53,18 @@ class ParallelOCRTests(unittest.TestCase):
             self.assertEqual([s['source_page'] for s in sections],[1,2,3,4])
             self.assertTrue(all(f'Recovered page {i}' in section['content'] for i,section in enumerate(sections,1)))
             self.assertTrue(all(section['ocr_flags'][0]['status']=='converted' for section in sections))
+
+    def test_gpu_always_uses_one_worker(self):
+        with patch.dict(os.environ, {'PDF_RAG_OCR_DEVICE':'gpu:0'}):
+            self.assertEqual(choose_workers(2,100),1)
+
+    def test_gpu_factory_refuses_cpu_only_installation(self):
+        import sys
+        from types import SimpleNamespace
+        from unittest.mock import Mock
+        from paddle_extract import create_pipeline
+        factory=Mock()
+        with patch.dict(os.environ, {'PDF_RAG_OCR_DEVICE':'gpu:0'}), patch.dict(sys.modules, {'paddleocr':SimpleNamespace(PPStructureV3=factory), 'paddle':SimpleNamespace(is_compiled_with_cuda=lambda:False)}):
+            with self.assertRaisesRegex(RuntimeError,'GPU OCR requires'):
+                create_pipeline()
+        factory.assert_not_called()

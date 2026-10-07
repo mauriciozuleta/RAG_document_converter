@@ -1,3 +1,11 @@
+## 2026-10-07 ? Prepare and verify a single-GPU OCR trial
+
+The user approved the required GPU software installation and requested readiness for a trial while the CPU app was running.
+
+- Installed an isolated CUDA 12.6/Paddle GPU environment; retained the current CPU environment and job.
+- Added explicit GPU device selection, one-worker enforcement, separate caches and a GPU launcher.
+- Added a trial command and telemetry report; verified CUDA computation, actual OCR recognition and both environments' tests.
+
 ## 2026-10-07 ? Bounded parallel CPU OCR
 
 The user approved multiple OCR workers and asked whether GPU acceleration was possible.

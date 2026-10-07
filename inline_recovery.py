@@ -95,7 +95,9 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True, workers=1):
         return
     from ocr_parallel import choose_workers, bounded_results
     workers = choose_workers(workers, len(pending))
-    print(f'[INFO] OCR execution: {workers} CPU worker(s), up to 4 threads per worker.', flush=True)
+    import os
+    device = os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu')
+    print(f'[INFO] OCR execution: {workers} worker(s), device {device}.', flush=True)
     def completed(section):
         nonlocal processed_flags
         for flag in section['ocr_flags']:
@@ -136,7 +138,9 @@ def recover_page(section, pdf_path, destination, digest, pipeline=None, progress
     from image_ocr import enrich_images
     destination = Path(destination)
     number = section['source_page']
-    key = hashlib.sha256(json.dumps([digest,section['image_regions'],'inline-v1']).encode()).hexdigest()[:24]
+    import os
+    cache_policy = 'inline-v1' if os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu') == 'cpu' else 'inline-v1-gpu'
+    key = hashlib.sha256(json.dumps([digest,section['image_regions'],cache_policy]).encode()).hexdigest()[:24]
     cache = destination/f'page-{number}'/f'recovery-{key}.json'
     try:
         cached = json.loads(cache.read_text(encoding='utf-8')) if cache.exists() else None

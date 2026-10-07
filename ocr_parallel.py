@@ -21,6 +21,8 @@ def available_memory_gb():
 def choose_workers(requested, pages):
     if requested not in (1, 2):
         raise ValueError('OCR workers must be 1 or 2.')
+    if os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu').startswith('gpu'):
+        return 1
     if requested == 1 or pages < 2:
         return 1
     available = available_memory_gb()

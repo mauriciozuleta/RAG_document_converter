@@ -1,5 +1,6 @@
 """Local PaddleOCR PP-StructureV3 enrichment, retaining native PDF evidence."""
 import json
+import os
 from pathlib import Path
 import tempfile
 
@@ -21,7 +22,15 @@ def parse_pages(value):
 
 def create_pipeline():
     from paddleocr import PPStructureV3
-    return PPStructureV3(device='cpu', use_doc_orientation_classify=True,
+    device = os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu')
+    if device not in ('cpu', 'gpu:0'):
+        raise ValueError('OCR device must be cpu or gpu:0')
+    if device.startswith('gpu'):
+        import paddle
+        if not paddle.is_compiled_with_cuda() or paddle.device.cuda.device_count() < 1:
+            raise RuntimeError('GPU OCR requires the GPU environment and an available CUDA device.')
+    print(f'[INFO] Loading OCR on {device}', flush=True)
+    return PPStructureV3(device=device, use_doc_orientation_classify=True,
                          use_doc_unwarping=False, use_textline_orientation=True,
                          use_formula_recognition=False, use_chart_recognition=False,
                          use_seal_recognition=False, enable_mkldnn=False)
