@@ -685,6 +685,14 @@ def process_pdf(
     selected_pages = parse_pages(pages)
     if engine not in {"native", "paddle"}:
         raise ValueError("Unknown extraction engine")
+    if fmt in {"csv", "xlsx"}:
+        from table_conversion import convert_tables
+        base_name = output_filename or f"{Path(pdf_path).stem}_tables"
+        for ext in (".json", ".md", ".csv", ".xlsx"):
+            if base_name.lower().endswith(ext):
+                base_name = base_name[:-len(ext)]
+                break
+        return convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected_pages)
     # HTS documents require coordinates; prose heuristics destroy tariff tables.
     from hts_extract import is_hts, extract_hts
     if is_hts(pdf_path):
@@ -700,11 +708,18 @@ def process_pdf(
         raise ValueError("No pages extracted; check the requested page range.")
     if selected_pages is not None and len(data["sections"]) != len(selected_pages):
         raise ValueError("Requested page range exceeds the document length.")
-    if fmt in {"csv", "xlsx"}:
-        engine = "paddle"
     if engine == "paddle":
         from paddle_extract import enrich_document
-        data = enrich_document(data, pdf_path, assets_dir=Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets"))
+        needs_ocr = [section for section in data["sections"]
+                     if len(section.get("raw_text", "").strip()) < 40
+                     or "\ufffd" in section.get("raw_text", "")
+                     or "(cid:" in section.get("raw_text", "")]
+        if needs_ocr:
+            enrich_document({"sections": needs_ocr}, pdf_path,
+                            assets_dir=Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets"))
+            data["extraction_method"] += "; optional OCR on sparse/unreadable pages"
+        else:
+            print("[INFO] All pages contain readable text; OCR skipped.", flush=True)
 
     # --- Validate ---
     warnings = validate(data)
@@ -720,10 +735,6 @@ def process_pdf(
                 break
     else:
         base_name = f"{Path(pdf_path).stem}_rag" if not chapter_number else f"chapter_{chapter_number}_rag"
-
-    if fmt in {"csv", "xlsx"}:
-        from table_export import export_tables
-        return export_tables(data, output_dir, base_name, fmt)
 
     output_files: list[str] = []
     for f in formats:
@@ -788,7 +799,7 @@ Examples:
         choices=["json", "md", "both", "csv", "xlsx"],
         default="json",
         metavar="FORMAT",
-        help="Output format: json, md, both, csv or xlsx; table exports use OCR.",
+        help="Output format: json, md, both, csv or xlsx; native tables first; optional OCR for sparse pages.",
     )
     parser.add_argument("--engine", choices=["native", "paddle"], default="native")
     parser.add_argument("--pages", default="", help="PDF pages, e.g. 911-920 or 1,3-5; blank means all")

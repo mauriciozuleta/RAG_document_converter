@@ -70,7 +70,8 @@ def export_tables(data, output_dir, base_name, fmt):
         parser.feed(section.get('ocr_markdown', ''))
         if parser.rows is not None:
             raise ValueError('Incomplete recognized table; review the OCR result.')
-        for number, (rows, merges) in enumerate(parser.tables, 1):
+        detected = [(t['rows'], t.get('merges', [])) for t in section.get('tables', [])] + parser.tables
+        for number, (rows, merges) in enumerate(detected, 1):
             tables.append((f"page-{section['source_page']}-table-{number}", rows, merges))
     if not tables:
         raise ValueError('No structured tables detected on the selected PDF pages. Review the OCR checkpoints or try different pages.')

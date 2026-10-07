@@ -350,8 +350,8 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             conv_frame, "Convert", self._start_conversion, width=20, big=True
         )
         self._convert_btn.pack()
-        self._ocr_var = tk.BooleanVar(value=True)
-        tk.Checkbutton(conv_frame, text="PaddleOCR: local OCR and table layout (slower)",
+        self._ocr_var = tk.BooleanVar(value=False)
+        tk.Checkbutton(conv_frame, text="Allow OCR for scanned / unreadable pages (slow; optional)",
                        variable=self._ocr_var, bg=BG, fg=TEXT, selectcolor=SURFACE).pack()
         page_frame = tk.Frame(conv_frame, bg=BG)
         page_frame.pack(pady=4)

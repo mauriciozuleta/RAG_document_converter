@@ -73,7 +73,6 @@ def extract_document(path, page_numbers=None):
         result['sections'].append({'id': f'page-{number}', 'title': f'PDF page {number}',
                                    'source_page': number, 'content': details['raw_text'],
                                    'tags': [], **details})
-        if number % 100 == 0:
-            print(f'[INFO] Extracted PDF page {number}', flush=True)
+        print(f'[INFO] Extracted PDF page {number}', flush=True)
     result['review_required'] = any(s['warnings'] for s in result['sections'])
     return result

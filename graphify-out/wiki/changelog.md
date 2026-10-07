@@ -1,3 +1,11 @@
+## 2026-10-07 ? Remove forced OCR from large-document conversion
+
+The user requested a practical update for roughly 1,000-page digital PDFs after forced OCR caused excessive runtimes.
+
+- Added native-first ruled-table extraction, page-level optional OCR, and OCR-off GUI defaults.
+- Added incremental CSV output, source-keyed page checkpoints, automatic resume, progress estimates and review reports.
+- Verified all 94 CARICOM pages in about 11 seconds against the earlier 3,535-row export; tested cached reuse and extraction policy.
+
 ## 2026-10-07 ? Validate CARICOM PDF export
 
 Tested the user-supplied PDF after a reported stalled conversion and exported CSV files.
