@@ -1,3 +1,11 @@
+## 2026-10-07 ? Validate CARICOM PDF export
+
+Tested the user-supplied PDF after a reported stalled conversion and exported CSV files.
+
+- Added a reproducible document-specific native-grid export with per-page validation.
+- Exported all 94 pages and checked 3,535 rows, identifiers, accents and cell text.
+- Documented slow OCR initialization/recognition; no general app behavior changed.
+
 ## 2026-10-07 ? PDF table export
 
 Requested a PDF-only table conversion option with CSV and Excel output.

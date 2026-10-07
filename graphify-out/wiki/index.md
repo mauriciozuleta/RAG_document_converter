@@ -55,3 +55,9 @@ The "PDF to RAG" project seems well-structured and organized, with a clear separ
 ### PDF table exports
 
 Choose Tables CSV or Tables Excel in the output-format controls. These modes automatically use the existing PaddleOCR pipeline on the selected PDF pages. Recognized HTML tables become one UTF-8 CSV file per table or one Excel workbook with a worksheet per table, named by source page and table number. Excel stores cells as text to preserve leading zeros and literal formulas, and retains merged cells. CSV places merged content in the top-left cell with blank continuations; import CSV columns as text in spreadsheet software to preserve identifiers. OCR recognition still requires comparison with the source PDF. No recognized tables produces an error instead of an empty success. Standalone image input is not supported. CLI equivalents are `--format csv` and `--format xlsx`; Excel uses openpyxl already supplied by the OCR environment. There is no interactive table preview in this version.
+
+### CARICOM PDF validation
+
+`verification/export_caricom.py` exports the supplied 94-page `tlc-caricom-colombia.pdf` using its native ALADI grid. It is a document-specific verification utility, not the app's general table detector. Outputs live in `verification/caricom-csv/`: a combined CSV with 3,535 physical rows and page/row references, 94 page CSVs, a validation report and usage notes. It preserves duplicate entries, accents and multiline cells, labels the unheaded final column explicitly, and checks source item sequences and cell-character preservation. Cross-page continuations remain separate. Import identifiers as text in spreadsheet software.
+
+The one-page OCR trial progressed through slow model loading to page recognition, then was terminated after native export completed. This does not establish a deadlock. The app still forces OCR for its CSV/Excel options; this validation utility bypasses that path for this known digital PDF.
