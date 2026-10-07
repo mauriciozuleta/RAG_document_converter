@@ -22,7 +22,7 @@ def replace_checkpoint(temporary, target):
             time.sleep(.1 * (attempt + 1))
 
 
-def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
+def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None, ocr_workers=1):
     destination = Path(output_dir)
     destination.mkdir(parents=True, exist_ok=True)
     with open(pdf_path, 'rb') as source:
@@ -64,7 +64,7 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
     if hasattr(layouts, 'close'):
         layouts.close()
     # Every selected page is inspected before any OCR model is loaded.
-    recover_sections(sections,pdf_path,cache/'recovery',enabled=engine=='paddle')
+    recover_sections(sections,pdf_path,cache/'recovery',enabled=engine=='paddle',workers=ocr_workers)
     report, exported, paths = [], [], []
     for section in sections:
         number = section['source_page']

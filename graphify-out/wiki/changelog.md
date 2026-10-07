@@ -1,3 +1,11 @@
+## 2026-10-07 ? Bounded parallel CPU OCR
+
+The user approved multiple OCR workers and asked whether GPU acceleration was possible.
+
+- Added a GUI worker selector and CLI/API option, bounded two-process scheduling, persistent worker models and a memory/CPU fallback.
+- Preserved ordered inline output, cache reuse, unresolved failures and parent-owned progress reporting.
+- Checked hardware and verified process scheduling in tests; left the active conversion and CPU installation undisturbed.
+
 ## 2026-10-07 ? Show total and remaining OCR flags
 
 The user requested a flagged-section count after native text conversion and progress such as 1 of 100.

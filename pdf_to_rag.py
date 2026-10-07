@@ -667,6 +667,7 @@ def process_pdf(
     output_format: str = "json",
     engine: str = "native",
     pages: str = "",
+    ocr_workers: int = 1,
 ) -> list[str]:
     """
         Run the full pipeline for a single PDF:
@@ -677,6 +678,8 @@ def process_pdf(
     .json/.md extension is stripped and re-applied per output format).
     output_format is json, md, both, csv, or xlsx (tables only).
     """
+    if ocr_workers not in (1, 2):
+        raise ValueError("OCR workers must be 1 or 2.")
     pdf_path = str(Path(pdf_path).resolve())
     output_dir = str(Path(output_dir).resolve())
     chapter_number = detect_chapter_number(pdf_path)
@@ -702,7 +705,7 @@ def process_pdf(
             if base_name.lower().endswith(ext):
                 base_name = base_name[:-len(ext)]
                 break
-        return convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected_pages)
+        return convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected_pages, ocr_workers=ocr_workers)
     # HTS documents require coordinates; prose heuristics destroy tariff tables.
     from hts_extract import is_hts, extract_hts
     if is_hts(pdf_path):
@@ -721,7 +724,7 @@ def process_pdf(
     from inline_recovery import recover_sections
     recover_sections(data['sections'], pdf_path,
                      Path(output_dir) / (Path(pdf_path).stem + '_ocr_assets'),
-                     enabled=engine == 'paddle')
+                     enabled=engine == 'paddle', workers=ocr_workers)
     data['extraction_method'] += '; ordered native text with flagged inline OCR recovery'
     data['review_required'] = any(s.get('warnings') or any(f['status'] != 'converted' for f in s.get('ocr_flags', [])) for s in data['sections'])
 
@@ -806,6 +809,7 @@ Examples:
         help="Output format: json, md, both, csv or xlsx; native tables first; optional OCR for sparse pages.",
     )
     parser.add_argument("--engine", choices=["native", "paddle"], default="native")
+    parser.add_argument("--ocr-workers", type=int, choices=[1, 2], default=1, help="Parallel OCR page workers (memory checked)")
     parser.add_argument("--pages", default="", help="PDF pages, e.g. 911-920 or 1,3-5; blank means all")
     return parser
 
@@ -838,7 +842,7 @@ def main() -> None:
     success, failed = 0, 0
     for pdf in expanded:
         try:
-            process_pdf(pdf, output_dir, doc_type=doc_type, output_format=output_format, engine=args.engine, pages=args.pages)
+            process_pdf(pdf, output_dir, doc_type=doc_type, output_format=output_format, engine=args.engine, pages=args.pages, ocr_workers=args.ocr_workers)
             success += 1
         except FileNotFoundError:
             print(f"ERROR: File not found: {pdf}", file=sys.stderr)

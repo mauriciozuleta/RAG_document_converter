@@ -356,6 +356,9 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         page_frame = tk.Frame(conv_frame, bg=BG)
         page_frame.pack(pady=4)
         tk.Label(page_frame, text="PDF pages (blank = all):", bg=BG, fg=TEXT).pack(side="left")
+        tk.Label(page_frame, text="OCR workers:", bg=BG, fg=TEXT).pack(side="left", padx=(8, 0))
+        self._ocr_workers_var = tk.StringVar(value="2")
+        ttk.Combobox(page_frame, textvariable=self._ocr_workers_var, values=("1", "2"), state="readonly", width=3).pack(side="left", padx=4)
         self._pages_var = tk.StringVar()
         tk.Entry(page_frame, textvariable=self._pages_var, width=18).pack(side="left", padx=8)
 
@@ -646,7 +649,7 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         threading.Thread(
             target=self._run_pipeline,
             args=(list(self._pdf_paths), out_dir, custom_name, output_format,
-                  "paddle" if self._ocr_var.get() else "native", self._pages_var.get()),
+                  "paddle" if self._ocr_var.get() else "native", self._pages_var.get(), int(self._ocr_workers_var.get())),
             daemon=True,
         ).start()
 
@@ -658,6 +661,7 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         output_format: str,
         engine: str = "native",
         pages: str = "",
+        ocr_workers: int = 1,
     ) -> None:
         success, failed = 0, 0
         output_paths: list[str] = []
@@ -677,6 +681,7 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
                     output_format=output_format,
                     engine=engine,
                     pages=pages,
+                    ocr_workers=ocr_workers,
                 )
                 output_paths.extend(out)
                 success += 1

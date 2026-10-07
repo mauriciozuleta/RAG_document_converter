@@ -93,3 +93,13 @@ Verification: 29 tests pass with two external-fixture tests skipped. Coverage in
 ### OCR log progress
 
 At the end of native text conversion the log states the total OCR-flagged sections and page count. Recovery logs a global section ordinal (for example, OCR section 1 of 100) before each image and a checked status afterward, with remaining-to-check counts. Cached regions count toward progress. Converted and unresolved statuses remain distinct; the final unresolved total identifies content still needing review. With OCR disabled the log reports the pending count.
+
+### Parallel CPU OCR
+
+The GUI now offers OCR workers 1 or 2 (requests 2 by default). CLI `--ocr-workers 2` and API `ocr_workers=2` enable the same behavior; CLI/API default to 1. The recovery coordinator permits two workers only with at least 12 GB available physical RAM, at least eight logical CPUs and two flagged pages. Otherwise it logs a fallback to one. This is a conservative starting threshold, not a guarantee against changing memory pressure.
+
+Each spawned process handles one flagged page at a time, reuses its own Paddle pipeline (four CPU threads), and visits that page's image regions sequentially. At most two tasks are in flight. Results are consumed as they finish, but update their original page objects so exported document order stays intact. Cached results are reused. The parent alone updates the flag manifest and global completed count; worker failures remain visible as unresolved flags. The existing GUI process-tree cancellation covers spawned workers. Native extraction remains serial.
+
+Hardware observed: Intel i7-12700F (12 cores/20 logical CPUs), about 32 GB RAM, NVIDIA RTX 3060 with 12 GB VRAM. Installed Paddle and pipeline configuration remain CPU-only. NVIDIA GPU OCR is supported in Paddle's Windows GPU distribution but needs a separate compatible GPU installation/configuration; no packages or running conversion were changed.
+
+Validation: 32 tests pass, two external-fixture tests skipped. New tests use real Windows spawned processes to check two-worker scheduling, failure reporting, cached recovery and output ordering, plus memory-guard selection. A real OCR speed comparison was deferred because the user's original conversion was still running and available RAM was near the two-worker threshold. No measured speedup is claimed.

@@ -74,7 +74,7 @@ def render_section(section):
     section['content'] = '\n\n'.join(b['text'] for b in blocks)
 
 
-def recover_sections(sections, pdf_path, assets_dir, enabled=True):
+def recover_sections(sections, pdf_path, assets_dir, enabled=True, workers=1):
     """Second pass: native extraction/flagging is complete before model loading."""
     prepare_sections(sections)
     destination = Path(assets_dir)
@@ -93,41 +93,81 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True):
     if not enabled:
         print(f'[INFO] OCR disabled: {total_flags} flagged sections remain pending.', flush=True)
         return
-    from paddle_extract import create_pipeline
-    from image_ocr import enrich_images
-    pipeline = None
-    for section in pending:
-        number = section['source_page']
-        key = hashlib.sha256(json.dumps([digest,section['image_regions'],'inline-v1']).encode()).hexdigest()[:24]
-        cache = destination/f'page-{number}'/f'recovery-{key}.json'
-        try:
-            cached = json.loads(cache.read_text(encoding='utf-8')) if cache.exists() else None
-        except (ValueError,OSError):
-            cached = None
-        if cached and all(r.get('markdown','').strip() for r in cached):
-            section['image_ocr'] = cached
-        else:
-            print(f'[INFO] Recovery pass: page {number}, sequence {section["ocr_flags"][0]["image_sequence"]}',flush=True)
-            try:
-                pipeline = pipeline or create_pipeline()
-                section["image_ocr"] = cached or []
-                section["_ocr_progress"] = (processed_flags, total_flags)
-                enrich_images(section,pdf_path,pipeline,destination)
-                cache.parent.mkdir(parents=True,exist_ok=True)
-                cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
-            except Exception as exc:
-                successful = {r['region']:r for r in section.get('image_ocr', []) if r.get('markdown','').strip()}
-                section['image_ocr'] = [successful.get(i, {'region':i,'bbox':f['bbox'],'markdown':'','status':f'OCR failed: {exc}'}) for i,f in enumerate(section['ocr_flags'],1)]
-                cache.parent.mkdir(parents=True,exist_ok=True)
-                cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
-                section.setdefault('warnings',[]).append(f'OCR recovery failed on page {number}: {exc}')
-        section.pop("_ocr_progress", None)
-        render_section(section)
-        for flag in section["ocr_flags"]:
+    from ocr_parallel import choose_workers, bounded_results
+    workers = choose_workers(workers, len(pending))
+    print(f'[INFO] OCR execution: {workers} CPU worker(s), up to 4 threads per worker.', flush=True)
+    def completed(section):
+        nonlocal processed_flags
+        for flag in section['ocr_flags']:
             processed_flags += 1
-            print(f'[INFO] OCR section {processed_flags} of {total_flags}: {flag["id"]} ? {flag["status"]}; {total_flags - processed_flags} remaining to check.', flush=True)
+            print(f'[INFO] OCR checked {processed_flags} of {total_flags}: {flag["id"]} - {flag["status"]}; {total_flags-processed_flags} remaining.', flush=True)
         if all(f['status'] == 'converted' for f in section['ocr_flags']):
             section['warnings'] = [w for w in section.get('warnings', []) if not w.startswith('Embedded images are not transcribed')]
         save_flags()
+    if workers == 1:
+        pipeline = None
+        for section in pending:
+            section, pipeline = recover_page(section, pdf_path, destination, digest, pipeline, (processed_flags,total_flags))
+            completed(section)
+    else:
+        from concurrent.futures import ProcessPoolExecutor
+        from multiprocessing import get_context
+        offset = 0
+        tasks = []
+        for section in pending:
+            tasks.append((section, str(pdf_path), str(destination), digest, (offset,total_flags)))
+            offset += len(section['ocr_flags'])
+        with ProcessPoolExecutor(max_workers=workers, mp_context=get_context('spawn')) as executor:
+            for index, result, error in bounded_results(executor, recover_page_worker, tasks, workers):
+                section = pending[index]
+                if error is not None:
+                    section['image_ocr'] = [{'region':i, 'markdown':'', 'status':f'Worker failed: {error}'} for i,_ in enumerate(section['ocr_flags'],1)]
+                    render_section(section)
+                    section.setdefault('warnings',[]).append(f'OCR worker failed: {error}')
+                else:
+                    section.update(result)
+                completed(section)
     unresolved = sum(f['status'] != 'converted' for s in sections for f in s.get('ocr_flags',[]))
     print(f'[INFO] Recovery complete: {unresolved} unresolved flags remain visible in the document.',flush=True)
+
+
+def recover_page(section, pdf_path, destination, digest, pipeline=None, progress=(0, 0)):
+    from paddle_extract import create_pipeline
+    from image_ocr import enrich_images
+    destination = Path(destination)
+    number = section['source_page']
+    key = hashlib.sha256(json.dumps([digest,section['image_regions'],'inline-v1']).encode()).hexdigest()[:24]
+    cache = destination/f'page-{number}'/f'recovery-{key}.json'
+    try:
+        cached = json.loads(cache.read_text(encoding='utf-8')) if cache.exists() else None
+    except (ValueError,OSError):
+        cached = None
+    if cached and all(r.get('markdown','').strip() for r in cached):
+        section['image_ocr'] = cached
+    else:
+        print(f'[INFO] Recovery pass: page {number}, sequence {section["ocr_flags"][0]["image_sequence"]}',flush=True)
+        try:
+            pipeline = pipeline or create_pipeline()
+            section["image_ocr"] = cached or []
+            section["_ocr_progress"] = progress
+            enrich_images(section,pdf_path,pipeline,destination)
+            cache.parent.mkdir(parents=True,exist_ok=True)
+            cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
+        except Exception as exc:
+            successful = {r['region']:r for r in section.get('image_ocr', []) if r.get('markdown','').strip()}
+            section['image_ocr'] = [successful.get(i, {'region':i,'bbox':f['bbox'],'markdown':'','status':f'OCR failed: {exc}'}) for i,f in enumerate(section['ocr_flags'],1)]
+            cache.parent.mkdir(parents=True,exist_ok=True)
+            cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
+            section.setdefault('warnings',[]).append(f'OCR recovery failed on page {number}: {exc}')
+    section.pop("_ocr_progress", None)
+    render_section(section)
+    return section, pipeline
+
+
+_WORKER_PIPELINE = None
+
+
+def recover_page_worker(section, pdf_path, destination, digest, progress):
+    global _WORKER_PIPELINE
+    section, _WORKER_PIPELINE = recover_page(section, pdf_path, destination, digest, _WORKER_PIPELINE, progress)
+    return section
