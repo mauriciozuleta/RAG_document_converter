@@ -1,3 +1,11 @@
+## 2026-10-07 ? Publish application to GitHub
+
+The user requested publication to mauriciozuleta/RAG_document_converter.
+
+- Connected origin and merged its initial README history without overwriting remote work.
+- Included existing local worker isolation, cancellation, page-checkpoint code and regression tests.
+- Added repository setup instructions; verified 34 tests (two external fixtures skipped).
+
 ## 2026-10-07 ? Prepare and verify a single-GPU OCR trial
 
 The user approved the required GPU software installation and requested readiness for a trial while the CPU app was running.
@@ -62,6 +70,16 @@ Requested a PDF-only table conversion option with CSV and Excel output.
 - Added tests for CSV quoting, identifiers, literal formulas, merged cells, multiple tables, and no-table errors.
 
 # Changelog
+
+## 2026-10-06 - Isolate OCR from the GUI
+
+The user reported a crash on a 351-page tariff PDF. The old app was still consuming CPU and marked not responding. Moved conversion into an isolated process and added recovery evidence without asserting an unproven library-level cause.
+
+- Added cancellable subprocess conversion and durable crash logs.
+- Saved detailed OCR data and Markdown checkpoints per page to reduce accumulated memory.
+- Limited OCR to four CPU threads and kept controls accessible during conversion.
+- Added worker success, failure, abrupt-exit, cancellation, and checkpoint tests.
+
 
 ## 2026-10-06 - Integrate local PaddleOCR
 

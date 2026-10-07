@@ -33,7 +33,8 @@ def create_pipeline():
     return PPStructureV3(device=device, use_doc_orientation_classify=True,
                          use_doc_unwarping=False, use_textline_orientation=True,
                          use_formula_recognition=False, use_chart_recognition=False,
-                         use_seal_recognition=False, enable_mkldnn=False)
+                         use_seal_recognition=False, enable_mkldnn=False,
+                         cpu_threads=4)
 
 
 def enrich_document(data, pdf_path, pipeline=None, assets_dir=None):
@@ -78,7 +79,13 @@ def enrich_document(data, pdf_path, pipeline=None, assets_dir=None):
             section['native_content'] = section['content']
             section['native_warnings'] = list(section['warnings'])
             section['warnings'] = ['Native PDF extraction: ' + warning for warning in section['warnings']]
-            section['ocr_result'] = raw
+            if assets_dir is not None:
+                checkpoint = Path(assets_dir) / f'page-{number}' / 'ocr_result.json'
+                checkpoint.parent.mkdir(parents=True, exist_ok=True)
+                checkpoint.write_text(json.dumps(raw, ensure_ascii=False), encoding='utf-8')
+                section['ocr_result_path'] = Path(assets_dir).name + f'/page-{number}/ocr_result.json'
+            else:
+                section['ocr_result'] = raw
             section['ocr_markdown'] = markdown
             section['ocr_render_scale'] = 2.5
             section['ocr_coordinate_system'] = 'Rendered image pixels, top-left origin; native PDF coordinates retained separately.'
@@ -86,6 +93,9 @@ def enrich_document(data, pdf_path, pipeline=None, assets_dir=None):
             section['warnings'].append('OCR/table structure is model-derived; compare critical values with retained native text or original page. Formula, chart, and seal recognition are disabled.')
             if not markdown.strip():
                 section['warnings'].append('OCR produced no Markdown; native content retained.')
+            if assets_dir is not None:
+                (checkpoint.parent / 'page.md').write_text(markdown, encoding='utf-8')
+            del predictions, prediction, raw, md_info
     data['extraction_method'] = 'Native PDF evidence plus local PaddleOCR PP-StructureV3 (CPU)'
     data['review_required'] = True
     return data

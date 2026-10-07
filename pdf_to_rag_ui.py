@@ -146,6 +146,9 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
 
         self._pdf_paths: list[str] = []
         self._running = False
+        self._cancel_event = threading.Event()
+        self._close_when_done = False
+        self.protocol("WM_DELETE_WINDOW", self._close_app)
         self._last_output_paths: list[str] = []
         self._last_out_dir: str = "./rag/"
         self._spinner_chars = ["|", "/", "-", "\\"]
@@ -350,6 +353,9 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             conv_frame, "Convert", self._start_conversion, width=20, big=True
         )
         self._convert_btn.pack()
+        self._cancel_btn = self._make_button(conv_frame, "Cancel", self._cancel_conversion, width=12)
+        self._cancel_btn.pack(pady=4)
+        self._cancel_btn.configure(state="disabled")
         self._ocr_var = tk.BooleanVar(value=True)
         tk.Checkbutton(conv_frame, text="Auto OCR missing text and embedded images (slower)",
                        variable=self._ocr_var, bg=BG, fg=TEXT, selectcolor=SURFACE).pack()
@@ -637,9 +643,11 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             )
             return
 
+        self._cancel_event.clear()
+        self._cancel_btn.configure(state="normal")
         self._running = True
         self._convert_btn.configure(state="disabled", text="Converting…")
-        self._progress.grid(row=5, column=0, pady=(0, 6))
+        self._progress.grid(row=6, column=0, pady=(0, 6))
         self._progress.start(12)
         self._start_status_spinner()
 
@@ -663,39 +671,45 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         pages: str = "",
         ocr_workers: int = 1,
     ) -> None:
+        from conversion_jobs import run_worker
         success, failed = 0, 0
-        output_paths: list[str] = []
-        for pdf in pdf_paths:
+        output_paths = []
+        for index, pdf in enumerate(pdf_paths, 1):
+            if self._cancel_event.is_set():
+                break
             try:
-                if len(pdf_paths) == 1:
-                    output_name = custom_name
-                else:
-                    chapter_num = detect_chapter_number(pdf)
-                    output_name = f"{custom_name}_chapter_{chapter_num}"
-
-                out = process_pdf(
-                    pdf,
-                    out_dir,
-                    output_filename=output_name,
-                    doc_type="auto",
-                    output_format=output_format,
-                    engine=engine,
-                    pages=pages,
-                    ocr_workers=ocr_workers,
-                )
+                output_name = custom_name if len(pdf_paths) == 1 else f"{custom_name}_{index}_{Path(pdf).stem}"
+                out = run_worker(dict(pdf_path=pdf, output_dir=out_dir,
+                                      output_filename=output_name, doc_type="auto",
+                                      output_format=output_format, engine=engine, pages=pages, ocr_workers=ocr_workers),
+                                 self._cancel_event, lambda text: print(text, end=""))
                 output_paths.extend(out)
                 success += 1
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 print(f"ERROR: {Path(pdf).name}: {exc}", file=sys.stderr)
                 failed += 1
-
-        # Back to main thread
         self.after(0, self._on_done, success, failed, output_paths, out_dir)
+
+    def _cancel_conversion(self):
+        self._cancel_event.set()
+        self._cancel_btn.configure(state="disabled")
+        self._status_var.set("Cancelling conversion...")
+
+    def _close_app(self):
+        if self._running:
+            self._close_when_done = True
+            self._cancel_conversion()
+        else:
+            self.destroy()
 
     def _on_done(
         self, success: int, failed: int,
         output_paths: list[str], out_dir: str,
     ) -> None:
+        self._cancel_btn.configure(state="disabled")
+        if self._close_when_done:
+            self.destroy()
+            return
         self._progress.stop()
         self._progress.grid_forget()
         self._convert_btn.configure(state="normal", text="Convert")
@@ -706,6 +720,10 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         # After conversion, clear selected PDFs from the drop zone.
         self._clear_selected_pdfs()
 
+        if self._cancel_event.is_set():
+            self._set_status_error()
+            self._log_err("Conversion cancelled. Completed page checkpoints remain in the output folder.")
+            return
         if failed == 0:
             self._set_status_ready()
             msg = f"Done!  {success} file(s) converted successfully."

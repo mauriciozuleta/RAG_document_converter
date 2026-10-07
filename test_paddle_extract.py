@@ -27,11 +27,15 @@ class PaddleTests(unittest.TestCase):
                                          markdown={'markdown_texts': '<table><tr><td>0101</td></tr></table>'})
             pipeline = Mock()
             pipeline.predict.return_value = [prediction]
-            enrich_document(data, path, pipeline=pipeline)
+            assets = Path(folder) / 'assets'
+            enrich_document(data, path, pipeline=pipeline, assets_dir=assets)
             section = data['sections'][0]
             self.assertIn('Native 0101', section['native_content'])
             self.assertIn('Native 0101', section['raw_text'])
             self.assertIn('<table>', section['content'])
+            self.assertNotIn('ocr_result', section)
+            self.assertTrue((assets / 'page-1' / 'ocr_result.json').exists())
+            self.assertTrue((assets / 'page-1' / 'page.md').exists())
             md = build_markdown(data)
             self.assertIn('<table>', md)
             self.assertIn('Native 0101', md)

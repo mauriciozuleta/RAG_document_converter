@@ -18,7 +18,13 @@ Run `python -m unittest -v`. Set `HTS_TEST_PDF` to the supplied 2026 Revision 20
 
 Use `launch_app.ps1` to start the isolated `.venv` environment. Recreate it with `python -m venv .venv` and `.\.venv\Scripts\python -m pip install -r requirements-ocr.txt`. PaddleOCR 3.7.0 and PaddlePaddle 3.3.1 are pinned. The page field accepts `911-920` or `1,3-5`; blank processes all pages. The corresponding CLI flag is `--pages`.
 
-`paddle_extract.py` renders one page at a time, applies PP-StructureV3, and retains native content plus structured model JSON. `content` becomes model Markdown, `native_content` preserves the prior extraction, and `ocr_result` includes recognition/table data. OCR coordinates are image pixels; native coordinates remain PDF points. Markdown includes model output followed by fenced native text for comparison. Extracted model images are stored in an adjacent `_ocr_assets` folder, which must accompany Markdown when moving files. OCR failures abort the conversion rather than silently falling back.
+`paddle_extract.py` renders one page at a time, applies PP-StructureV3, and retains native content plus structured model JSON. `content` becomes model Markdown, `native_content` preserves the prior extraction, and `ocr_result_path` points to a per-page JSON checkpoint containing recognition/table data. OCR coordinates are image pixels; native coordinates remain PDF points. Markdown includes model output followed by fenced native text for comparison. Extracted model images are stored in an adjacent `_ocr_assets` folder, which must accompany Markdown when moving files. OCR failures abort the conversion rather than silently falling back. Detailed model output is written per page instead of accumulated in RAM; `page.md` checkpoints remain available after cancellation or failure. CPU inference is limited to four threads.
+
+### Worker isolation and recovery
+
+The GUI runs `conversion_worker.py` in a separate Python process through `conversion_jobs.py`. Native Paddle errors or abrupt exits cannot directly terminate the Tk process. Worker stdout, stderr, and Python fatal-error traces are retained in `<output>/.conversion_logs/`. The UI displays the log path and exit code on failure. Cancel terminates the worker process tree; closing a running app cancels before exiting. The progress bar no longer overlaps the conversion controls. Batch output names include an index and source filename to avoid chapter-number collisions.
+
+A reported hang was confirmed with Windows reporting the previous GUI process as not responding. A Windows RADAR warning suggested possible memory pressure/leak behavior but did not establish a specific OCR-library root cause. Native extraction on the supplied 351-page tariff PDF succeeded for the first page. Worker success, exception, abrupt exit, cancellation, and per-page checkpoint behavior have regression coverage.
 
 ### Project Overview
 
