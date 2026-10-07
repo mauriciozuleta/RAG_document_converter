@@ -31,7 +31,7 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
     pages = selected if selected is not None else list(range(total_pages))
     if not pages or any(n < 0 or n >= total_pages for n in pages):
         raise ValueError('Requested page range exceeds the document length.')
-    cache = destination / '.table_checkpoints' / f'{digest[:20]}-v1-{engine}'
+    cache = destination / '.table_checkpoints' / f'{digest[:20]}-v2-images-{engine}'
     cache.mkdir(parents=True, exist_ok=True)
     stored = {}
     for n in pages:
@@ -54,10 +54,29 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
         else:
             page = next(layouts)
             tables, text = extract_grids(page)
+            from document_extract import walk
+            from pdfminer.layout import LTImage
+            regions = [list(obj.bbox) for obj in walk(page) if isinstance(obj, LTImage)]
+            image_results = []
             method = 'native'
             status = 'tables extracted' if tables else 'No continuous ruled table detected; review page (borderless/complex tables are not inferred).'
             needs_ocr = len(text.strip()) < 40 or '\ufffd' in text or '(cid:' in text
-            if not tables and needs_ocr and engine == 'paddle':
+            if regions and engine == 'paddle':
+                from image_ocr import enrich_images
+                from paddle_extract import create_pipeline
+                pipeline = pipeline or create_pipeline()
+                section = {'source_page': n+1, 'content': text, 'warnings': [], 'image_regions': regions}
+                enrich_images(section, pdf_path, pipeline, cache/'ocr')
+                image_results = section['image_ocr']
+                for result in image_results:
+                    parser = TableParser()
+                    parser.feed(result['markdown'])
+                    if parser.rows is not None:
+                        raise ValueError(f'Incomplete image table on page {n+1}.')
+                    tables.extend({'rows':rows,'merges':merges} for rows,merges in parser.tables)
+                method = 'native + image OCR'
+                status = 'Native content retained; embedded images processed. Review image OCR artifacts, including non-table text.'
+            elif not tables and needs_ocr and engine == 'paddle':
                 from document_extract import inspect_page
                 from paddle_extract import create_pipeline, enrich_document
                 print(f'[INFO] Page {n+1}: sparse/unreadable text; starting optional OCR.',flush=True)
@@ -74,12 +93,18 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
                 status = 'tables extracted; review OCR values' if tables else 'OCR found no structured tables; review page.'
             elif not tables and needs_ocr:
                 status = 'Sparse/unreadable text: OCR may be needed. OCR is disabled.'
-            record = {'source_page': n+1,'tables':tables,'method':method,'status':status}
+            if regions and engine != 'paddle':
+                status += ' Embedded images not processed: automatic OCR is disabled.'
+            record = {'source_page': n+1,'tables':tables,'method':method,'status':status, 'image_ocr':image_results}
             target = cache/f'page-{n+1}.json'
             temporary = target.with_suffix('.tmp')
             temporary.write_text(json.dumps(record,ensure_ascii=False),encoding='utf-8')
             replace_checkpoint(temporary, target)
         report.append({k:v for k,v in record.items() if k != 'tables'} | {'table_count':len(record['tables']), 'table_notes':[t['note'] for t in record['tables'] if 'note' in t]})
+        if record.get('image_ocr'):
+            image_path = destination / f'{base_name}_page-{n+1}_image_ocr.md'
+            image_path.write_text('\n\n'.join(f'## PDF page {n+1}, image {r["region"]}\n{r["status"]}\n\n{r["markdown"]}' for r in record['image_ocr']), encoding='utf-8')
+            paths.append(str(image_path))
         if record['tables']:
             if fmt == 'csv':
                 paths.extend(export_tables({'sections':[record]},output_dir,base_name,fmt))
@@ -94,7 +119,7 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None):
         report_temp.write_text(json.dumps({'source':str(pdf_path),'requested_pages':len(pages),'completed_pages':index,'pages':report},ensure_ascii=False,indent=2),encoding='utf-8')
         replace_checkpoint(report_temp, report_path)
     if fmt == 'xlsx' and sections:
-        paths = export_tables({'sections':sections},output_dir,base_name,fmt)
+        paths.extend(export_tables({'sections':sections},output_dir,base_name,fmt))
     if not paths:
         raise ValueError(f'No tables exported. See {report_path}. Enable optional OCR for scanned pages; digital borderless tables require review.')
     missing = sum(not p['table_count'] for p in report)

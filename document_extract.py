@@ -57,7 +57,7 @@ def inspect_page(page):
         issues.append('Rules or vector graphics detected; table relationships and diagrams require review.')
     return {'source_lines': source, 'raw_text': raw,
             'layout_text': '\n'.join(visual), 'warnings': issues,
-            'image_count': len(images), 'page_size': [page.width, page.height],
+            'image_count': len(images), 'image_regions': [list(image.bbox) for image in images], 'page_size': [page.width, page.height],
             'reading_order': 'PDF layout heuristic; coordinates retained for verification'}
 
 

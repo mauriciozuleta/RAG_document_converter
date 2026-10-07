@@ -1,3 +1,11 @@
+## 2026-10-07 ? Recover embedded images on mixed-content pages
+
+The user reported that native-first conversion skipped images and requested automatic OCR of missing content.
+
+- Enabled automatic OCR in the GUI and added image-region detection and cropped OCR while retaining native evidence.
+- Preserved image-derived tables and non-table Markdown sidecars for spreadsheet exports.
+- Invalidated old table checkpoints that omitted images; tested mixed-content rendering, outputs and resume.
+
 ## 2026-10-07 ? Remove forced OCR from large-document conversion
 
 The user requested a practical update for roughly 1,000-page digital PDFs after forced OCR caused excessive runtimes.

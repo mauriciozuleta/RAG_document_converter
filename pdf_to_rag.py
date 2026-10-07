@@ -710,16 +710,25 @@ def process_pdf(
         raise ValueError("Requested page range exceeds the document length.")
     if engine == "paddle":
         from paddle_extract import enrich_document
+        from paddle_extract import create_pipeline
+        from image_ocr import enrich_images
+        image_pages = [section for section in data["sections"] if section.get("image_regions")]
         needs_ocr = [section for section in data["sections"]
-                     if len(section.get("raw_text", "").strip()) < 40
-                     or "\ufffd" in section.get("raw_text", "")
-                     or "(cid:" in section.get("raw_text", "")]
-        if needs_ocr:
-            enrich_document({"sections": needs_ocr}, pdf_path,
-                            assets_dir=Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets"))
-            data["extraction_method"] += "; optional OCR on sparse/unreadable pages"
+                     if not section.get("image_regions") and
+                     (len(section.get("raw_text", "").strip()) < 40
+                      or "\ufffd" in section.get("raw_text", "")
+                      or "(cid:" in section.get("raw_text", ""))]
+        if image_pages or needs_ocr:
+            pipeline = create_pipeline()
+            assets = Path(output_dir) / (Path(pdf_path).stem + "_ocr_assets")
+            for section in image_pages:
+                enrich_images(section, pdf_path, pipeline, assets)
+            if needs_ocr:
+                enrich_document({"sections": needs_ocr}, pdf_path, pipeline=pipeline, assets_dir=assets)
+            data["extraction_method"] += "; OCR of embedded images and sparse/unreadable pages"
+            data["review_required"] = True
         else:
-            print("[INFO] All pages contain readable text; OCR skipped.", flush=True)
+            print("[INFO] Readable text with no embedded images; OCR skipped.", flush=True)
 
     # --- Validate ---
     warnings = validate(data)
