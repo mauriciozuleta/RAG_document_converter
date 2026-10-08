@@ -335,7 +335,7 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             bg=BG,
         ).pack(side="left", padx=(0, 8))
 
-        self._format_var = tk.StringVar(value="json")
+        self._format_var = tk.StringVar(value="both")
         for label, value in (("JSON", "json"), ("Markdown", "md"), ("Both", "both"), ("Tables CSV", "csv"), ("Tables Excel", "xlsx")):
             tk.Radiobutton(
                 fmt_frame,
@@ -414,6 +414,7 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             self._save_copies, width=18,
         )
         self._save_as_btn.grid(row=1, column=1, padx=4, pady=4)
+        self._make_button(self._action_bar, "Open final document", self._open_final_document, width=20).grid(row=1, column=2, padx=4, pady=4)
 
         tk.Label(
             self._action_bar,
@@ -760,6 +761,11 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
             os.startfile(folder)  # Windows; harmless on this platform
         else:
             messagebox.showwarning("Not found", f"Folder not found:\n{folder}")
+
+    def _open_final_document(self) -> None:
+        paths = sorted(self._last_output_paths, key=lambda p: Path(p).suffix != '.md')
+        if paths and Path(paths[0]).is_file():
+            os.startfile(str(Path(paths[0]).resolve()))
 
     def _save_copies(self) -> None:
         """Copy the generated JSON file(s) to a user-chosen location."""

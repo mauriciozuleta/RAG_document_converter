@@ -1,3 +1,16 @@
+## 2026-10-08 - Remove benchmarks from normal startup
+
+During OCR validation, the user reported launch taking more than five minutes due to benchmarks. Normal launch now checks package metadata and live memory only; full OCR benchmarks require an explicit Rebenchmark invocation. GPU launch skips CPU environment preparation. Same-hardware historical measurements may be reused as labeled estimates, and fresh setups default to at most two estimated workers. A regression test proves ordinary startup does not run benchmarks or prewarm models. The warmed local launcher returned in under one second.
+
+## 2026-10-08 - Improve OCR recognition and final-document readability
+
+The user authorized controlled comparisons after test-4 showed corrupted text and symbols. Tested fresh crops from pages 2, 4 and 596 across resolutions, recognizers and detector settings, then selected a measured improvement while retaining explicit accuracy limitations.
+
+- Added versioned 300-DPI English recognition profile and tuned detection; stale checkpoints invalidate automatically.
+- Aligned isolated cuDNN with the compiled runtime and added verified startup repair.
+- Added readable Markdown tables, grouped native text, unverified/quality annotations and an Open final document action.
+- Added regression tests and a documented accuracy report, plus combined sample exports and a 50-page check.
+
 ## 2026-10-07 - Offer three GPU workers with measured memory limits
 
 The user freed RAM and requested a third GPU worker option, with startup memory benchmarking to limit concurrency when resources are insufficient.

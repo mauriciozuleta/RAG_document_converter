@@ -30,11 +30,12 @@ def create_pipeline():
         if not paddle.is_compiled_with_cuda() or paddle.device.cuda.device_count() < 1:
             raise RuntimeError('GPU OCR requires the GPU environment and an available CUDA device.')
     print(f'[INFO] Loading OCR on {device}', flush=True)
+    from ocr_settings import pipeline_options
     return PPStructureV3(device=device, use_doc_orientation_classify=True,
                          use_doc_unwarping=False, use_textline_orientation=True,
                          use_formula_recognition=False, use_chart_recognition=False,
                          use_seal_recognition=False, enable_mkldnn=False,
-                         cpu_threads=4)
+                         cpu_threads=4, **pipeline_options())
 
 
 def enrich_document(data, pdf_path, pipeline=None, assets_dir=None):

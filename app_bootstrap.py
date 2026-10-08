@@ -35,8 +35,8 @@ def cuda_channel(gpu):
 
 
 def signature(gpu):
-    files=['requirements.txt','requirements-ocr.txt','requirements-gpu.txt','hardware_benchmark.py','paddle_extract.py']
-    data={'gpu':gpu,'python':list(sys.version_info[:2]),'cpu':platform.processor(),'version':1,
+    files=['requirements.txt','requirements-ocr.txt','requirements-gpu.txt','hardware_benchmark.py','paddle_extract.py','ocr_settings.py']
+    data={'gpu':gpu,'python':list(sys.version_info[:2]),'cpu':platform.processor(),'version':1,'ocr_model':os.environ.get('PDF_RAG_OCR_MODEL'),
           'files':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in files}}
     return hashlib.sha256(json.dumps(data,sort_keys=True).encode()).hexdigest()[:24]
 
@@ -78,14 +78,29 @@ if mode.startswith('gpu'):
     paddle.set_device(mode)
     assert float(paddle.matmul(paddle.ones([8,8]),paddle.ones([8,8]))[0,0])==8
     paddle.device.synchronize()
-print('RUNTIME='+json.dumps({'paddle':paddle.__version__,'ocr':m.version('paddleocr'),'cuda':str(paddle.version.cuda()),'gpu':paddle.device.cuda.get_device_name(0) if mode.startswith('gpu') else None}))
+    paddle.nn.Conv2D(3,4,3)(paddle.ones([1,3,16,16]))
+    paddle.device.synchronize()
+print('RUNTIME='+json.dumps({'paddle':paddle.__version__,'ocr':m.version('paddleocr'),'cuda':str(paddle.version.cuda()),'cudnn_build':str(paddle.version.cudnn()),'cudnn_package':m.version('nvidia-cudnn-cu12') if mode.startswith('gpu') else None,'gpu':paddle.device.cuda.get_device_name(0) if mode.startswith('gpu') else None}))
 '''
 
 
-def probe(python,device,env):
+LIGHT_PROBE = '''import importlib.metadata as m, importlib.util, json, os, re
+from pathlib import Path
+for name in ['paddle','paddleocr','tkinter','tkinterdnd2','pypdfium2','openpyxl','pdfminer']:
+    assert importlib.util.find_spec(name), name
+source=(Path(importlib.util.find_spec('paddle').origin).parent/'version'/'__init__.py').read_text(encoding='utf-8')
+def version(name):
+    match=re.search(name+r"\\s*=\\s*['\\\"]([^'\\\"]+)['\\\"]",source)
+    return match.group(1) if match else ''
+gpu=os.environ['PDF_RAG_OCR_DEVICE'].startswith('gpu')
+print('RUNTIME='+json.dumps({'paddle':m.version('paddlepaddle-gpu' if gpu else 'paddlepaddle'),'ocr':m.version('paddleocr'),'cuda':version('cuda_version'),'cudnn_build':version('cudnn_version'),'cudnn_package':m.version('nvidia-cudnn-cu12') if gpu else None}))
+'''
+
+
+def probe(python,device,env,quick=True):
     if not Path(python).exists():return None
     try:
-        result=subprocess.run([str(python),'-c',PROBE],env={**env,'PDF_RAG_OCR_DEVICE':device},capture_output=True,text=True,timeout=120)
+        result=subprocess.run([str(python),'-c',LIGHT_PROBE if quick else PROBE],env={**env,'PDF_RAG_OCR_DEVICE':device},capture_output=True,text=True,timeout=20 if quick else 120)
         if result.returncode:return None
         line=next(line for line in result.stdout.splitlines() if line.startswith('RUNTIME='))
         return json.loads(line[8:])
@@ -100,14 +115,14 @@ def ensure_environment(device,gpu,env):
     expected_cuda='12.9' if channel=='cu129' else '12.6'
     if found and found['paddle']=='3.3.1' and found['ocr']=='3.7.0' and (device=='cpu' or found['cuda'].startswith(expected_cuda)):
         print(f'[SETUP] Existing {device} environment verified: {python}',flush=True)
-        return python
+        return repair_cudnn(python, device, found, env)
     # Never replace an environment being used by a running conversion.
     if python.exists():
         folder=ROOT/'.runtime'/('cpu-py'+str(sys.version_info.minor) if device=='cpu' else channel+'-py'+str(sys.version_info.minor))
         python=folder/'Scripts'/'python.exe'
         found=probe(python,device,env)
         if found and found['paddle']=='3.3.1' and found['ocr']=='3.7.0' and (device=='cpu' or found['cuda'].startswith(expected_cuda)):
-            return python
+            return repair_cudnn(python, device, found, env)
     run_logged([sys.executable,'-m','venv',str(folder)],STATE/f'{device[:3]}-venv.log',env)
     if device.startswith('gpu'):
         run_logged([str(python),'-m','pip','install','paddlepaddle-gpu==3.3.1','--index-url',f'https://www.paddlepaddle.org.cn/packages/stable/{channel}/'],STATE/f'{channel}-install.log',env,timeout=3600)
@@ -118,6 +133,19 @@ def ensure_environment(device,gpu,env):
     found=probe(python,device,env)
     if not found:
         raise RuntimeError(f'{device} runtime verification failed. Check .runtime logs and the NVIDIA driver. No silent CPU fallback was made.')
+    return repair_cudnn(python, device, found, env)
+
+
+def repair_cudnn(python, device, found, env):
+    # Paddle 3.3.1 cu126 Windows metadata pins 9.5 although its binary uses 9.9.
+    if device.startswith('gpu') and found.get('cudnn_build', '').startswith('9.9'):
+        if found.get('cudnn_package') != '9.9.0.52':
+            print('[SETUP] Aligning isolated cuDNN runtime with Paddle build 9.9.', flush=True)
+            run_logged([str(python), '-m', 'pip', 'install', '--no-deps', '--upgrade',
+                        'nvidia-cudnn-cu12==9.9.0.52'], STATE/'cudnn-repair.log', env, timeout=3600)
+            verified = probe(python, device, env, quick=False)
+            if not verified or verified.get('cudnn_package') != '9.9.0.52':
+                raise RuntimeError('cuDNN repair failed GPU convolution verification.')
     return python
 
 
@@ -189,13 +217,22 @@ def main():
             env['CUDA_VISIBLE_DEVICES']=gpu['uuid']
             print(f'[SETUP] NVIDIA GPU: {gpu["name"]}, {gpu["memory_mib"]} MiB; package {cuda_channel(gpu)}. Intel display GPUs are not CUDA devices.',flush=True)
         else:print('[SETUP] CPU mode: no NVIDIA GPU detected or CPU-only requested.',flush=True)
-        cpu_python=ensure_environment('cpu',None,env)
+        cpu_python=ensure_environment('cpu',None,env) if not gpu or args.rebenchmark else None
         gpu_python=ensure_environment('gpu:0',gpu,env) if gpu else None
         key=signature(gpu);folder=STATE/'benchmarks'/key;folder.mkdir(parents=True,exist_ok=True)
         profile_path=folder/'profile.json'
         try:profile=json.loads(profile_path.read_text(encoding='utf-8')) if not args.rebenchmark else None
         except (OSError,ValueError):profile=None
-        if not profile:
+        if not profile and not args.rebenchmark:
+            try:
+                previous = json.loads((STATE/'last_profile.json').read_text(encoding='utf-8'))
+            except (OSError, ValueError):
+                previous = {}
+            same_gpu = gpu and (previous.get('gpu') or {}).get('uuid') == gpu['uuid'] and (previous.get('gpu') or {}).get('driver') == gpu['driver']
+            reports = previous.get('benchmarks', {}) if same_gpu else {}
+            profile = {'device':'gpu:0' if gpu else 'cpu', 'workers':2, 'gpu':gpu,
+                       'benchmarks':reports, 'benchmark_current':False}
+        if args.rebenchmark:
             print('[SETUP] Preparing OCR models (first use may download model files).', flush=True)
             run_logged([str(cpu_python), '-u', '-c', 'from paddle_extract import create_pipeline; create_pipeline()'], folder/'model-prepare.log', {**env, 'PDF_RAG_OCR_DEVICE':'cpu'}, timeout=1800)
             reports={'cpu':benchmark(cpu_python,'cpu',1,folder,env)}
@@ -203,31 +240,35 @@ def main():
                 reports['gpu1']=benchmark(gpu_python,'gpu:0',1,folder,env)
                 reports['gpu2']=benchmark(gpu_python,'gpu:0',2,folder,env)
             device,workers,note=select_configuration(gpu,reports)
-            profile={'device':device,'workers':workers,'note':note,'gpu':gpu,'benchmarks':reports}
+            profile={'device':device,'workers':workers,'note':note,'gpu':gpu,'benchmarks':reports,'benchmark_current':True}
             profile_path.write_text(json.dumps(profile,indent=2),encoding='utf-8')
         reports = profile['benchmarks']
         memory = snapshot(gpu)
         budget = worker_budget(reports, bool(gpu))
         limit = capacity(memory, budget, 3 if gpu else 2)
         print(f'[MEMORY] Available: {memory}; per-worker budget: {budget}; capacity: {limit}.', flush=True)
-        if gpu and limit >= 2 and reports.get('gpu2', {}).get('skipped_memory'):
+        if args.rebenchmark and gpu and limit >= 2 and reports.get('gpu2', {}).get('skipped_memory'):
             reports['gpu2'] = benchmark(gpu_python, 'gpu:0', 2, folder, env)
             budget = worker_budget(reports)
             memory = snapshot(gpu)
             limit = capacity(memory, budget)
-        if gpu and reports.get('gpu2', {}).get('ok') and limit >= 3 and ('gpu3' not in reports or reports['gpu3'].get('skipped_memory')):
+        if args.rebenchmark and gpu and reports.get('gpu2', {}).get('ok') and limit >= 3 and ('gpu3' not in reports or reports['gpu3'].get('skipped_memory')):
             reports['gpu3'] = benchmark(gpu_python, 'gpu:0', 3, folder, env)
             budget = worker_budget(reports)
             memory = snapshot(gpu)
             limit = capacity(memory, budget)
-        if gpu:
+        if gpu and reports:
             validated = [n for n in range(1, limit + 1) if reports.get(f'gpu{n}', {}).get('ok')]
             limit = max(validated, default=0)
+        elif gpu:
+            limit = min(limit, 2)
         if limit == 0:
             raise RuntimeError('Insufficient available memory for a validated OCR worker. Free memory and relaunch.')
         profile.update(memory=memory, memory_budget=budget, max_workers=limit)
         profile['workers'] = min(2, limit)
         profile['note'] = f"{profile['workers']} default OCR worker(s); memory/benchmark limit: {limit}. RAM free: {memory['ram_gib']:.1f} GiB" + (f"; VRAM free: {memory['vram_gib']:.1f} GiB." if gpu else '.')
+        if not profile.get('benchmark_current', True):
+            profile['note'] += ' Estimated capacity; use -Rebenchmark for current OCR measurements.'
         profile_path.write_text(json.dumps(profile,indent=2),encoding='utf-8')
         print(f'[SETUP] {profile["note"]} Report: {profile_path}',flush=True)
         (STATE/'last_profile.json').write_text(json.dumps(profile,indent=2),encoding='utf-8')

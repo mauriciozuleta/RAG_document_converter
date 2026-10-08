@@ -572,9 +572,16 @@ def build_markdown(data: dict) -> str:
         for warning in sec.get("warnings", []):
             lines.extend([f"> Extraction review: {warning}", ""])
         if sec.get("ordered_blocks"):
-            for block in sec["ordered_blocks"]:
+            export_blocks = []
+            for block in sec['ordered_blocks']:
+                if block['kind'] == 'native' and export_blocks and export_blocks[-1]['kind'] == 'native':
+                    export_blocks[-1]['text'] += '\n' + block['text']
+                else:
+                    export_blocks.append(dict(block))
+            for block in export_blocks:
                 if block["kind"] == "ocr":
-                    lines.extend([block["text"], ""])
+                    from ocr_presentation import readable_markdown
+                    lines.extend(["> OCR text — accuracy unverified; compare with the source.", "", readable_markdown(block["text"]), ""])
                 else:
                     text = block["text"]
                     longest = max((len(m[0]) for m in re.finditer(r"`+", text)), default=0)

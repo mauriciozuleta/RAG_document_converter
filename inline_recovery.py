@@ -62,6 +62,12 @@ def render_section(section):
         result = results.get(index)
         if result and result.get('markdown','').strip():
             flag['status'] = 'converted'
+            flag['accuracy_verified'] = False
+            flag['quality_warnings'] = result.get('quality_warnings', [])
+            for concern in flag['quality_warnings']:
+                warning = f'Image {index}: {concern}'
+                if warning not in section.setdefault('warnings', []):
+                    section['warnings'].append(warning)
             text = result['markdown']
         else:
             if result:
@@ -102,7 +108,8 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True, workers=1):
         nonlocal processed_flags
         for flag in section['ocr_flags']:
             processed_flags += 1
-            print(f'[INFO] OCR checked {processed_flags} of {total_flags}: {flag["id"]} - {flag["status"]}; {total_flags-processed_flags} remaining.', flush=True)
+            status = 'text recovered, accuracy unverified' if flag['status'] == 'converted' else flag['status']
+            print(f'[INFO] OCR checked {processed_flags} of {total_flags}: {flag["id"]} - {status}; {total_flags-processed_flags} remaining.', flush=True)
         if all(f['status'] == 'converted' for f in section['ocr_flags']):
             section['warnings'] = [w for w in section.get('warnings', []) if not w.startswith('Embedded images are not transcribed')]
         save_flags()
@@ -145,6 +152,7 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True, workers=1):
                     completed(section)
     unresolved = sum(f['status'] != 'converted' for s in sections for f in s.get('ocr_flags',[]))
     print(f'[INFO] Recovery complete: {unresolved} unresolved flags remain visible in the document.',flush=True)
+    print('[INFO] Recovery counts indicate text presence, not accuracy. All OCR text requires source review.', flush=True)
 
 
 def recover_page(section, pdf_path, destination, digest, pipeline=None, progress=(0, 0)):
@@ -190,8 +198,8 @@ def recover_page_worker(section, pdf_path, destination, digest, progress):
 
 
 def recovery_cache_path(section, destination, digest):
-    import os
-    policy = 'inline-v1' if os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu') == 'cpu' else 'inline-v1-gpu'
+    from ocr_settings import cache_policy
+    policy = cache_policy()
     key = hashlib.sha256(json.dumps([digest, section['image_regions'], policy]).encode()).hexdigest()[:24]
     return Path(destination)/f"page-{section['source_page']}"/f'recovery-{key}.json'
 

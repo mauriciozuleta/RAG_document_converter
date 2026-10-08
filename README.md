@@ -16,13 +16,13 @@ Clone the repository (or run `git pull`), then double-click **launch_app.bat**, 
 .\launch_app.ps1
 ```
 
-The launcher finds 64-bit Python 3.11?3.13, or installs Python 3.13 through Windows Package Manager if available. It creates isolated environments, installs missing dependencies, and downloads OCR models. First setup needs internet access and may download several GB. A compatible NVIDIA driver must already be installed.
+The launcher finds 64-bit Python 3.11?3.13, or installs Python 3.13 through Windows Package Manager if available. It creates isolated environments, installs missing dependencies. OCR models download when first needed for conversion or an explicit benchmark. First setup needs internet access and may download several GB. A compatible NVIDIA driver must already be installed.
 
 Startup selects the NVIDIA device by UUID, independently of Windows GPU numbering. Blackwell cards such as RTX 5070 Ti use CUDA 12.9 packages; older supported cards use CUDA 12.6. Intel display GPUs are not selected for CUDA OCR.
 
-First setup benchmarks CPU OCR and up to three GPU workers on a small synthetic table, checking available memory before each test. **Two GPU OCR workers plus a CPU coordinator are the default** when the two-worker test succeeds. The coordinator renders/crops flagged regions and feeds a bounded queue. Each GPU worker retains its own OCR pipeline; results return to their original document positions. The worker selector offers three GPU workers when its benchmark passes and live memory permits. Every launch measures free RAM and NVIDIA VRAM, even when throughput benchmarks are cached. The limit uses the largest measured per-worker peak RAM and reserved/allocated VRAM, adds 25% headroom (minimum 2.5 GiB per worker), and reserves 3 GiB RAM for Windows/coordinator plus 1 GiB VRAM. Memory is checked again before OCR starts, and the log explains any reduction. If no worker fits, conversion stops with an explicit message. If the two-worker test fails, a successful one-worker test permits an explicit one-worker fallback. GPU failure is never silently replaced with CPU processing.
+Normal launch performs lightweight package and free-memory checks without loading OCR models or running benchmarks. Run `launch_app.ps1 -Rebenchmark` explicitly to benchmark CPU OCR and up to three GPU workers. **Two GPU OCR workers plus a CPU coordinator are the default**, subject to available memory. The coordinator renders/crops flagged regions and feeds a bounded queue. Each GPU worker retains its own OCR pipeline; results return to their original document positions. The worker selector offers three GPU workers when a saved three-worker benchmark passed and live memory permits. Without benchmark history, the maximum is two estimated workers. Every launch measures free RAM and NVIDIA VRAM, even when throughput benchmarks are cached. The limit uses the largest measured per-worker peak RAM and reserved/allocated VRAM, adds 25% headroom (minimum 2.5 GiB per worker), and reserves 3 GiB RAM for Windows/coordinator plus 1 GiB VRAM. Memory is checked again before OCR starts, and the log explains any reduction. If no worker fits, conversion stops with an explicit message. If the two-worker test fails, a successful one-worker test permits an explicit one-worker fallback. GPU failure is never silently replaced with CPU processing.
 
-Reports and installation logs are under `.runtime/`; the latest profile is `.runtime/last_profile.json`. Benchmarks are cached for the hardware, driver and relevant dependency configuration. Later launches verify the environment and reuse the profile. Small synthetic tests cannot predict throughput or peak memory for every document.
+Reports and installation logs are under `.runtime/`; the latest profile is `.runtime/last_profile.json`. Current benchmark results are cached. If OCR settings change, startup can reuse same-hardware/driver measurements as an explicitly labeled estimate; it does not silently start new benchmarks. Models load when conversion starts. Small synthetic tests cannot predict throughput or peak memory for every document.
 
 ```powershell
 .\launch_app.ps1 -Rebenchmark  # Repeat hardware tests
@@ -43,3 +43,13 @@ For representative document-page measurements, see [GPU_TRIAL.md](GPU_TRIAL.md).
 Local environments and generated verification outputs are excluded from Git. Two optional source-PDF tests require the external fixture described in the project wiki.
 
 Memory limits are estimates from a small fixture, not a guarantee against allocation failures on larger pages. If other applications have been closed, relaunch to refresh the selectable limit; use `-Rebenchmark` to retry a failed OCR benchmark.
+
+## OCR accuracy and readable output
+
+The default OCR profile uses 300 DPI crops, English PP-OCRv5 recognition and adjusted text detection, validated on pages 2, 4 and 596 of the supplied tariff PDF. These changes invalidate old OCR checkpoints automatically. For multilingual recognition set `$env:PDF_RAG_OCR_MODEL = "PP-OCRv5_server_rec"` before launching; results still require review. See [ACCURACY_REVIEW.md](ACCURACY_REVIEW.md) for measured improvements and remaining errors.
+
+The GUI defaults to JSON plus one combined Markdown document. Use **Open final document** after conversion; nested `_ocr_assets` folders are checkpoints/debug evidence. Simple tables render as Markdown; tables with merged cells retain HTML. OCR is explicitly unverified, with extra warnings for suspect text, low-confidence lines and symbols. No spelling or numeric values are silently guessed.
+
+For Paddle builds reporting cuDNN 9.9, startup aligns the isolated GPU environment to nvidia-cudnn-cu12 9.9.0.52 and verifies GPU convolution. Paddle 3.3.1 cu126 Windows has inconsistent dependency metadata pinning 9.5: this targeted override produces a known `pip check` conflict. System CUDA files are unchanged.
+
+References: [PaddleOCR detection settings](https://paddlepaddle.github.io/PaddleOCR/main/en/version3.x/pipeline_usage/OCR.html), [official English recognition model](https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec).

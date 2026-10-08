@@ -16,7 +16,8 @@ def prepare_images(section, pdf_path, folder):
         page=pdf[section['source_page']-1]
         try:
             width,height=page.get_size()
-            bitmap=page.render(scale=2.5)
+            from ocr_settings import RENDER_SCALE
+            bitmap=page.render(scale=RENDER_SCALE)
             try:
                 rendered=bitmap.to_pil()
                 try:
@@ -69,13 +70,17 @@ def enrich_images(section, pdf_path, pipeline, assets_dir):
             if isinstance(raw,str):raw=json.loads(raw)
             info=prediction.markdown;markdown=info.get('markdown_texts','')
             if not isinstance(markdown,str):raise RuntimeError('Unsupported image OCR Markdown format.')
+            from ocr_presentation import quality_warnings
+            concerns = quality_warnings(raw, markdown)
+            for concern in concerns:
+                section.setdefault('warnings', []).append(f'Image {index}: {concern}')
             region_dir=destination/str(index);region_dir.mkdir(exist_ok=True)
             for name,image in info.get('markdown_images',{}).items():
                 target=region_dir/Path(name).name;image.save(target)
                 markdown=markdown.replace(name,target.resolve().as_posix())
             (region_dir/'ocr_result.json').write_text(json.dumps(raw,ensure_ascii=False),encoding='utf-8')
             (region_dir/'content.md').write_text(markdown,encoding='utf-8')
-            results.append({'region':index,'bbox':bbox,'markdown':markdown,'status':'OCR completed; review accuracy.' if markdown.strip() else 'No text recognized; review image.','artifact':str(region_dir/'content.md')})
+            results.append({'region':index,'bbox':bbox,'markdown':markdown,'accuracy_verified':False,'quality_warnings':concerns,'status':'OCR completed; review accuracy.' if markdown.strip() else 'No text recognized; review image.','artifact':str(region_dir/'content.md')})
     recovered='\n\n'.join(f'### Image {r["region"]}\n\n{r["markdown"]}' for r in results)
     section['image_ocr_markdown']=recovered
     section['native_content']=section['content']

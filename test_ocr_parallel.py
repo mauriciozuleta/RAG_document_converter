@@ -41,7 +41,8 @@ class ParallelOCRTests(unittest.TestCase):
             digest=hashlib.sha256(pdf.read_bytes()).hexdigest()
             assets=Path(folder)/'assets'
             regions=[[0,0,100,100]]
-            key=hashlib.sha256(json.dumps([digest,regions,'inline-v1']).encode()).hexdigest()[:24]
+            from ocr_settings import cache_policy
+            key=hashlib.sha256(json.dumps([digest,regions,cache_policy()]).encode()).hexdigest()[:24]
             sections=[]
             for page in range(1,5):
                 checkpoint=assets/f'page-{page}'/f'recovery-{key}.json'

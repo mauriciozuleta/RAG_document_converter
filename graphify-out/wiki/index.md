@@ -1,3 +1,15 @@
+# Fast launch policy (2026-10-08)
+
+Normal launch uses LIGHT_PROBE to inspect installed package metadata without importing Paddle/PaddleOCR or allocating CUDA tensors. It checks current free memory, skips the unused CPU environment on GPU launch, and never calls benchmarks or model prewarming. `-Rebenchmark` explicitly runs those expensive operations. A changed OCR profile can reuse prior same-GPU/driver benchmark measurements as estimates, clearly labeled; absent history caps at two estimated workers. Dependency installation/targeted runtime repairs can still take time, and repairs use a full convolution probe. Regression coverage verifies no normal-launch benchmark/model-loading subprocess occurs. This supersedes earlier automatic benchmark descriptions below.
+
+# Accuracy profile and export changes (2026-10-08)
+
+`ocr_settings.py` centralizes 300 DPI rendering, default en_PP-OCRv5_mobile_rec, server text detector thresholds 0.2/0.3 and expansion 1.2, with no ignored Markdown labels. The OCR model can be overridden using PDF_RAG_OCR_MODEL. Cache policy includes resolution, detector/model options and device; old inline-v1 results are not reused. Startup benchmark fingerprints include OCR settings/model.
+
+`ocr_presentation.py` formats simple HTML tables as Markdown without treating a data row as a header; merged cells retain HTML. It flags long joined words, malformed math, low-confidence lines and table-symbol review. Flags retain converted for compatibility but explicitly record accuracy_verified=false; cached results restore quality warnings. Native lines are grouped for readability, UI defaults to both exports and opens the final document directly.
+
+Bootstrap fixes Paddle cu126's inconsistent cuDNN metadata with a scoped 9.9.0.52 package override for builds reporting 9.9 and a GPU convolution probe. The resulting metadata-only pip-check conflict is documented; system CUDA is not changed. See ACCURACY_REVIEW.md for real-document trials and remaining symbol/e-c errors.
+
 # Three-worker memory policy (2026-10-07)
 
 The UI offers up to three GPU OCR workers; the default remains two. `memory_budget.py` measures current available physical RAM and NVIDIA free VRAM on every launch, including cached launches. It budgets the largest measured per-process peak working set and CUDA reserved/allocated peak with 25% growth allowance, minimum 2.5 GiB each per worker, plus shared reserves of 3 GiB RAM and 1 GiB VRAM. This estimate limits benchmark admission and the selectable worker count; a successful three-worker benchmark is required before the UI offers three. No fitting validated worker produces an explicit error.

@@ -10,6 +10,18 @@ from image_ocr import enrich_images
 
 
 class AutoSetupTests(unittest.TestCase):
+    def test_normal_launch_never_runs_benchmarks_or_loads_models(self):
+        with tempfile.TemporaryDirectory() as folder:
+            gpu={'uuid':'GPU-test','driver':'1','name':'Test GPU','memory_mib':12288,'compute_capability':8.6}
+            with patch.object(setup, 'STATE', Path(folder)), patch('sys.argv', ['app_bootstrap.py','--no-launch']), patch.object(setup, 'detect_gpus', return_value=[gpu]), patch.object(setup, 'ensure_environment', return_value=Path('python.exe')) as environment, patch.object(setup, 'snapshot', return_value={'ram_gib':16,'vram_gib':10}), patch.object(setup, 'benchmark') as benchmark, patch.object(setup, 'run_logged') as expensive:
+                self.assertEqual(setup.main(),0)
+                benchmark.assert_not_called()
+                expensive.assert_not_called()
+                self.assertEqual(environment.call_count,1)
+                profile=json.loads((Path(folder)/'last_profile.json').read_text())
+                self.assertEqual(profile['max_workers'],2)
+                self.assertFalse(profile['benchmark_current'])
+
     def test_nvidia_detection_uses_cuda_identity_not_windows_gpu_number(self):
         result=SimpleNamespace(returncode=0,stdout='0, NVIDIA GeForce RTX 5070 Ti, GPU-abc, 12.0, 580.10, 16384\n',stderr='')
         with patch('app_bootstrap.subprocess.run',return_value=result):

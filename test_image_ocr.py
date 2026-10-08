@@ -19,7 +19,8 @@ class ImageRecoveryTests(unittest.TestCase):
         def predict(input):
             from PIL import Image
             with Image.open(input) as image:
-                self.assertEqual(image.size, (250,250))
+                # A 100-point region at 300 DPI, including outward pixel rounding.
+                self.assertTrue(all(416 <= side <= 418 for side in image.size))
             return [SimpleNamespace(json={'res':{}},markdown={'markdown_texts':markdown})]
         result.predict.side_effect=predict
         return result
