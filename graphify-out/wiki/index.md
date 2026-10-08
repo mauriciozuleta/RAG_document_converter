@@ -1,3 +1,9 @@
+# Native page orientation (2026-10-08)
+
+`page_orientation.extract_pages` replaces native pdfminer high-level iteration in general, HTS and table extraction. It counts LTChar baseline angles after PDF rotation metadata is applied, and reprocesses only pages with a dominant nonzero cardinal direction (20 characters, 80% consensus, 8-degree angular tolerance). It temporarily changes the in-memory PDFPage rotation, then restores it; the source file is untouched. `inspect_page` records orientation_correction, with normalized page sizes and coordinates. `image_ocr` renders matching rotations before cropping. Recovery keys include the correction and native table caches use v4-orientation.
+
+Real-document verification: Saint Lucia physical PDF pages 599?627 preserve the complete multiset of native characters. Pages 599?601 and 609 remain upright; the other sampled pages rotate 90 degrees. JSON/Markdown review artifacts are in Downloads/Saint_Lucia_orientation_review. Synthetic tests cover all four cardinal directions. Mixed-direction and image-only pages are not confidently auto-rotated by this native heuristic.
+
 # Fast launch policy (2026-10-08)
 
 Normal launch uses LIGHT_PROBE to inspect installed package metadata without importing Paddle/PaddleOCR or allocating CUDA tensors. It checks current free memory, skips the unused CPU environment on GPU launch, and never calls benchmarks or model prewarming. `-Rebenchmark` explicitly runs those expensive operations. A changed OCR profile can reuse prior same-GPU/driver benchmark measurements as estimates, clearly labeled; absent history caps at two estimated workers. Dependency installation/targeted runtime repairs can still take time, and repairs use a full convolution probe. Regression coverage verifies no normal-launch benchmark/model-loading subprocess occurs. This supersedes earlier automatic benchmark descriptions below.

@@ -1,4 +1,4 @@
-﻿"""CPU crop preparation and OCR of flagged image regions."""
+"""CPU crop preparation and OCR of flagged image regions."""
 import json
 from pathlib import Path
 import tempfile
@@ -17,7 +17,10 @@ def prepare_images(section, pdf_path, folder):
         try:
             width,height=page.get_size()
             from ocr_settings import RENDER_SCALE
-            bitmap=page.render(scale=RENDER_SCALE)
+            rotation = section.get('orientation_correction', 0)
+            bitmap=page.render(scale=RENDER_SCALE, rotation=rotation)
+            if rotation in (90, 270):
+                width, height = height, width
             try:
                 rendered=bitmap.to_pil()
                 try:

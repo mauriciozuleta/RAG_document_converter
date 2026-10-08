@@ -1,4 +1,4 @@
-﻿import hashlib
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -42,7 +42,7 @@ class ParallelOCRTests(unittest.TestCase):
             assets=Path(folder)/'assets'
             regions=[[0,0,100,100]]
             from ocr_settings import cache_policy
-            key=hashlib.sha256(json.dumps([digest,regions,cache_policy()]).encode()).hexdigest()[:24]
+            key=hashlib.sha256(json.dumps([digest,regions,cache_policy(),0]).encode()).hexdigest()[:24]
             sections=[]
             for page in range(1,5):
                 checkpoint=assets/f'page-{page}'/f'recovery-{key}.json'

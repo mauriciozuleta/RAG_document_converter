@@ -1,3 +1,12 @@
+## 2026-10-08 - Normalize rotated native PDF layouts
+
+The user supplied the Saint Lucia tariff PDF and pages 600?626 after reporting disorganized inverted native text. The pages predominantly contain sideways text rather than image-only scans.
+
+- Normalize dominant native character direction before line/table grouping, preserving original PDFs and recording coordinate rotation.
+- Apply matching orientation to image crops and invalidate incompatible recovery/table checkpoints.
+- Verify character preservation across pages 599?627 and add synthetic cardinal-rotation tests; full suite: 55 tests, two skipped.
+- Export a combined native-only JSON/Markdown sample for review.
+
 ## 2026-10-08 - Remove benchmarks from normal startup
 
 During OCR validation, the user reported launch taking more than five minutes due to benchmarks. Normal launch now checks package metadata and live memory only; full OCR benchmarks require an explicit Rebenchmark invocation. GPU launch skips CPU environment preparation. Same-hardware historical measurements may be reused as labeled estimates, and fresh setups default to at most two estimated workers. A regression test proves ordinary startup does not run benchmarks or prewarm models. The warmed local launcher returned in under one second.

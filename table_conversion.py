@@ -1,9 +1,9 @@
-﻿"""Two-pass table export: native checkpoints, then inline flagged OCR recovery."""
+"""Two-pass table export: native checkpoints, then inline flagged OCR recovery."""
 import hashlib
 import json
 from pathlib import Path
 import time
-from pdfminer.high_level import extract_pages
+from page_orientation import extract_pages
 from pdfminer.pdfpage import PDFPage
 from native_tables import extract_grids
 from table_export import export_tables, TableParser
@@ -32,7 +32,7 @@ def convert_tables(pdf_path, output_dir, base_name, fmt, engine, selected=None, 
     pages = selected if selected is not None else list(range(total_pages))
     if not pages or any(n < 0 or n >= total_pages for n in pages):
         raise ValueError('Requested page range exceeds the document length.')
-    cache = destination / '.table_checkpoints' / f'{digest[:20]}-v3-inline'
+    cache = destination / '.table_checkpoints' / f'{digest[:20]}-v4-orientation'
     cache.mkdir(parents=True, exist_ok=True)
     stored = {}
     for n in pages:

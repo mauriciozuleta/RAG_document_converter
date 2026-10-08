@@ -6,7 +6,8 @@ remain blank; wrapped descriptions and rates retain their column positions.
 import re
 from pathlib import Path
 
-from pdfminer.high_level import extract_pages, extract_text
+from pdfminer.high_level import extract_text
+from page_orientation import extract_pages
 from pdfminer.layout import LTTextLine, LTLine, LTRect, LAParams
 from document_extract import inspect_page
 

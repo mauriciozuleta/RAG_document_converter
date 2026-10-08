@@ -6,7 +6,7 @@ no values, headers, footnotes, or repeated lines are silently removed.
 from pathlib import Path
 import re
 
-from pdfminer.high_level import extract_pages
+from page_orientation import extract_pages
 from pdfminer.layout import LTTextLine, LTImage, LTLine, LTRect, LTFigure, LTChar, LAParams
 
 
@@ -59,7 +59,7 @@ def inspect_page(page):
         issues.append('Unresolved font characters detected; review/OCR required.')
     if any(isinstance(obj, (LTLine, LTRect)) and max(obj.width, obj.height) > 50 for obj in objects):
         issues.append('Rules or vector graphics detected; table relationships and diagrams require review.')
-    return {'source_lines': source, 'raw_text': raw,
+    return {'orientation_correction': getattr(page, 'orientation_correction', 0), 'source_lines': source, 'raw_text': raw,
             'layout_text': '\n'.join(visual), 'warnings': issues,
             'image_count': len(images), 'image_regions': [list(image.bbox) for image in images] + vector_regions, 'page_size': [page.width, page.height],
             'reading_order': 'PDF layout heuristic; coordinates retained for verification'}

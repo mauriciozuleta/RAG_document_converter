@@ -53,3 +53,9 @@ The GUI defaults to JSON plus one combined Markdown document. Use **Open final d
 For Paddle builds reporting cuDNN 9.9, startup aligns the isolated GPU environment to nvidia-cudnn-cu12 9.9.0.52 and verifies GPU convolution. Paddle 3.3.1 cu126 Windows has inconsistent dependency metadata pinning 9.5: this targeted override produces a known `pip check` conflict. System CUDA files are unchanged.
 
 References: [PaddleOCR detection settings](https://paddlepaddle.github.io/PaddleOCR/main/en/version3.x/pipeline_usage/OCR.html), [official English recognition model](https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec).
+
+## Sideways and upside-down native pages
+
+Native extraction detects dominant character direction and normalizes 90/180/270-degree pages before grouping lines and table cells. The original PDF is unchanged. JSON records `orientation_correction`; coordinates and page dimensions describe the normalized view. At least 20 nonblank characters and 80% directional agreement are required, so small rotated labels do not rotate an otherwise upright page. Ambiguous/image-only pages retain existing OCR/review behavior. OCR crops use the same rotation, and table/recovery caches account for the new coordinate policy.
+
+Verified on Saint Lucia tariff PDF pages 599?627: sideways pages normalize while upright neighbors remain unchanged; every native character is preserved. Layout ordering and spacing remain heuristics, not guaranteed semantic table reconstruction.

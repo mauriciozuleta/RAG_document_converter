@@ -200,7 +200,7 @@ def recover_page_worker(section, pdf_path, destination, digest, progress):
 def recovery_cache_path(section, destination, digest):
     from ocr_settings import cache_policy
     policy = cache_policy()
-    key = hashlib.sha256(json.dumps([digest, section['image_regions'], policy]).encode()).hexdigest()[:24]
+    key = hashlib.sha256(json.dumps([digest, section['image_regions'], policy, section.get('orientation_correction', 0)]).encode()).hexdigest()[:24]
     return Path(destination)/f"page-{section['source_page']}"/f'recovery-{key}.json'
 
 
