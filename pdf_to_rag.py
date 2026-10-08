@@ -678,8 +678,8 @@ def process_pdf(
     .json/.md extension is stripped and re-applied per output format).
     output_format is json, md, both, csv, or xlsx (tables only).
     """
-    if ocr_workers not in (1, 2):
-        raise ValueError("OCR workers must be 1 or 2.")
+    if ocr_workers not in (1, 2, 3):
+        raise ValueError("OCR workers must be 1, 2 or 3.")
     pdf_path = str(Path(pdf_path).resolve())
     output_dir = str(Path(output_dir).resolve())
     chapter_number = detect_chapter_number(pdf_path)
@@ -809,7 +809,7 @@ Examples:
         help="Output format: json, md, both, csv or xlsx; native tables first; optional OCR for sparse pages.",
     )
     parser.add_argument("--engine", choices=["native", "paddle"], default="native")
-    parser.add_argument("--ocr-workers", type=int, choices=[1, 2], default=2, help="Parallel OCR workers (default: 2)")
+    parser.add_argument("--ocr-workers", type=int, choices=[1, 2, 3], default=2, help="Parallel OCR workers (default: 2)")
     parser.add_argument("--pages", default="", help="PDF pages, e.g. 911-920 or 1,3-5; blank means all")
     return parser
 

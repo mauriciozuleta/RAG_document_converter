@@ -369,7 +369,8 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         tk.Label(page_frame, text="PDF pages (blank = all):", bg=BG, fg=TEXT).pack(side="left")
         tk.Label(page_frame, text="OCR workers:", bg=BG, fg=TEXT).pack(side="left", padx=(8, 0))
         self._ocr_workers_var = tk.StringVar(value=os.environ.get("PDF_RAG_OCR_WORKERS", "2"))
-        ttk.Combobox(page_frame, textvariable=self._ocr_workers_var, values=("1", "2"), state="readonly", width=3).pack(side="left", padx=4)
+        worker_limit = int(os.environ.get('PDF_RAG_MAX_WORKERS', '2'))
+        ttk.Combobox(page_frame, textvariable=self._ocr_workers_var, values=tuple(str(n) for n in range(1, worker_limit + 1)), state="readonly", width=3).pack(side="left", padx=4)
         self._pages_var = tk.StringVar()
         tk.Entry(page_frame, textvariable=self._pages_var, width=18).pack(side="left", padx=8)
 

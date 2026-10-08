@@ -1,3 +1,12 @@
+## 2026-10-07 - Offer three GPU workers with measured memory limits
+
+The user freed RAM and requested a third GPU worker option, with startup memory benchmarking to limit concurrency when resources are insufficient.
+
+- Added three-worker support to the GPU benchmark, CLI and bounded scheduler; UI options depend on measured capacity and successful benchmarks.
+- Record peak process RAM and CUDA reserved memory, and measure available RAM/VRAM afresh on every launch.
+- Budget explicit growth/headroom and recheck availability before conversion; log worker reductions and reject starts when no worker fits.
+- Added regression tests for independent RAM/VRAM limits, measured peaks and conversion-time changes.
+
 ## 2026-10-07 ? Automate hardware setup and default to two GPU workers
 
 The user requested automatic dependency installation and CPU/GPU benchmarking at launch, with two GPU OCR workers and a CPU organizer instead of restrictive static limits.

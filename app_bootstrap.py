@@ -9,6 +9,7 @@ import platform
 import subprocess
 import sys
 import time
+from memory_budget import snapshot, worker_budget, capacity
 
 ROOT=Path(__file__).resolve().parent
 STATE=ROOT/'.runtime'
@@ -124,6 +125,16 @@ def benchmark(python,device,workers,folder,env):
     output=folder/f'{device[:3]}-{workers}.json'
     print(f'[BENCHMARK] Testing {device}, {workers} worker(s) on a small table.',flush=True)
     try:
+        prior = {}
+        for count in range(1, workers):
+            previous = folder/f'{device[:3]}-{count}.json'
+            if previous.exists():
+                prior[f'{device[:3]}{count}'] = json.loads(previous.read_text(encoding='utf-8'))
+        memory = snapshot({'uuid': env.get('CUDA_VISIBLE_DEVICES', '0')} if device.startswith('gpu') else None)
+        budget = worker_budget(prior, device.startswith('gpu'))
+        if capacity(memory, budget, workers) < workers:
+            print(f'[MEMORY] Skipping {workers}-worker benchmark: available {memory}; budget {budget}.', flush=True)
+            return {'ok': False, 'skipped_memory': True, 'memory': memory, 'budget': budget}
         run_logged([str(python),'-u',str(ROOT/'hardware_benchmark.py'),'--device',device,'--workers',str(workers),'--out',str(output)],output.with_suffix('.log'),{**env,'PDF_RAG_OCR_DEVICE':device},timeout=300)
         report=json.loads(output.read_text(encoding='utf-8'))
     except (RuntimeError,TimeoutError,OSError,ValueError) as exc:
@@ -194,9 +205,35 @@ def main():
             device,workers,note=select_configuration(gpu,reports)
             profile={'device':device,'workers':workers,'note':note,'gpu':gpu,'benchmarks':reports}
             profile_path.write_text(json.dumps(profile,indent=2),encoding='utf-8')
+        reports = profile['benchmarks']
+        memory = snapshot(gpu)
+        budget = worker_budget(reports, bool(gpu))
+        limit = capacity(memory, budget, 3 if gpu else 2)
+        print(f'[MEMORY] Available: {memory}; per-worker budget: {budget}; capacity: {limit}.', flush=True)
+        if gpu and limit >= 2 and reports.get('gpu2', {}).get('skipped_memory'):
+            reports['gpu2'] = benchmark(gpu_python, 'gpu:0', 2, folder, env)
+            budget = worker_budget(reports)
+            memory = snapshot(gpu)
+            limit = capacity(memory, budget)
+        if gpu and reports.get('gpu2', {}).get('ok') and limit >= 3 and ('gpu3' not in reports or reports['gpu3'].get('skipped_memory')):
+            reports['gpu3'] = benchmark(gpu_python, 'gpu:0', 3, folder, env)
+            budget = worker_budget(reports)
+            memory = snapshot(gpu)
+            limit = capacity(memory, budget)
+        if gpu:
+            validated = [n for n in range(1, limit + 1) if reports.get(f'gpu{n}', {}).get('ok')]
+            limit = max(validated, default=0)
+        if limit == 0:
+            raise RuntimeError('Insufficient available memory for a validated OCR worker. Free memory and relaunch.')
+        profile.update(memory=memory, memory_budget=budget, max_workers=limit)
+        profile['workers'] = min(2, limit)
+        profile['note'] = f"{profile['workers']} default OCR worker(s); memory/benchmark limit: {limit}. RAM free: {memory['ram_gib']:.1f} GiB" + (f"; VRAM free: {memory['vram_gib']:.1f} GiB." if gpu else '.')
+        profile_path.write_text(json.dumps(profile,indent=2),encoding='utf-8')
         print(f'[SETUP] {profile["note"]} Report: {profile_path}',flush=True)
         (STATE/'last_profile.json').write_text(json.dumps(profile,indent=2),encoding='utf-8')
         env.update(PDF_RAG_BOOTSTRAPPED='1',PDF_RAG_OCR_DEVICE=profile['device'],PDF_RAG_OCR_WORKERS=str(profile['workers']),PDF_RAG_DEVICE_NAME=gpu['name'] if gpu else 'CPU',PDF_RAG_STARTUP_NOTE=profile['note'])
+        env['PDF_RAG_MAX_WORKERS'] = str(limit)
+        env['PDF_RAG_MEMORY_BUDGET'] = json.dumps(budget)
         python=gpu_python if profile['device'].startswith('gpu') else cpu_python
     if not args.no_launch:
         flags=subprocess.CREATE_NO_WINDOW

@@ -1,3 +1,9 @@
+# Three-worker memory policy (2026-10-07)
+
+The UI offers up to three GPU OCR workers; the default remains two. `memory_budget.py` measures current available physical RAM and NVIDIA free VRAM on every launch, including cached launches. It budgets the largest measured per-process peak working set and CUDA reserved/allocated peak with 25% growth allowance, minimum 2.5 GiB each per worker, plus shared reserves of 3 GiB RAM and 1 GiB VRAM. This estimate limits benchmark admission and the selectable worker count; a successful three-worker benchmark is required before the UI offers three. No fitting validated worker produces an explicit error.
+
+Memory telemetry, budgets, and maximum workers are saved in the startup profile. `ocr_parallel.choose_workers` rechecks memory before creating the conversion pool, caps the request and logs reductions. The bounded CPU crop queue and ordered merge support three workers unchanged. Cached throughput results never bypass fresh availability checks. Relaunch after freeing memory to refresh options; use Rebenchmark to retry failed tests. Large document pages may exceed the synthetic fixture's memory estimate.
+
 # Current automatic launch and worker policy (2026-10-07)
 
 `app_bootstrap.py` verifies dependencies, prepares models and benchmarks CPU/one-GPU/two-GPU OCR. `launch_app.ps1` locates supported 64-bit Python or installs it via winget. NVIDIA GPUs are selected by UUID; Blackwell uses cu129, older supported hardware cu126. Profiles/logs stay in ignored `.runtime/`; `-Rebenchmark` repeats calibration, `-CpuOnly` explicitly selects CPU, and `-SetupOnly` avoids launching the UI.

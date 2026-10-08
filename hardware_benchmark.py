@@ -1,4 +1,4 @@
-﻿"""Startup OCR smoke/throughput benchmark; one fresh process per model copy."""
+"""Startup OCR smoke/throughput benchmark; one fresh process per model copy."""
 import argparse
 from concurrent.futures import ProcessPoolExecutor
 import json
@@ -38,10 +38,11 @@ def worker(image_path,device,barrier):
             paddle.device.synchronize()
         times.append(time.perf_counter()-before)
         texts.append('\n'.join(r.markdown.get('markdown_texts','') for r in results))
-    result={'pid':os.getpid(),'load_seconds':load,'start':start,'finish':time.perf_counter(),'inference_seconds':times,'recognized':any('benchmark' in t.lower() for t in texts),'markdown':texts[-1], 'rss_bytes':psutil.Process().memory_info().rss}
+    result={'pid':os.getpid(),'load_seconds':load,'start':start,'finish':time.perf_counter(),'inference_seconds':times,'recognized':any('benchmark' in t.lower() for t in texts),'markdown':texts[-1], 'rss_bytes':getattr(psutil.Process().memory_info(), 'peak_wset', psutil.Process().memory_info().rss)}
     if device.startswith('gpu'):
         import paddle
         result['peak_allocated_vram_bytes']=paddle.device.cuda.max_memory_allocated()
+        result['peak_reserved_vram_bytes']=paddle.device.cuda.max_memory_reserved()
         result['gpu_name']=paddle.device.cuda.get_device_name(0)
     return result
 
@@ -82,7 +83,7 @@ def run(device,workers,output):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--device',choices=['cpu','gpu:0'],required=True)
-    parser.add_argument('--workers',type=int,choices=[1,2],required=True)
+    parser.add_argument('--workers',type=int,choices=[1,2,3],required=True)
     parser.add_argument('--out',required=True)
     args=parser.parse_args()
     report=run(args.device,args.workers,args.out)
