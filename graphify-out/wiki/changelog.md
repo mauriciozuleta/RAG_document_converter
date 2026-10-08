@@ -1,3 +1,13 @@
+## 2026-10-07 ? Automate hardware setup and default to two GPU workers
+
+The user requested automatic dependency installation and CPU/GPU benchmarking at launch, with two GPU OCR workers and a CPU organizer instead of restrictive static limits.
+
+- Added automatic Windows bootstrap, NVIDIA UUID selection, CUDA package selection, model preparation, cached startup benchmarks and visible failure handling.
+- Defaulted to two GPU OCR workers; removed static RAM and single-GPU limits.
+- Moved GPU crop preparation into a bounded CPU coordinator queue, preserving inline result ordering and caches.
+- Added setup/worker regression coverage and verified real CPU, one-GPU and two-GPU benchmarks on RTX 3060.
+- Updated launch and deployment documentation.
+
 ## 2026-10-07 ? Publish application to GitHub
 
 The user requested publication to mauriciozuleta/RAG_document_converter.

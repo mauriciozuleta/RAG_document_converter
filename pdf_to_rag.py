@@ -667,7 +667,7 @@ def process_pdf(
     output_format: str = "json",
     engine: str = "native",
     pages: str = "",
-    ocr_workers: int = 1,
+    ocr_workers: int = 2,
 ) -> list[str]:
     """
         Run the full pipeline for a single PDF:
@@ -809,7 +809,7 @@ Examples:
         help="Output format: json, md, both, csv or xlsx; native tables first; optional OCR for sparse pages.",
     )
     parser.add_argument("--engine", choices=["native", "paddle"], default="native")
-    parser.add_argument("--ocr-workers", type=int, choices=[1, 2], default=1, help="Parallel OCR page workers (memory checked)")
+    parser.add_argument("--ocr-workers", type=int, choices=[1, 2], default=2, help="Parallel OCR workers (default: 2)")
     parser.add_argument("--pages", default="", help="PDF pages, e.g. 911-920 or 1,3-5; blank means all")
     return parser
 

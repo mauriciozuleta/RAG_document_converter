@@ -17,6 +17,11 @@ import shutil
 import sys
 import threading
 from pathlib import Path
+# Direct GUI launches use the same automatic setup as the launch scripts.
+if __name__ == '__main__' and os.environ.get('PDF_RAG_BOOTSTRAPPED') != '1':
+    import subprocess
+    raise SystemExit(subprocess.call([sys.executable, str(Path(__file__).with_name('app_bootstrap.py'))]))
+
 import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext, ttk
 
@@ -363,12 +368,17 @@ class App(tk.Tk if not _HAS_DND else TkinterDnD.Tk):  # type: ignore[misc]
         page_frame.pack(pady=4)
         tk.Label(page_frame, text="PDF pages (blank = all):", bg=BG, fg=TEXT).pack(side="left")
         tk.Label(page_frame, text="OCR workers:", bg=BG, fg=TEXT).pack(side="left", padx=(8, 0))
-        self._ocr_workers_var = tk.StringVar(value="1" if os.environ.get("PDF_RAG_OCR_DEVICE", "cpu").startswith("gpu") else "2")
-        ttk.Combobox(page_frame, textvariable=self._ocr_workers_var, values=("1",) if os.environ.get("PDF_RAG_OCR_DEVICE", "cpu").startswith("gpu") else ("1", "2"), state="readonly", width=3).pack(side="left", padx=4)
+        self._ocr_workers_var = tk.StringVar(value=os.environ.get("PDF_RAG_OCR_WORKERS", "2"))
+        ttk.Combobox(page_frame, textvariable=self._ocr_workers_var, values=("1", "2"), state="readonly", width=3).pack(side="left", padx=4)
         self._pages_var = tk.StringVar()
         tk.Entry(page_frame, textvariable=self._pages_var, width=18).pack(side="left", padx=8)
 
 
+        device_name = os.environ.get("PDF_RAG_DEVICE_NAME", os.environ.get("PDF_RAG_OCR_DEVICE", "cpu"))
+        tk.Label(conv_frame, text=f"OCR device: {device_name}", bg=BG, fg=TEXT).pack()
+        startup_note = os.environ.get("PDF_RAG_STARTUP_NOTE", "")
+        if startup_note:
+            tk.Label(conv_frame, text=startup_note, bg=BG, fg=WARNING, wraplength=640).pack()
         self._status_var = tk.StringVar(value="Status: Ready")
         self._status_label = tk.Label(
             conv_frame,

@@ -27,10 +27,10 @@ class ParallelOCRTests(unittest.TestCase):
         self.assertEqual(sum(error is not None for _,_,error in results),1)
         self.assertEqual(len({result[1] for _,result,error in results if error is None}),2)
 
-    def test_memory_guard(self):
+    def test_requested_workers_are_not_reduced_by_static_ram_threshold(self):
         with patch('ocr_parallel.os.cpu_count',return_value=20):
             with patch('ocr_parallel.available_memory_gb',return_value=8):
-                self.assertEqual(choose_workers(2,100),1)
+                self.assertEqual(choose_workers(2,100),2)
             with patch('ocr_parallel.available_memory_gb',return_value=16):
                 self.assertEqual(choose_workers(2,100),2)
                 self.assertEqual(choose_workers(2,1),1)
@@ -54,9 +54,9 @@ class ParallelOCRTests(unittest.TestCase):
             self.assertTrue(all(f'Recovered page {i}' in section['content'] for i,section in enumerate(sections,1)))
             self.assertTrue(all(section['ocr_flags'][0]['status']=='converted' for section in sections))
 
-    def test_gpu_always_uses_one_worker(self):
+    def test_gpu_respects_two_workers(self):
         with patch.dict(os.environ, {'PDF_RAG_OCR_DEVICE':'gpu:0'}):
-            self.assertEqual(choose_workers(2,100),1)
+            self.assertEqual(choose_workers(2,100),2)
 
     def test_gpu_factory_refuses_cpu_only_installation(self):
         import sys

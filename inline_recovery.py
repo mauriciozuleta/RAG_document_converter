@@ -1,4 +1,4 @@
-﻿"""Ordered native/OCR blocks and explicit, auditable recovery flags."""
+"""Ordered native/OCR blocks and explicit, auditable recovery flags."""
 import hashlib
 import json
 from pathlib import Path
@@ -114,21 +114,35 @@ def recover_sections(sections, pdf_path, assets_dir, enabled=True, workers=1):
     else:
         from concurrent.futures import ProcessPoolExecutor
         from multiprocessing import get_context
-        offset = 0
-        tasks = []
-        for section in pending:
-            tasks.append((section, str(pdf_path), str(destination), digest, (offset,total_flags)))
-            offset += len(section['ocr_flags'])
-        with ProcessPoolExecutor(max_workers=workers, mp_context=get_context('spawn')) as executor:
-            for index, result, error in bounded_results(executor, recover_page_worker, tasks, workers):
-                section = pending[index]
-                if error is not None:
-                    section['image_ocr'] = [{'region':i, 'markdown':'', 'status':f'Worker failed: {error}'} for i,_ in enumerate(section['ocr_flags'],1)]
-                    render_section(section)
-                    section.setdefault('warnings',[]).append(f'OCR worker failed: {error}')
-                else:
-                    section.update(result)
-                completed(section)
+        import tempfile
+        from image_ocr import prepare_images
+        with tempfile.TemporaryDirectory(prefix='pdf_rag_queue_') as crop_folder:
+            def tasks():
+                offset = 0
+                for section in pending:
+                    if device.startswith('gpu'):
+                        cached = read_recovery_cache(section, destination, digest)
+                        section['image_ocr'] = cached or []
+                        # Bounded CPU preparation overlaps the GPU workers.
+                        try:
+                            section['_prepared_images'] = prepare_images(section, pdf_path, Path(crop_folder)/str(section['source_page']))
+                        except Exception as exc:
+                            section['_prepared_images'] = {}
+                            section['_preparation_error'] = str(exc)
+                    yield (section, str(pdf_path), str(destination), digest, (offset,total_flags))
+                    offset += len(section['ocr_flags'])
+            with ProcessPoolExecutor(max_workers=workers, mp_context=get_context('spawn')) as executor:
+                for index, result, error in bounded_results(executor, recover_page_worker, tasks(), workers):
+                    section = pending[index]
+                    if error is not None:
+                        section['image_ocr'] = [{'region':i, 'markdown':'', 'status':f'Worker failed: {error}'} for i,_ in enumerate(section['ocr_flags'],1)]
+                        render_section(section)
+                        section.setdefault('warnings',[]).append(f'OCR worker failed: {error}')
+                    else:
+                        section.update(result)
+                    section.pop('_prepared_images', None)
+                    section.pop('_preparation_error', None)
+                    completed(section)
     unresolved = sum(f['status'] != 'converted' for s in sections for f in s.get('ocr_flags',[]))
     print(f'[INFO] Recovery complete: {unresolved} unresolved flags remain visible in the document.',flush=True)
 
@@ -138,19 +152,15 @@ def recover_page(section, pdf_path, destination, digest, pipeline=None, progress
     from image_ocr import enrich_images
     destination = Path(destination)
     number = section['source_page']
-    import os
-    cache_policy = 'inline-v1' if os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu') == 'cpu' else 'inline-v1-gpu'
-    key = hashlib.sha256(json.dumps([digest,section['image_regions'],cache_policy]).encode()).hexdigest()[:24]
-    cache = destination/f'page-{number}'/f'recovery-{key}.json'
-    try:
-        cached = json.loads(cache.read_text(encoding='utf-8')) if cache.exists() else None
-    except (ValueError,OSError):
-        cached = None
+    cache = recovery_cache_path(section, destination, digest)
+    cached = read_recovery_cache(section, destination, digest)
     if cached and all(r.get('markdown','').strip() for r in cached):
         section['image_ocr'] = cached
     else:
         print(f'[INFO] Recovery pass: page {number}, sequence {section["ocr_flags"][0]["image_sequence"]}',flush=True)
         try:
+            if section.get('_preparation_error'):
+                raise RuntimeError('CPU image preparation failed: '+section['_preparation_error'])
             pipeline = pipeline or create_pipeline()
             section["image_ocr"] = cached or []
             section["_ocr_progress"] = progress
@@ -164,6 +174,8 @@ def recover_page(section, pdf_path, destination, digest, pipeline=None, progress
             cache.write_text(json.dumps(section['image_ocr'],ensure_ascii=False),encoding='utf-8')
             section.setdefault('warnings',[]).append(f'OCR recovery failed on page {number}: {exc}')
     section.pop("_ocr_progress", None)
+    section.pop("_prepared_images", None)
+    section.pop("_preparation_error", None)
     render_section(section)
     return section, pipeline
 
@@ -175,3 +187,17 @@ def recover_page_worker(section, pdf_path, destination, digest, progress):
     global _WORKER_PIPELINE
     section, _WORKER_PIPELINE = recover_page(section, pdf_path, destination, digest, _WORKER_PIPELINE, progress)
     return section
+
+
+def recovery_cache_path(section, destination, digest):
+    import os
+    policy = 'inline-v1' if os.environ.get('PDF_RAG_OCR_DEVICE', 'cpu') == 'cpu' else 'inline-v1-gpu'
+    key = hashlib.sha256(json.dumps([digest, section['image_regions'], policy]).encode()).hexdigest()[:24]
+    return Path(destination)/f"page-{section['source_page']}"/f'recovery-{key}.json'
+
+
+def read_recovery_cache(section, destination, digest):
+    try:
+        return json.loads(recovery_cache_path(section, destination, digest).read_text(encoding='utf-8'))
+    except (ValueError, OSError):
+        return None

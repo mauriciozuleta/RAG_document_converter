@@ -1,4 +1,4 @@
-﻿# RAG_document_converter
+# RAG_document_converter
 
 Desktop PDF converter with native text/table extraction, inline OCR recovery, and optional NVIDIA GPU acceleration.
 
@@ -6,19 +6,33 @@ Desktop PDF converter with native text/table extraction, inline OCR recovery, an
 - Detect image regions, recover their text with OCR, and retain source-page order.
 - Save recovery checkpoints and show unresolved content flags.
 - Run conversion in an isolated process with cancellation and durable logs.
-- Use one or two memory-checked CPU OCR workers, or one GPU worker.
+- Use two GPU OCR workers plus a CPU coordinator by default.
 
 ## Run on Windows
 
+Clone the repository (or run `git pull`), then double-click **launch_app.bat**, or run:
+
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python -m pip install -r requirements-ocr.txt
 .\launch_app.ps1
 ```
 
-OCR models download on first use. Native extraction works without OCR; automatic OCR is enabled in the GUI. Review recovered tables against the source, especially complex layouts and merged cells.
+The launcher finds 64-bit Python 3.11?3.13, or installs Python 3.13 through Windows Package Manager if available. It creates isolated environments, installs missing dependencies, and downloads OCR models. First setup needs internet access and may download several GB. A compatible NVIDIA driver must already be installed.
 
-For the separate GPU environment, launcher, and measured trial, see [GPU_TRIAL.md](GPU_TRIAL.md). A compatible NVIDIA GPU and driver are required.
+Startup selects the NVIDIA device by UUID, independently of Windows GPU numbering. Blackwell cards such as RTX 5070 Ti use CUDA 12.9 packages; older supported cards use CUDA 12.6. Intel display GPUs are not selected for CUDA OCR.
+
+First setup benchmarks CPU OCR, one GPU worker, and two GPU workers on a small synthetic table. **Two GPU OCR workers plus a CPU coordinator are the default** when the two-worker test succeeds. The coordinator renders/crops flagged regions and feeds a bounded queue. Each GPU worker retains its own OCR pipeline; results return to their original document positions. There is no fixed free-RAM gate. If the two-worker test fails, a successful one-worker test permits an explicit one-worker fallback. GPU failure is never silently replaced with CPU processing.
+
+Reports and installation logs are under `.runtime/`; the latest profile is `.runtime/last_profile.json`. Benchmarks are cached for the hardware, driver and relevant dependency configuration. Later launches verify the environment and reuse the profile. Small synthetic tests cannot predict throughput or peak memory for every document.
+
+```powershell
+.\launch_app.ps1 -Rebenchmark  # Repeat hardware tests
+.\launch_app.ps1 -SetupOnly    # Prepare/test without opening the UI
+.\launch_app.ps1 -CpuOnly      # Explicit CPU processing
+```
+
+The UI displays the selected device and defaults to two OCR workers. `launch_gpu_app.ps1` also uses automatic setup. Restart the app to use updated code; existing conversions retain their previous configuration.
+
+For representative document-page measurements, see [GPU_TRIAL.md](GPU_TRIAL.md). Review recovered tables against the source, especially complex layouts and merged cells.
 
 ## Tests
 
